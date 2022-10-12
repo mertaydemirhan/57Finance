@@ -71,6 +71,8 @@
             this.label10 = new System.Windows.Forms.Label();
             this.TLtoUSD = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.lblTL = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.grpCariSec.SuspendLayout();
             this.grpIslem.SuspendLayout();
             this.grpDvz.SuspendLayout();
@@ -163,7 +165,7 @@
             this.grpIslem.Controls.Add(this.metroLabel3);
             this.grpIslem.Location = new System.Drawing.Point(12, 122);
             this.grpIslem.Name = "grpIslem";
-            this.grpIslem.Size = new System.Drawing.Size(619, 230);
+            this.grpIslem.Size = new System.Drawing.Size(619, 251);
             this.grpIslem.TabIndex = 5;
             this.grpIslem.TabStop = false;
             this.grpIslem.Text = "İşlem";
@@ -186,7 +188,7 @@
             this.btnKaydet.IdleFillColor = System.Drawing.Color.White;
             this.btnKaydet.IdleForecolor = System.Drawing.Color.SeaGreen;
             this.btnKaydet.IdleLineColor = System.Drawing.Color.SeaGreen;
-            this.btnKaydet.Location = new System.Drawing.Point(12, 360);
+            this.btnKaydet.Location = new System.Drawing.Point(12, 381);
             this.btnKaydet.Margin = new System.Windows.Forms.Padding(5);
             this.btnKaydet.Name = "btnKaydet";
             this.btnKaydet.Size = new System.Drawing.Size(177, 52);
@@ -257,7 +259,7 @@
             this.grpDvz.Controls.Add(this.cmbDvzTuru);
             this.grpDvz.Location = new System.Drawing.Point(307, 120);
             this.grpDvz.Name = "grpDvz";
-            this.grpDvz.Size = new System.Drawing.Size(308, 103);
+            this.grpDvz.Size = new System.Drawing.Size(308, 123);
             this.grpDvz.TabIndex = 11;
             this.grpDvz.TabStop = false;
             this.grpDvz.Text = "Dövizli İşlem";
@@ -340,6 +342,7 @@
             this.txtDvzTutar.ResetOnPrompt = false;
             this.txtDvzTutar.Size = new System.Drawing.Size(107, 20);
             this.txtDvzTutar.TabIndex = 12;
+            this.txtDvzTutar.TextChanged += new System.EventHandler(this.txtDvzTutar_TextChanged);
             // 
             // metroLabel7
             // 
@@ -352,6 +355,8 @@
             // 
             // grpDvzBilgi
             // 
+            this.grpDvzBilgi.Controls.Add(this.lblTL);
+            this.grpDvzBilgi.Controls.Add(this.label5);
             this.grpDvzBilgi.Controls.Add(this.lblazn);
             this.grpDvzBilgi.Controls.Add(this.label6);
             this.grpDvzBilgi.Controls.Add(this.lblgbp);
@@ -362,7 +367,7 @@
             this.grpDvzBilgi.Controls.Add(this.label1);
             this.grpDvzBilgi.Location = new System.Drawing.Point(7, 46);
             this.grpDvzBilgi.Name = "grpDvzBilgi";
-            this.grpDvzBilgi.Size = new System.Drawing.Size(295, 51);
+            this.grpDvzBilgi.Size = new System.Drawing.Size(295, 71);
             this.grpDvzBilgi.TabIndex = 14;
             this.grpDvzBilgi.TabStop = false;
             this.grpDvzBilgi.Text = "Döviz Karşılığı";
@@ -440,9 +445,9 @@
             this.lblgbp.ForeColor = System.Drawing.Color.LightCoral;
             this.lblgbp.Location = new System.Drawing.Point(173, 15);
             this.lblgbp.Name = "lblgbp";
-            this.lblgbp.Size = new System.Drawing.Size(38, 14);
+            this.lblgbp.Size = new System.Drawing.Size(41, 14);
             this.lblgbp.TabIndex = 5;
-            this.lblgbp.Text = "$0,00";
+            this.lblgbp.Text = "0,00 £";
             // 
             // label8
             // 
@@ -501,9 +506,9 @@
             this.TLtoGBP.ForeColor = System.Drawing.Color.LightCoral;
             this.TLtoGBP.Location = new System.Drawing.Point(173, 15);
             this.TLtoGBP.Name = "TLtoGBP";
-            this.TLtoGBP.Size = new System.Drawing.Size(38, 14);
+            this.TLtoGBP.Size = new System.Drawing.Size(41, 14);
             this.TLtoGBP.TabIndex = 5;
-            this.TLtoGBP.Text = "$0,00";
+            this.TLtoGBP.Text = "0,00 £";
             // 
             // label7
             // 
@@ -560,12 +565,34 @@
             this.label12.TabIndex = 0;
             this.label12.Text = "USD";
             // 
+            // lblTL
+            // 
+            this.lblTL.AutoSize = true;
+            this.lblTL.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTL.ForeColor = System.Drawing.Color.DimGray;
+            this.lblTL.Location = new System.Drawing.Point(92, 48);
+            this.lblTL.Name = "lblTL";
+            this.lblTL.Size = new System.Drawing.Size(49, 14);
+            this.lblTL.TabIndex = 9;
+            this.lblTL.Text = "0,00 TL";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.DimGray;
+            this.label5.Location = new System.Drawing.Point(68, 48);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(22, 14);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "TL";
+            // 
             // TahsilatGirisi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.ClientSize = new System.Drawing.Size(651, 450);
+            this.ClientSize = new System.Drawing.Size(640, 450);
             this.Controls.Add(this.btnKaydet);
             this.Controls.Add(this.grpIslem);
             this.Controls.Add(this.grpCariSec);
@@ -635,5 +662,7 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label TLtoUSD;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label lblTL;
+        private System.Windows.Forms.Label label5;
     }
 }
