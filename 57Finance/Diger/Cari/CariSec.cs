@@ -26,6 +26,11 @@ namespace _57Finance.Diger.Cari
         {
             InitializeComponent();
         }
+        private void CariSec_Load(object sender, EventArgs e)
+        {
+            ToList();
+
+        }
         private void ToList()
         {
             baglanti = new SqlConnection("Server=" + ServerAdress + ";Database=" + DatabaseName + ";User Id=" + UsrName + ";Password=" + Pw + ";");
@@ -70,11 +75,7 @@ namespace _57Finance.Diger.Cari
             }
         }
 
-        private void CariSec_Load(object sender, EventArgs e)
-        {
-            ToList();
 
-        }
         private void btnKapat_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -109,6 +110,7 @@ namespace _57Finance.Diger.Cari
             {
                 ((TahsilatGirisi)TahsilatGiris).lblTicariUnvani.Text = selectedRow.Cells["CommercialTitle"].Value.ToString();
                 ((TahsilatGirisi)TahsilatGiris).lblCariKod.Text = selectedRow.Cells["ClientCode"].Value.ToString();
+                ((TahsilatGirisi)TahsilatGiris).ClientID = selectedRow.Cells["ID"].Value.ToString();
                 this.Close();
             }
             else

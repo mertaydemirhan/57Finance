@@ -181,6 +181,8 @@
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\ClientInfo.cs" />
+    <Compile Include="Model\Forexes.cs" />
+    <Compile Include="Model\TransactionINFO.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Cari\islemler\TahsilatGirisi.cs">
