@@ -39,6 +39,11 @@ namespace _57Finance
         {
             InitializeComponent();
         }
+        public TahsilatGirisi(TransactionINFO transaction)
+        {
+            InitializeComponent();
+            transactioninfo = transaction;
+        }
         private void TahsilatGirisi_Load(object sender, EventArgs e)
         {
             if(transactioninfo == null)
@@ -49,8 +54,34 @@ namespace _57Finance
             GetForexRates();
             downloadForex();
             BindDataDepartment();
+            if (transactioninfo != null)
+            {
+                GetValuesFromClient();
+            }
         }
 
+        private void GetValuesFromClient()
+        {
+            lblTicariUnvani.Text = transactioninfo.ClientCommercialTitle;
+            lblCariKod.Text = transactioninfo.ClientCode;
+            lblBUSD.Text = "$ "+transactioninfo.ForexUSD.ToString();
+            lblBEUR.Text = transactioninfo.ForexEUR.ToString() +" €";
+            lblBGBP.Text = transactioninfo.ForexGBP.ToString() +" £";
+            lblBAZN.Text = transactioninfo.ForexAZN.ToString() +" AZN";
+            lblBTL.Text = transactioninfo.ForexTL.ToString()   +" ₺";
+            dtIslemTarihi.Value = transactioninfo.Date;
+            cmbDocumentType.SelectedIndex = transactioninfo.DocumentType;
+            cmbDepartman.SelectedValue = transactioninfo.DepartmentID;
+            if (transactioninfo.Forex != "")
+                rdDoviz.Checked = true;
+            else
+                rdTL.Checked = true;
+            rchAciklama.Text = transactioninfo.Explanation;
+            txtBelgeNo.Text = transactioninfo.DocumentNo.ToString();
+            txtTLTutar.Text = transactioninfo.Amount.ToString();
+            txtDvzTutar.Text = transactioninfo.ForexAmount.ToString();
+            cmbDvzTuru.SelectedText = transactioninfo.Forex;
+        }
 
         private void btnCariSec_Click(object sender, EventArgs e)
         {
@@ -256,7 +287,7 @@ namespace _57Finance
                 baglanti.Open();
                double TLField =  (txtTLTutar.Text != "") ? Convert.ToDouble(txtTLTutar.Text.Trim()) : 0;
                double FField = (txtDvzTutar.Text != "") ? Convert.ToDouble(txtDvzTutar.Text.Trim()) : 0;
-               string FSign = (txtDvzTutar.Text != "") ? cmbDvzTuru.SelectedItem.ToString() : "";
+               string FSign = (txtDvzTutar.Text != "") ? cmbDvzTuru.SelectedItem.ToString() : ""; 
                 double FSelectedUSD, FSelectedEUR, FSelectedGBP, FSelectedAZN, FSelectedTL;
                 if (rdTL.Checked)
                 {

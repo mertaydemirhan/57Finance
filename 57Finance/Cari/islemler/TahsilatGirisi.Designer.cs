@@ -30,6 +30,17 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TahsilatGirisi));
             this.grpCariSec = new System.Windows.Forms.GroupBox();
+            this.grpBForex = new System.Windows.Forms.GroupBox();
+            this.lblBTL = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.lblBAZN = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.lblBGBP = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.lblBEUR = new System.Windows.Forms.Label();
+            this.EUROLABEL = new System.Windows.Forms.Label();
+            this.lblBUSD = new System.Windows.Forms.Label();
+            this.USDLABEL = new System.Windows.Forms.Label();
             this.btnCariSec = new Bunifu.Framework.UI.BunifuTileButton();
             this.lblTicariUnvani = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
@@ -37,6 +48,13 @@
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.grpIslem = new System.Windows.Forms.GroupBox();
+            this.cmbDepartman = new MetroFramework.Controls.MetroComboBox();
+            this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
+            this.cmbDocumentType = new MetroFramework.Controls.MetroComboBox();
+            this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
+            this.txtBelgeNo = new System.Windows.Forms.MaskedTextBox();
+            this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
+            this.label2 = new System.Windows.Forms.Label();
             this.grpTur = new System.Windows.Forms.GroupBox();
             this.rdDoviz = new MetroFramework.Controls.MetroRadioButton();
             this.rdTL = new MetroFramework.Controls.MetroRadioButton();
@@ -73,32 +91,14 @@
             this.dtIslemTarihi = new MetroFramework.Controls.MetroDateTime();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.btnKaydet = new Bunifu.Framework.UI.BunifuThinButton2();
-            this.label2 = new System.Windows.Forms.Label();
-            this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
-            this.txtBelgeNo = new System.Windows.Forms.MaskedTextBox();
-            this.grpBForex = new System.Windows.Forms.GroupBox();
-            this.lblBTL = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.lblBAZN = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.lblBGBP = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.lblBEUR = new System.Windows.Forms.Label();
-            this.EUROLABEL = new System.Windows.Forms.Label();
-            this.lblBUSD = new System.Windows.Forms.Label();
-            this.USDLABEL = new System.Windows.Forms.Label();
-            this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
-            this.cmbDocumentType = new MetroFramework.Controls.MetroComboBox();
-            this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
-            this.cmbDepartman = new MetroFramework.Controls.MetroComboBox();
             this.grpCariSec.SuspendLayout();
+            this.grpBForex.SuspendLayout();
             this.grpIslem.SuspendLayout();
             this.grpTur.SuspendLayout();
             this.grpTL.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.grpDvz.SuspendLayout();
             this.grpDvzBilgi.SuspendLayout();
-            this.grpBForex.SuspendLayout();
             this.SuspendLayout();
             // 
             // grpCariSec
@@ -115,6 +115,135 @@
             this.grpCariSec.TabIndex = 0;
             this.grpCariSec.TabStop = false;
             this.grpCariSec.Text = "Cari Seçimi";
+            // 
+            // grpBForex
+            // 
+            this.grpBForex.Controls.Add(this.lblBTL);
+            this.grpBForex.Controls.Add(this.label11);
+            this.grpBForex.Controls.Add(this.lblBAZN);
+            this.grpBForex.Controls.Add(this.label14);
+            this.grpBForex.Controls.Add(this.lblBGBP);
+            this.grpBForex.Controls.Add(this.label16);
+            this.grpBForex.Controls.Add(this.lblBEUR);
+            this.grpBForex.Controls.Add(this.EUROLABEL);
+            this.grpBForex.Controls.Add(this.lblBUSD);
+            this.grpBForex.Controls.Add(this.USDLABEL);
+            this.grpBForex.Location = new System.Drawing.Point(12, 62);
+            this.grpBForex.Name = "grpBForex";
+            this.grpBForex.Size = new System.Drawing.Size(345, 49);
+            this.grpBForex.TabIndex = 15;
+            this.grpBForex.TabStop = false;
+            this.grpBForex.Text = "Önceki Tarihte Döviz Karşılığı";
+            // 
+            // lblBTL
+            // 
+            this.lblBTL.AutoSize = true;
+            this.lblBTL.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBTL.ForeColor = System.Drawing.Color.DimGray;
+            this.lblBTL.Location = new System.Drawing.Point(272, 23);
+            this.lblBTL.Name = "lblBTL";
+            this.lblBTL.Size = new System.Drawing.Size(49, 14);
+            this.lblBTL.TabIndex = 9;
+            this.lblBTL.Text = "0,00 TL";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.DimGray;
+            this.label11.Location = new System.Drawing.Point(248, 23);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(22, 14);
+            this.label11.TabIndex = 8;
+            this.label11.Text = "TL";
+            // 
+            // lblBAZN
+            // 
+            this.lblBAZN.AutoSize = true;
+            this.lblBAZN.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBAZN.ForeColor = System.Drawing.Color.DimGray;
+            this.lblBAZN.Location = new System.Drawing.Point(173, 30);
+            this.lblBAZN.Name = "lblBAZN";
+            this.lblBAZN.Size = new System.Drawing.Size(57, 14);
+            this.lblBAZN.TabIndex = 7;
+            this.lblBAZN.Text = "0,00 AZN";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.Color.DimGray;
+            this.label14.Location = new System.Drawing.Point(130, 30);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(30, 14);
+            this.label14.TabIndex = 6;
+            this.label14.Text = "AZN";
+            // 
+            // lblBGBP
+            // 
+            this.lblBGBP.AutoSize = true;
+            this.lblBGBP.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBGBP.ForeColor = System.Drawing.Color.LightCoral;
+            this.lblBGBP.Location = new System.Drawing.Point(173, 15);
+            this.lblBGBP.Name = "lblBGBP";
+            this.lblBGBP.Size = new System.Drawing.Size(41, 14);
+            this.lblBGBP.TabIndex = 5;
+            this.lblBGBP.Text = "0,00 £";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.Color.LightCoral;
+            this.label16.Location = new System.Drawing.Point(130, 15);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(30, 14);
+            this.label16.TabIndex = 4;
+            this.label16.Text = "GBP";
+            // 
+            // lblBEUR
+            // 
+            this.lblBEUR.AutoSize = true;
+            this.lblBEUR.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBEUR.ForeColor = System.Drawing.Color.Olive;
+            this.lblBEUR.Location = new System.Drawing.Point(49, 30);
+            this.lblBEUR.Name = "lblBEUR";
+            this.lblBEUR.Size = new System.Drawing.Size(42, 14);
+            this.lblBEUR.TabIndex = 3;
+            this.lblBEUR.Text = "0,00 €";
+            // 
+            // EUROLABEL
+            // 
+            this.EUROLABEL.AutoSize = true;
+            this.EUROLABEL.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EUROLABEL.ForeColor = System.Drawing.Color.Olive;
+            this.EUROLABEL.Location = new System.Drawing.Point(6, 30);
+            this.EUROLABEL.Name = "EUROLABEL";
+            this.EUROLABEL.Size = new System.Drawing.Size(38, 14);
+            this.EUROLABEL.TabIndex = 2;
+            this.EUROLABEL.Text = "EURO";
+            // 
+            // lblBUSD
+            // 
+            this.lblBUSD.AutoSize = true;
+            this.lblBUSD.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBUSD.ForeColor = System.Drawing.Color.Green;
+            this.lblBUSD.Location = new System.Drawing.Point(49, 16);
+            this.lblBUSD.Name = "lblBUSD";
+            this.lblBUSD.Size = new System.Drawing.Size(38, 14);
+            this.lblBUSD.TabIndex = 1;
+            this.lblBUSD.Text = "$0,00";
+            // 
+            // USDLABEL
+            // 
+            this.USDLABEL.AutoSize = true;
+            this.USDLABEL.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.USDLABEL.ForeColor = System.Drawing.Color.Green;
+            this.USDLABEL.Location = new System.Drawing.Point(6, 16);
+            this.USDLABEL.Name = "USDLABEL";
+            this.USDLABEL.Size = new System.Drawing.Size(29, 14);
+            this.USDLABEL.TabIndex = 0;
+            this.USDLABEL.Text = "USD";
             // 
             // btnCariSec
             // 
@@ -196,6 +325,85 @@
             this.grpIslem.TabIndex = 5;
             this.grpIslem.TabStop = false;
             this.grpIslem.Text = "İşlem";
+            // 
+            // cmbDepartman
+            // 
+            this.cmbDepartman.DisplayMember = "DepartmentName";
+            this.cmbDepartman.ItemHeight = 23;
+            this.cmbDepartman.Items.AddRange(new object[] {
+            "Nakit",
+            "Kredi Kartı",
+            "Havale / EFT",
+            "Tahakkuk",
+            "Diğer"});
+            this.cmbDepartman.Location = new System.Drawing.Point(84, 81);
+            this.cmbDepartman.Name = "cmbDepartman";
+            this.cmbDepartman.Size = new System.Drawing.Size(121, 29);
+            this.cmbDepartman.TabIndex = 20;
+            this.cmbDepartman.UseSelectable = true;
+            this.cmbDepartman.ValueMember = "id";
+            // 
+            // metroLabel10
+            // 
+            this.metroLabel10.AutoSize = true;
+            this.metroLabel10.Location = new System.Drawing.Point(6, 84);
+            this.metroLabel10.Name = "metroLabel10";
+            this.metroLabel10.Size = new System.Drawing.Size(76, 19);
+            this.metroLabel10.TabIndex = 19;
+            this.metroLabel10.Text = "Departman";
+            // 
+            // cmbDocumentType
+            // 
+            this.cmbDocumentType.ItemHeight = 23;
+            this.cmbDocumentType.Items.AddRange(new object[] {
+            "Nakit",
+            "Kredi Kartı",
+            "Havale / EFT",
+            "Mahsup",
+            "Diğer"});
+            this.cmbDocumentType.Location = new System.Drawing.Point(84, 46);
+            this.cmbDocumentType.Name = "cmbDocumentType";
+            this.cmbDocumentType.Size = new System.Drawing.Size(121, 29);
+            this.cmbDocumentType.TabIndex = 18;
+            this.cmbDocumentType.UseSelectable = true;
+            // 
+            // metroLabel9
+            // 
+            this.metroLabel9.AutoSize = true;
+            this.metroLabel9.Location = new System.Drawing.Point(3, 50);
+            this.metroLabel9.Name = "metroLabel9";
+            this.metroLabel9.Size = new System.Drawing.Size(67, 19);
+            this.metroLabel9.TabIndex = 17;
+            this.metroLabel9.Text = "İşlem Türü";
+            // 
+            // txtBelgeNo
+            // 
+            this.txtBelgeNo.Location = new System.Drawing.Point(445, 70);
+            this.txtBelgeNo.Mask = "000000000";
+            this.txtBelgeNo.Name = "txtBelgeNo";
+            this.txtBelgeNo.PromptChar = ' ';
+            this.txtBelgeNo.Size = new System.Drawing.Size(163, 20);
+            this.txtBelgeNo.TabIndex = 16;
+            // 
+            // metroLabel8
+            // 
+            this.metroLabel8.AutoSize = true;
+            this.metroLabel8.Location = new System.Drawing.Point(375, 70);
+            this.metroLabel8.Name = "metroLabel8";
+            this.metroLabel8.Size = new System.Drawing.Size(64, 19);
+            this.metroLabel8.TabIndex = 15;
+            this.metroLabel8.Text = "Belge No";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.LightCoral;
+            this.label2.Location = new System.Drawing.Point(133, 254);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(328, 14);
+            this.label2.TabIndex = 14;
+            this.label2.Text = "Kurlar her sabah saat 08:00\'da otomatik  yenilenmektedir.";
             // 
             // grpTur
             // 
@@ -615,220 +823,12 @@
             this.btnKaydet.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnKaydet.Click += new System.EventHandler(this.btnKaydet_Click);
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.LightCoral;
-            this.label2.Location = new System.Drawing.Point(133, 254);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(328, 14);
-            this.label2.TabIndex = 14;
-            this.label2.Text = "Kurlar her sabah saat 08:00\'da otomatik  yenilenmektedir.";
-            // 
-            // metroLabel8
-            // 
-            this.metroLabel8.AutoSize = true;
-            this.metroLabel8.Location = new System.Drawing.Point(375, 70);
-            this.metroLabel8.Name = "metroLabel8";
-            this.metroLabel8.Size = new System.Drawing.Size(64, 19);
-            this.metroLabel8.TabIndex = 15;
-            this.metroLabel8.Text = "Belge No";
-            // 
-            // txtBelgeNo
-            // 
-            this.txtBelgeNo.Location = new System.Drawing.Point(445, 70);
-            this.txtBelgeNo.Mask = "000000000";
-            this.txtBelgeNo.Name = "txtBelgeNo";
-            this.txtBelgeNo.PromptChar = ' ';
-            this.txtBelgeNo.Size = new System.Drawing.Size(163, 20);
-            this.txtBelgeNo.TabIndex = 16;
-            // 
-            // grpBForex
-            // 
-            this.grpBForex.Controls.Add(this.lblBTL);
-            this.grpBForex.Controls.Add(this.label11);
-            this.grpBForex.Controls.Add(this.lblBAZN);
-            this.grpBForex.Controls.Add(this.label14);
-            this.grpBForex.Controls.Add(this.lblBGBP);
-            this.grpBForex.Controls.Add(this.label16);
-            this.grpBForex.Controls.Add(this.lblBEUR);
-            this.grpBForex.Controls.Add(this.EUROLABEL);
-            this.grpBForex.Controls.Add(this.lblBUSD);
-            this.grpBForex.Controls.Add(this.USDLABEL);
-            this.grpBForex.Location = new System.Drawing.Point(12, 62);
-            this.grpBForex.Name = "grpBForex";
-            this.grpBForex.Size = new System.Drawing.Size(345, 49);
-            this.grpBForex.TabIndex = 15;
-            this.grpBForex.TabStop = false;
-            this.grpBForex.Text = "Önceki Tarihte Döviz Karşılığı";
-            // 
-            // lblBTL
-            // 
-            this.lblBTL.AutoSize = true;
-            this.lblBTL.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBTL.ForeColor = System.Drawing.Color.DimGray;
-            this.lblBTL.Location = new System.Drawing.Point(272, 23);
-            this.lblBTL.Name = "lblBTL";
-            this.lblBTL.Size = new System.Drawing.Size(49, 14);
-            this.lblBTL.TabIndex = 9;
-            this.lblBTL.Text = "0,00 TL";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.DimGray;
-            this.label11.Location = new System.Drawing.Point(248, 23);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(22, 14);
-            this.label11.TabIndex = 8;
-            this.label11.Text = "TL";
-            // 
-            // lblBAZN
-            // 
-            this.lblBAZN.AutoSize = true;
-            this.lblBAZN.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBAZN.ForeColor = System.Drawing.Color.DimGray;
-            this.lblBAZN.Location = new System.Drawing.Point(173, 30);
-            this.lblBAZN.Name = "lblBAZN";
-            this.lblBAZN.Size = new System.Drawing.Size(57, 14);
-            this.lblBAZN.TabIndex = 7;
-            this.lblBAZN.Text = "0,00 AZN";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.ForeColor = System.Drawing.Color.DimGray;
-            this.label14.Location = new System.Drawing.Point(130, 30);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(30, 14);
-            this.label14.TabIndex = 6;
-            this.label14.Text = "AZN";
-            // 
-            // lblBGBP
-            // 
-            this.lblBGBP.AutoSize = true;
-            this.lblBGBP.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBGBP.ForeColor = System.Drawing.Color.LightCoral;
-            this.lblBGBP.Location = new System.Drawing.Point(173, 15);
-            this.lblBGBP.Name = "lblBGBP";
-            this.lblBGBP.Size = new System.Drawing.Size(41, 14);
-            this.lblBGBP.TabIndex = 5;
-            this.lblBGBP.Text = "0,00 £";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.ForeColor = System.Drawing.Color.LightCoral;
-            this.label16.Location = new System.Drawing.Point(130, 15);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(30, 14);
-            this.label16.TabIndex = 4;
-            this.label16.Text = "GBP";
-            // 
-            // lblBEUR
-            // 
-            this.lblBEUR.AutoSize = true;
-            this.lblBEUR.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBEUR.ForeColor = System.Drawing.Color.Olive;
-            this.lblBEUR.Location = new System.Drawing.Point(49, 30);
-            this.lblBEUR.Name = "lblBEUR";
-            this.lblBEUR.Size = new System.Drawing.Size(42, 14);
-            this.lblBEUR.TabIndex = 3;
-            this.lblBEUR.Text = "0,00 €";
-            // 
-            // EUROLABEL
-            // 
-            this.EUROLABEL.AutoSize = true;
-            this.EUROLABEL.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EUROLABEL.ForeColor = System.Drawing.Color.Olive;
-            this.EUROLABEL.Location = new System.Drawing.Point(6, 30);
-            this.EUROLABEL.Name = "EUROLABEL";
-            this.EUROLABEL.Size = new System.Drawing.Size(38, 14);
-            this.EUROLABEL.TabIndex = 2;
-            this.EUROLABEL.Text = "EURO";
-            // 
-            // lblBUSD
-            // 
-            this.lblBUSD.AutoSize = true;
-            this.lblBUSD.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBUSD.ForeColor = System.Drawing.Color.Green;
-            this.lblBUSD.Location = new System.Drawing.Point(49, 16);
-            this.lblBUSD.Name = "lblBUSD";
-            this.lblBUSD.Size = new System.Drawing.Size(38, 14);
-            this.lblBUSD.TabIndex = 1;
-            this.lblBUSD.Text = "$0,00";
-            // 
-            // USDLABEL
-            // 
-            this.USDLABEL.AutoSize = true;
-            this.USDLABEL.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.USDLABEL.ForeColor = System.Drawing.Color.Green;
-            this.USDLABEL.Location = new System.Drawing.Point(6, 16);
-            this.USDLABEL.Name = "USDLABEL";
-            this.USDLABEL.Size = new System.Drawing.Size(29, 14);
-            this.USDLABEL.TabIndex = 0;
-            this.USDLABEL.Text = "USD";
-            // 
-            // metroLabel9
-            // 
-            this.metroLabel9.AutoSize = true;
-            this.metroLabel9.Location = new System.Drawing.Point(3, 50);
-            this.metroLabel9.Name = "metroLabel9";
-            this.metroLabel9.Size = new System.Drawing.Size(67, 19);
-            this.metroLabel9.TabIndex = 17;
-            this.metroLabel9.Text = "İşlem Türü";
-            // 
-            // cmbDocumentType
-            // 
-            this.cmbDocumentType.ItemHeight = 23;
-            this.cmbDocumentType.Items.AddRange(new object[] {
-            "Nakit",
-            "Kredi Kartı",
-            "Havale / EFT",
-            "Mahsup",
-            "Diğer"});
-            this.cmbDocumentType.Location = new System.Drawing.Point(84, 46);
-            this.cmbDocumentType.Name = "cmbDocumentType";
-            this.cmbDocumentType.Size = new System.Drawing.Size(121, 29);
-            this.cmbDocumentType.TabIndex = 18;
-            this.cmbDocumentType.UseSelectable = true;
-            // 
-            // metroLabel10
-            // 
-            this.metroLabel10.AutoSize = true;
-            this.metroLabel10.Location = new System.Drawing.Point(6, 84);
-            this.metroLabel10.Name = "metroLabel10";
-            this.metroLabel10.Size = new System.Drawing.Size(76, 19);
-            this.metroLabel10.TabIndex = 19;
-            this.metroLabel10.Text = "Departman";
-            // 
-            // cmbDepartman
-            // 
-            this.cmbDepartman.DisplayMember = "DepartmentName";
-            this.cmbDepartman.ItemHeight = 23;
-            this.cmbDepartman.Items.AddRange(new object[] {
-            "Nakit",
-            "Kredi Kartı",
-            "Havale / EFT",
-            "Tahakkuk",
-            "Diğer"});
-            this.cmbDepartman.Location = new System.Drawing.Point(84, 81);
-            this.cmbDepartman.Name = "cmbDepartman";
-            this.cmbDepartman.Size = new System.Drawing.Size(121, 29);
-            this.cmbDepartman.TabIndex = 20;
-            this.cmbDepartman.UseSelectable = true;
-            this.cmbDepartman.ValueMember = "id";
-            // 
             // TahsilatGirisi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.ClientSize = new System.Drawing.Size(642, 479);
+            this.ClientSize = new System.Drawing.Size(640, 479);
             this.Controls.Add(this.btnKaydet);
             this.Controls.Add(this.grpIslem);
             this.Controls.Add(this.grpCariSec);
@@ -838,6 +838,8 @@
             this.Load += new System.EventHandler(this.TahsilatGirisi_Load);
             this.grpCariSec.ResumeLayout(false);
             this.grpCariSec.PerformLayout();
+            this.grpBForex.ResumeLayout(false);
+            this.grpBForex.PerformLayout();
             this.grpIslem.ResumeLayout(false);
             this.grpIslem.PerformLayout();
             this.grpTur.ResumeLayout(false);
@@ -850,8 +852,6 @@
             this.grpDvz.PerformLayout();
             this.grpDvzBilgi.ResumeLayout(false);
             this.grpDvzBilgi.PerformLayout();
-            this.grpBForex.ResumeLayout(false);
-            this.grpBForex.PerformLayout();
             this.ResumeLayout(false);
 
         }

@@ -10,7 +10,9 @@ namespace _57Finance.Model
     {
         public int ID { get; set; }
         public int ClientID { get; set; }
-        public float Amount { get; set; }
+        public double Amount { get; set; }
+        public string ClientCommercialTitle { get; set; }
+        public string ClientCode { get; set; }
         public DateTime Date { get; set; }
         public uint DocumentNo { get; set; }
         public int DocumentType { get; set; }
@@ -18,13 +20,13 @@ namespace _57Finance.Model
         public int DepartmentID { get; set; }
         public int VATRate { get; set; }
         public int PaymentType { get; set; }
-        public float ForexAmount { get; set; } 
+        public double ForexAmount { get; set; } 
         public string Forex { get; set; }
-        public float Balance { get; set; }
-        public float ForexUSD { get; set; }
-        public float ForexEUR { get; set; }
-        public float ForexGBP { get; set; }
-        public float ForexAZN { get; set; }
-        public float ForexTL { get; set; }
+        public double Balance { get; set; }
+        public double ForexUSD { get; set; }
+        public double ForexEUR { get; set; }
+        public double ForexGBP { get; set; }
+        public double ForexAZN { get; set; }
+        public double ForexTL { get; set; }
     }
 }
