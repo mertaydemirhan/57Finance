@@ -107,7 +107,7 @@ namespace _57Finance
                 tablo.Clear();
                 ds = new DataSet();
                 string query =  $"SELECT C.ID ClientID,ClientCode,CommercialTitle,TaxNo,CHR.ID,CHR.Amount,CHR.Date, CHR.DocumentNo," +
-                                $"CASE WHEN CHR.DocumentType = 1 THEN 'Tahsilat' WHEN CHR.DocumentNo=2 THEN 'Tediye' END DocumentType," +
+                                $"CASE WHEN CHR.DocumentType = 1 THEN 'Tahsilat' WHEN CHR.DocumentType=2 THEN 'Tediye' END DocumentType," +
                                 $"CHR.Explanation, D.DepartmentName,CHR.VATRate," +
                                 $"CASE WHEN CHR.PaymentType = 0 THEN 'Nakit' WHEN CHR.PaymentType=1 THEN 'Kredi Kartı' WHEN CHR.PaymentType=2 THEN 'Havale / EFT' " +
                                 $"WHEN CHR.PaymentType=3 THEN 'Mahsup' WHEN CHR.PaymentType=4 THEN 'Diğer' END PaymentType," +
@@ -202,6 +202,7 @@ namespace _57Finance
         }
         private void btnFiltrele_Click(object sender, EventArgs e)
         {
+            FreeQuery = "";
             string bas = dtBaslangic.Value.ToString();
             string bit = dtBitisTarihi.Value.ToString();
             FreeQuery=$"CONVERT(date,CHR.Date,103)>=CONVERT(DATE,'{bas}',103) AND ";
@@ -210,7 +211,7 @@ namespace _57Finance
 
         }
 
-        private void btnKaydiAc_Click(object sender, EventArgs e)
+        private void KaydiAc()
         {
             int selectedrowindex = GridCHR.SelectedCells[0].RowIndex;
             DataGridViewRow selectedRow = GridCHR.Rows[selectedrowindex];
@@ -227,25 +228,73 @@ namespace _57Finance
                 transactionINFO.DocumentType = Convert.ToInt32(selectedRow.Cells["DocumentTypeID"].Value);
                 transactionINFO.Explanation = selectedRow.Cells["Explanation"].Value.ToString();
                 transactionINFO.DepartmentID = Convert.ToInt32(selectedRow.Cells["DepartmentID"].Value);
-                if(!string.IsNullOrEmpty(selectedRow.Cells["VATRate"].Value.ToString()))
+                if (!string.IsNullOrEmpty(selectedRow.Cells["VATRate"].Value.ToString()))
                     transactionINFO.VATRate = Convert.ToInt32(selectedRow.Cells["VATRate"].Value.ToString());
                 transactionINFO.PaymentType = Convert.ToInt32(selectedRow.Cells["PaymentTypeID"].Value);
                 transactionINFO.ForexAmount = Convert.ToDouble(selectedRow.Cells["ForexAmount"].Value);
                 transactionINFO.Forex = selectedRow.Cells["Forex"].Value.ToString();
                 if (!string.IsNullOrEmpty(selectedRow.Cells["Balance"].Value.ToString()))
                     transactionINFO.Balance = Convert.ToDouble(selectedRow.Cells["Balance"].Value);
-                transactionINFO.ForexUSD = Convert.ToDouble(selectedRow.Cells["ForexUSD"].Value);
-                transactionINFO.ForexEUR = Convert.ToDouble(selectedRow.Cells["ForexEUR"].Value);
-                transactionINFO.ForexGBP = Convert.ToDouble(selectedRow.Cells["ForexGBP"].Value);
-                transactionINFO.ForexAZN = Convert.ToDouble(selectedRow.Cells["ForexAZN"].Value);
-                transactionINFO.ForexTL = Convert.ToDouble(selectedRow.Cells["ForexTL"].Value);
+                transactionINFO.ForexUSD = Math.Round(Convert.ToDouble(selectedRow.Cells["ForexUSD"].Value),4);
+                transactionINFO.ForexEUR = Math.Round(Convert.ToDouble(selectedRow.Cells["ForexEUR"].Value), 4);
+                transactionINFO.ForexGBP = Math.Round(Convert.ToDouble(selectedRow.Cells["ForexGBP"].Value), 4);
+                transactionINFO.ForexAZN = Math.Round(Convert.ToDouble(selectedRow.Cells["ForexAZN"].Value), 4);
+                transactionINFO.ForexTL =  Math.Round(Convert.ToDouble(selectedRow.Cells["ForexTL"].Value), 4);
 
                 /// will create  to open form which is type 
-                TahsilatGirisi thgiris = new TahsilatGirisi(transactionINFO);
-                thgiris.Show();
+                if(transactionINFO.DocumentType == 1)
+                {
+                    TahsilatGirisi thgiris = new TahsilatGirisi(transactionINFO);
+                    thgiris.Show();
+                }
+                else if(transactionINFO.DocumentType == 2)
+                {
+                    TediyeGirisi TdGiris = new TediyeGirisi(transactionINFO);
+                    TdGiris.Show();
+                }
+
             }
             else
                 MetroFramework.MetroMessageBox.Show(this, "Lütfen sayfadan işlem yapılacak hareketi belirleyiniz..", "Lütfen Kayıt seçiniz", MessageBoxButtons.RetryCancel, MessageBoxIcon.Hand);
+        }
+        private void btnKaydiAc_Click(object sender, EventArgs e)
+        {
+            KaydiAc();
+        }
+
+        private void GridCHR_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            KaydiAc();
+        }
+
+        private void dtIslemTarihi_ValueChanged(object sender, EventArgs e)
+        {
+            FreeQuery = "";
+            string bas = dtIslemTarihi.Value.ToString();
+            FreeQuery = $"CONVERT(date,CHR.Date,103)=CONVERT(DATE,'{bas}',103)";
+            ara("", FreeQuery);
+        }
+        private void copyAlltoClipboard()
+        {
+            GridCHR.SelectAll();
+            DataObject dataObj = GridCHR.GetClipboardContent();
+            if (dataObj != null)
+                Clipboard.SetDataObject(dataObj);
+        }
+        private void btnExcel_Click(object sender, EventArgs e)
+        {
+            copyAlltoClipboard();
+            Microsoft.Office.Interop.Excel.Application xlexcel;
+            Microsoft.Office.Interop.Excel.Workbook xlWorkBook;
+            Microsoft.Office.Interop.Excel.Worksheet xlWorkSheet;
+            object misValue = System.Reflection.Missing.Value;
+            xlexcel = new Microsoft.Office.Interop.Excel.Application();
+            xlexcel.Visible = true;
+            xlWorkBook = xlexcel.Workbooks.Add(misValue);
+            xlWorkSheet = (Microsoft.Office.Interop.Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+            Microsoft.Office.Interop.Excel.Range CR = (Microsoft.Office.Interop.Excel.Range)xlWorkSheet.Cells[1, 1];
+            CR.Select();
+            xlWorkSheet.PasteSpecial(CR, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, true);
         }
     }
 }

@@ -9,22 +9,29 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 namespace _57Finance.Diger.Cari
 {
+ 
     public partial class CariSec : Form
     {
         Form TahsilatGiris = Application.OpenForms["TahsilatGirisi"];
+        Form TediyeGiris = Application.OpenForms["TediyeGirisi"];
+
         public readonly string ServerAdress = ConfigurationManager.AppSettings["ServerAdress"];
         public readonly string DatabaseName = ConfigurationManager.AppSettings["DatabaseName"];
         public readonly string UsrName = ConfigurationManager.AppSettings["UsrName"];
         public readonly string Pw = ConfigurationManager.AppSettings["Pw"];
         SqlConnection baglanti;
-        SqlCommand komut;
         DataSet ds;
+        int typeForm = 0;
         public CariSec()
         {
             InitializeComponent();
+        }
+        public CariSec(int _type)
+        {
+            InitializeComponent();
+            typeForm = _type;
         }
         private void CariSec_Load(object sender, EventArgs e)
         {
@@ -103,19 +110,42 @@ namespace _57Finance.Diger.Cari
 
         private void btnCariSec_Click(object sender, EventArgs e)
         {
+            CariyiAc();            
+        }
+
+        private void CariyiAc()
+        {
             int selectedrowindex = GridCari.SelectedCells[0].RowIndex;
             DataGridViewRow selectedRow = GridCari.Rows[selectedrowindex];
             string cellValue = Convert.ToString(selectedRow.Cells["ID"].Value);
             if (cellValue != "")
             {
-                ((TahsilatGirisi)TahsilatGiris).lblTicariUnvani.Text = selectedRow.Cells["CommercialTitle"].Value.ToString();
-                ((TahsilatGirisi)TahsilatGiris).lblCariKod.Text = selectedRow.Cells["ClientCode"].Value.ToString();
-                ((TahsilatGirisi)TahsilatGiris).ClientID = selectedRow.Cells["ID"].Value.ToString();
+                if(typeForm == 1)
+                {
+                    ((TahsilatGirisi)TahsilatGiris).lblTicariUnvani.Text = selectedRow.Cells["CommercialTitle"].Value.ToString();
+                    ((TahsilatGirisi)TahsilatGiris).lblCariKod.Text = selectedRow.Cells["ClientCode"].Value.ToString();
+                    ((TahsilatGirisi)TahsilatGiris).ClientID = selectedRow.Cells["ID"].Value.ToString();
+                }
+                else if(typeForm == 2)
+                {
+                    ((TediyeGirisi)TediyeGiris).lblTicariUnvani.Text = selectedRow.Cells["CommercialTitle"].Value.ToString();
+                    ((TediyeGirisi)TediyeGiris).lblCariKod.Text = selectedRow.Cells["ClientCode"].Value.ToString();
+                    ((TediyeGirisi)TediyeGiris).ClientID = selectedRow.Cells["ID"].Value.ToString();
+                }
                 this.Close();
             }
             else
-                MetroFramework.MetroMessageBox.Show(this,"Lütfen sayfadan işlem yapılacak cariyi belirleyiniz..", "Lütfen Kayıt seçiniz",MessageBoxButtons.RetryCancel,MessageBoxIcon.Hand);
-            
+                MetroFramework.MetroMessageBox.Show(this, "Lütfen sayfadan işlem yapılacak cariyi belirleyiniz..", "Lütfen Kayıt seçiniz", MessageBoxButtons.RetryCancel, MessageBoxIcon.Hand);
+        }
+
+        private void GridCari_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            CariyiAc();
+        }
+
+        private void CariSec_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            CariyiAc();
         }
     }
 }

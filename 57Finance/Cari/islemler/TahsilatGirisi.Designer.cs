@@ -91,6 +91,7 @@
             this.dtIslemTarihi = new MetroFramework.Controls.MetroDateTime();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.btnKaydet = new Bunifu.Framework.UI.BunifuThinButton2();
+            this.btnSil = new Bunifu.Framework.UI.BunifuThinButton2();
             this.grpCariSec.SuspendLayout();
             this.grpBForex.SuspendLayout();
             this.grpIslem.SuspendLayout();
@@ -823,12 +824,39 @@
             this.btnKaydet.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnKaydet.Click += new System.EventHandler(this.btnKaydet_Click);
             // 
+            // btnSil
+            // 
+            this.btnSil.ActiveBorderThickness = 1;
+            this.btnSil.ActiveCornerRadius = 20;
+            this.btnSil.ActiveFillColor = System.Drawing.Color.Brown;
+            this.btnSil.ActiveForecolor = System.Drawing.Color.White;
+            this.btnSil.ActiveLineColor = System.Drawing.Color.IndianRed;
+            this.btnSil.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.btnSil.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSil.BackgroundImage")));
+            this.btnSil.ButtonText = "Kaydı Sil";
+            this.btnSil.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSil.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSil.ForeColor = System.Drawing.Color.SeaGreen;
+            this.btnSil.IdleBorderThickness = 1;
+            this.btnSil.IdleCornerRadius = 20;
+            this.btnSil.IdleFillColor = System.Drawing.Color.White;
+            this.btnSil.IdleForecolor = System.Drawing.Color.DimGray;
+            this.btnSil.IdleLineColor = System.Drawing.Color.Red;
+            this.btnSil.Location = new System.Drawing.Point(440, 416);
+            this.btnSil.Margin = new System.Windows.Forms.Padding(5);
+            this.btnSil.Name = "btnSil";
+            this.btnSil.Size = new System.Drawing.Size(187, 53);
+            this.btnSil.TabIndex = 7;
+            this.btnSil.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnSil.Click += new System.EventHandler(this.btnSil_Click);
+            // 
             // TahsilatGirisi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.HighlightText;
             this.ClientSize = new System.Drawing.Size(640, 479);
+            this.Controls.Add(this.btnSil);
             this.Controls.Add(this.btnKaydet);
             this.Controls.Add(this.grpIslem);
             this.Controls.Add(this.grpCariSec);
@@ -920,5 +948,6 @@
         private MetroFramework.Controls.MetroLabel metroLabel9;
         private MetroFramework.Controls.MetroComboBox cmbDepartman;
         private MetroFramework.Controls.MetroLabel metroLabel10;
+        private Bunifu.Framework.UI.BunifuThinButton2 btnSil;
     }
 }

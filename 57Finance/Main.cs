@@ -56,8 +56,7 @@ namespace _57Finance
 
         private void dövizTanımlarıToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DovizTanim DvTanim = new DovizTanim();
-            DvTanim.Show();
+
         }
 
         private void geçmişKurlarToolStripMenuItem_Click(object sender, EventArgs e)
@@ -133,8 +132,7 @@ namespace _57Finance
 
         private void btnMainForexDefinition_Click(object sender, EventArgs e)
         {
-            DovizTanim Dv = new DovizTanim();
-            Dv.Show();
+
         }
 
         private void btnMainForexRates_Click(object sender, EventArgs e)

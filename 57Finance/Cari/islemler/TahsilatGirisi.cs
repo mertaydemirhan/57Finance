@@ -46,8 +46,8 @@ namespace _57Finance
         }
         private void TahsilatGirisi_Load(object sender, EventArgs e)
         {
-            if(transactioninfo == null)
-             grpBForex.Visible = false;
+            if (transactioninfo == null)
+                grpBForex.Visible = false;
             grpIslem.Enabled = false;
             Forex.USDtoTL = 0.0000; Forex.EURtoTL = 0.0000; Forex.GBPtoTL = 0.0000; Forex.AZNtoTL = 0.0000;
             Forex.EURUSDT = 0.0000; Forex.USDTEUR = 0.0000; Forex.GBPUSDT = 0.0000; Forex.USDTGBP = 0.0000; Forex.GBPEUR = 0.0000;
@@ -59,28 +59,44 @@ namespace _57Finance
                 GetValuesFromClient();
             }
         }
+        private void CalculateForex()
+        {
+            if (txtDvzTutar.Text != "")
+            {
+
+                double tutar = Convert.ToDouble(txtDvzTutar.Text);
+                lbldolar.Text = "$ " + Convert.ToString(Math.Round(tutar * Forex.SelectedUSD, 4));
+                lblEuro.Text = Convert.ToString(Math.Round(tutar * Forex.SelectedEUR, 4)) + " €";
+                lblgbp.Text = Convert.ToString(Math.Round(tutar * Forex.SelectedGBP, 4)) + " £";
+                lblazn.Text = Convert.ToString(Math.Round(tutar * Forex.SelectedAZN, 4)) + " AZN";
+                lblTL.Text = Convert.ToString(Math.Round(tutar * Forex.SelectedTL, 4)) + " ₺";
+            }
+        }
 
         private void GetValuesFromClient()
         {
             lblTicariUnvani.Text = transactioninfo.ClientCommercialTitle;
             lblCariKod.Text = transactioninfo.ClientCode;
-            lblBUSD.Text = "$ "+transactioninfo.ForexUSD.ToString();
-            lblBEUR.Text = transactioninfo.ForexEUR.ToString() +" €";
-            lblBGBP.Text = transactioninfo.ForexGBP.ToString() +" £";
-            lblBAZN.Text = transactioninfo.ForexAZN.ToString() +" AZN";
-            lblBTL.Text = transactioninfo.ForexTL.ToString()   +" ₺";
+            lblBUSD.Text = "$ " + transactioninfo.ForexUSD.ToString();
+            lblBEUR.Text = transactioninfo.ForexEUR.ToString() + " €";
+            lblBGBP.Text = transactioninfo.ForexGBP.ToString() + " £";
+            lblBAZN.Text = transactioninfo.ForexAZN.ToString() + " AZN";
+            lblBTL.Text = transactioninfo.ForexTL.ToString() + " ₺";
             dtIslemTarihi.Value = transactioninfo.Date;
             cmbDocumentType.SelectedIndex = transactioninfo.DocumentType;
             cmbDepartman.SelectedValue = transactioninfo.DepartmentID;
             if (transactioninfo.Forex != "")
+            {
                 rdDoviz.Checked = true;
+            }
             else
                 rdTL.Checked = true;
             rchAciklama.Text = transactioninfo.Explanation;
             txtBelgeNo.Text = transactioninfo.DocumentNo.ToString();
             txtTLTutar.Text = transactioninfo.Amount.ToString();
             txtDvzTutar.Text = transactioninfo.ForexAmount.ToString();
-            cmbDvzTuru.SelectedText = transactioninfo.Forex;
+            cmbDvzTuru.SelectedIndex = cmbDvzTuru.Items.IndexOf(transactioninfo.Forex);
+            CalculateForex();
         }
 
         private void btnCariSec_Click(object sender, EventArgs e)
@@ -135,7 +151,7 @@ namespace _57Finance
         {
             using (WebClient wc = new WebClient())
             {
-                var json = wc.DownloadString("https://api.binance.com/api/v1/ticker/allPrices");                
+                var json = wc.DownloadString("https://api.binance.com/api/v1/ticker/allPrices");
                 dynamic Forexes = JsonConvert.DeserializeObject(json);
                 var list = Forexes.ToObject<List<SelectableEnumItem>>();
                 //"EURUSDT");
@@ -167,7 +183,7 @@ namespace _57Finance
         }
         private void lblCariKod_TextChanged(object sender, EventArgs e)
         {
-            if(lblCariKod.Text !="")
+            if (lblCariKod.Text != "")
             {
                 grpIslem.Enabled = true;
                 rdTL.Checked = true;
@@ -185,13 +201,13 @@ namespace _57Finance
 
         private void txtTLTutar_TextChanged(object sender, EventArgs e)
         {
-            if(txtTLTutar.Text != "")
+            if (txtTLTutar.Text != "")
             {
                 double tutar = Convert.ToDouble(txtTLTutar.Text);
-                TLtoUSD.Text = "$ "+Convert.ToString(Math.Round(tutar / Forex.USDtoTL,4));
-                TLtoEUR.Text = Convert.ToString(Math.Round(tutar / Forex.EURtoTL,4)) + " €";
-                TLtoGBP.Text = Convert.ToString(Math.Round(tutar / Forex.GBPtoTL,4)) + " £";
-                TLtoAZN.Text = Convert.ToString(Math.Round(tutar / Forex.AZNtoTL,4)) + " AZN";
+                TLtoUSD.Text = "$ " + Convert.ToString(Math.Round(tutar / Forex.USDtoTL, 4));
+                TLtoEUR.Text = Convert.ToString(Math.Round(tutar / Forex.EURtoTL, 4)) + " €";
+                TLtoGBP.Text = Convert.ToString(Math.Round(tutar / Forex.GBPtoTL, 4)) + " £";
+                TLtoAZN.Text = Convert.ToString(Math.Round(tutar / Forex.AZNtoTL, 4)) + " AZN";
             }
         }
 
@@ -204,25 +220,25 @@ namespace _57Finance
 
         private void cmbDvzTuru_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(cmbDvzTuru.SelectedItem == "USD")
+            if (cmbDvzTuru.SelectedItem == "USD")
             {
                 lbldolar.Text = "$ 1,0000";
-                lblEuro.Text = Convert.ToString(Math.Round(Forex.USDTEUR,4)) + " €";
-                lblgbp.Text = Convert.ToString(Math.Round(Forex.USDTGBP,4)) + " £";
+                lblEuro.Text = Convert.ToString(Math.Round(Forex.USDTEUR, 4)) + " €";
+                lblgbp.Text = Convert.ToString(Math.Round(Forex.USDTGBP, 4)) + " £";
                 lblazn.Text = "1,0000 AZN";
-                lblTL.Text = Convert.ToString(Math.Round(Forex.USDtoTL,4)) + " ₺";
+                lblTL.Text = Convert.ToString(Math.Round(Forex.USDtoTL, 4)) + " ₺";
                 Forex.SelectedUSD = 1.0000;
                 Forex.SelectedEUR = Math.Round(Forex.USDTEUR, 4);
                 Forex.SelectedGBP = Math.Round(Forex.USDTGBP, 4);
                 Forex.SelectedAZN = 1.0000;
                 Forex.SelectedTL = Math.Round(Forex.USDtoTL, 4);
             }
-            if(cmbDvzTuru.SelectedItem == "EUR") 
+            if (cmbDvzTuru.SelectedItem == "EUR")
             {
-                lbldolar.Text = "$ "+Convert.ToString(Math.Round(1/Forex.EURUSDT,4));
-                lblEuro.Text =  "1,0000 €";
-                lblgbp.Text =   "1,0000 £";
-                lblazn.Text =  "1,0000 AZN";
+                lbldolar.Text = "$ " + Convert.ToString(Math.Round(1 / Forex.EURUSDT, 4));
+                lblEuro.Text = "1,0000 €";
+                lblgbp.Text = "1,0000 £";
+                lblazn.Text = "1,0000 AZN";
                 lblTL.Text = Convert.ToString(Math.Round(Forex.EURtoTL)) + " ₺";
                 Forex.SelectedUSD = Math.Round(Forex.EURUSDT);
                 Forex.SelectedEUR = 1.0000;
@@ -230,13 +246,13 @@ namespace _57Finance
                 Forex.SelectedAZN = 1.0000;
                 Forex.SelectedTL = Math.Round(Forex.EURtoTL);
             }
-            if(cmbDvzTuru.SelectedItem == "GBP")
+            if (cmbDvzTuru.SelectedItem == "GBP")
             {
-                lbldolar.Text = "$ " + Convert.ToString(Math.Round(Forex.GBPUSDT,4));
-                lblEuro.Text = Convert.ToString(Math.Round(Forex.GBPEUR,4))+" €";
+                lbldolar.Text = "$ " + Convert.ToString(Math.Round(Forex.GBPUSDT, 4));
+                lblEuro.Text = Convert.ToString(Math.Round(Forex.GBPEUR, 4)) + " €";
                 lblgbp.Text = "1,0000 £ ";
                 lblazn.Text = "1,0000 AZN";
-                lblTL.Text = Convert.ToString(Math.Round(Forex.GBPtoTL,4)) + " ₺";
+                lblTL.Text = Convert.ToString(Math.Round(Forex.GBPtoTL, 4)) + " ₺";
                 Forex.SelectedUSD = Math.Round(Forex.GBPUSDT, 4);
                 Forex.SelectedEUR = Math.Round(Forex.GBPEUR, 4);
                 Forex.SelectedGBP = 1.0000;
@@ -244,13 +260,13 @@ namespace _57Finance
                 Forex.SelectedTL = Math.Round(Forex.GBPtoTL, 4);
 
             }
-            if(cmbDvzTuru.SelectedItem == "AZN")
+            if (cmbDvzTuru.SelectedItem == "AZN")
             {
                 lbldolar.Text = "$ 1,0000";
                 lblEuro.Text = "1,0000 €";
                 lblgbp.Text = "1,0000 £";
                 lblazn.Text = "1,0000 AZN";
-                lblTL.Text = Convert.ToString(Math.Round(Forex.AZNtoTL,4)) + " ₺";
+                lblTL.Text = Convert.ToString(Math.Round(Forex.AZNtoTL, 4)) + " ₺";
                 Forex.SelectedUSD = 1.0000;
                 Forex.SelectedEUR = 1.0000;
                 Forex.SelectedGBP = 1.0000;
@@ -260,17 +276,7 @@ namespace _57Finance
         }
         private void txtDvzTutar_TextChanged(object sender, EventArgs e)
         {
-            if (txtDvzTutar.Text != "")
-            {
-
-                double tutar = Convert.ToDouble(txtDvzTutar.Text);
-                lbldolar.Text = "$ " + Convert.ToString(Math.Round(tutar * Forex.SelectedUSD,4));
-                lblEuro.Text = Convert.ToString(Math.Round(tutar * Forex.SelectedEUR,4)) + " €";
-                lblgbp.Text = Convert.ToString(Math.Round(tutar * Forex.SelectedGBP,4)) + " £";
-                lblazn.Text = Convert.ToString(Math.Round(tutar * Forex.SelectedAZN,4)) + " AZN";
-                lblTL.Text = Convert.ToString(Math.Round(tutar * Forex.SelectedTL,4)) + " ₺";
-            }
-
+            CalculateForex();
         }
 
         private void txtTLTutar_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
@@ -285,25 +291,25 @@ namespace _57Finance
 
                 baglanti = new SqlConnection("Server=" + ServerAdress + ";Database=" + DatabaseName + ";User Id=" + UsrName + ";Password=" + Pw + ";");
                 baglanti.Open();
-               double TLField =  (txtTLTutar.Text != "") ? Convert.ToDouble(txtTLTutar.Text.Trim()) : 0;
-               double FField = (txtDvzTutar.Text != "") ? Convert.ToDouble(txtDvzTutar.Text.Trim()) : 0;
-               string FSign = (txtDvzTutar.Text != "") ? cmbDvzTuru.SelectedItem.ToString() : ""; 
+                double TLField = (txtTLTutar.Text != "") ? Convert.ToDouble(txtTLTutar.Text.Trim()) : 0;
+                double FField = (txtDvzTutar.Text != "") ? Convert.ToDouble(txtDvzTutar.Text.Trim()) : 0;
+                string FSign = (txtDvzTutar.Text != "") ? cmbDvzTuru.SelectedItem.ToString() : "";
                 double FSelectedUSD, FSelectedEUR, FSelectedGBP, FSelectedAZN, FSelectedTL;
                 if (rdTL.Checked)
                 {
-                    FSelectedUSD = Forex.USDtoTL*Convert.ToDouble(txtTLTutar.Text);
-                    FSelectedEUR = Forex.EURtoTL * Convert.ToDouble(txtTLTutar.Text);
-                    FSelectedGBP = Forex.GBPtoTL * Convert.ToDouble(txtTLTutar.Text);
-                    FSelectedAZN = Forex.AZNtoTL * Convert.ToDouble(txtTLTutar.Text);
-                    FSelectedTL = 1.00 *Convert.ToDouble(txtTLTutar.Text);
+                    FSelectedUSD =  Convert.ToDouble(txtTLTutar.Text) / Forex.USDtoTL;
+                    FSelectedEUR =  Convert.ToDouble(txtTLTutar.Text) / Forex.EURtoTL;
+                    FSelectedGBP =  Convert.ToDouble(txtTLTutar.Text) / Forex.GBPtoTL;
+                    FSelectedAZN =  Convert.ToDouble(txtTLTutar.Text) / Forex.AZNtoTL;
+                    FSelectedTL = 1.00 * Convert.ToDouble(txtTLTutar.Text);
                 }
                 else
                 {
-                    FSelectedUSD = Forex.SelectedUSD *Convert.ToDouble(txtDvzTutar.Text);
+                    FSelectedUSD = Forex.SelectedUSD * Convert.ToDouble(txtDvzTutar.Text);
                     FSelectedEUR = Forex.SelectedEUR * Convert.ToDouble(txtDvzTutar.Text);
                     FSelectedGBP = Forex.SelectedGBP * Convert.ToDouble(txtDvzTutar.Text);
                     FSelectedAZN = Forex.SelectedAZN * Convert.ToDouble(txtDvzTutar.Text);
-                    FSelectedTL =  Forex.SelectedTL * Convert.ToDouble(txtDvzTutar.Text);
+                    FSelectedTL = Forex.SelectedTL * Convert.ToDouble(txtDvzTutar.Text);
                 }
                 if (transactioninfo == null)
                     komut = new SqlCommand($"INSERT INTO ClientTransactions(ClientID,Amount,Date,DocumentNo,DocumentType,Explanation,DepartmentID,PaymentType,ForexAmount,Forex,ForexUSD,ForexEUR,ForexGBP,ForexAZN,ForexTL) " +
@@ -321,12 +327,12 @@ namespace _57Finance
                 komut.Parameters.AddWithValue("@p7", cmbDepartman.SelectedValue);
                 komut.Parameters.AddWithValue("@p8", cmbDocumentType.SelectedIndex);
                 komut.Parameters.AddWithValue("@p9", FField);
-                komut.Parameters.AddWithValue("@p10",FSign);
-                komut.Parameters.AddWithValue("@p12", FSelectedUSD);
-                komut.Parameters.AddWithValue("@p13", FSelectedEUR);
-                komut.Parameters.AddWithValue("@p14", FSelectedGBP);
-                komut.Parameters.AddWithValue("@p15", FSelectedAZN);
-                komut.Parameters.AddWithValue("@p16", FSelectedTL);
+                komut.Parameters.AddWithValue("@p10", FSign);
+                komut.Parameters.AddWithValue("@p12", Math.Round(FSelectedUSD,4));
+                komut.Parameters.AddWithValue("@p13", Math.Round(FSelectedEUR, 4));
+                komut.Parameters.AddWithValue("@p14", Math.Round(FSelectedGBP, 4));
+                komut.Parameters.AddWithValue("@p15", Math.Round(FSelectedAZN, 4));
+                komut.Parameters.AddWithValue("@p16", Math.Round(FSelectedTL, 4));
                 komut.ExecuteScalar();
                 baglanti.Close();
                 if (transactioninfo == null)
@@ -339,6 +345,24 @@ namespace _57Finance
 
                 MetroMessageBox.Show(this, "Bir hata ile karşılaşıldı... Sebebi girilen veriler ile alakalı olabilir...", "Kayıt tamamlanamadı !", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
+        }
+
+        private void btnSil_Click(object sender, EventArgs e)
+        {
+            if(transactioninfo.ID != null)
+            {
+                baglanti = new SqlConnection("Server=" + ServerAdress + ";Database=" + DatabaseName + ";User Id=" + UsrName + ";Password=" + Pw + ";");
+                baglanti.Open();
+                komut = new SqlCommand($"DELETE FROM ClientTransactions Where ID={transactioninfo.ID}", baglanti);
+                komut.ExecuteScalar();
+                baglanti.Close();
+                this.Close();
+                MetroMessageBox.Show(this, "Evrak Numarası:" + txtBelgeNo.Text.Trim() + "\n Kayıt başarıyla silindi.", "Başarılı ✓");
+            }
+            else
+                MessageBox.Show("Silmeye çalıştığınız hareket sisteme kayıtlı görünmüyor. \n Hareketin, Cari hareket raporunda olduğundan emin olunuz...", "Veritabanı Sorgusu Boş !", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+
+        
         }
     }
 }
