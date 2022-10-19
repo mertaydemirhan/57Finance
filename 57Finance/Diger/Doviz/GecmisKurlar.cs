@@ -19,9 +19,7 @@ namespace _57Finance
         public readonly string UsrName = ConfigurationManager.AppSettings["UsrName"];
         public readonly string Pw = ConfigurationManager.AppSettings["Pw"];
         SqlConnection baglanti;
-        SqlDataAdapter sqlAdapter;
         DataSet ds;
-        string FreeQuery = "";
         public GecmisKurlar()
         {
             InitializeComponent();

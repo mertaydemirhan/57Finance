@@ -34,11 +34,17 @@ namespace _57Finance
         public TediyeGirisi()
         {
             InitializeComponent();
+            this.txtBelgeNo.Click += new EventHandler(txtBelgeNo_Click);
+            this.txtDvzTutar.Click += new EventHandler(txtDvzTutar_Click);
+            this.txtTLTutar.Click += new EventHandler(txtTLTutar_Click);
         }
         public TediyeGirisi(TransactionINFO transaction)
         {
             InitializeComponent();
             transactioninfo = transaction;
+            this.txtBelgeNo.Click += new EventHandler(txtBelgeNo_Click);
+            this.txtDvzTutar.Click += new EventHandler(txtDvzTutar_Click);
+            this.txtTLTutar.Click += new EventHandler(txtTLTutar_Click);
         }
         private void TediyeGirisi_Load(object sender, EventArgs e)
         {
@@ -57,8 +63,7 @@ namespace _57Finance
         }
         private void btnCariSec_Click(object sender, EventArgs e)
         {
-            int type = 2;
-            CariSec CariSec = new CariSec(type);
+            CariSec CariSec = new CariSec(2);
             CariSec.Show();
         }
         private void CalculateForex()
@@ -94,8 +99,8 @@ namespace _57Finance
                 rdTL.Checked = true;
             rchAciklama.Text = transactioninfo.Explanation;
             txtBelgeNo.Text = transactioninfo.DocumentNo.ToString();
-            txtTLTutar.Text = transactioninfo.Amount.ToString();
-            txtDvzTutar.Text = transactioninfo.ForexAmount.ToString();
+            txtTLTutar.Text = transactioninfo.Debt.ToString();
+            txtDvzTutar.Text = transactioninfo.FDebt.ToString();
             cmbDvzTuru.SelectedIndex = cmbDvzTuru.Items.IndexOf(transactioninfo.Forex);
             CalculateForex();
         }
@@ -210,7 +215,7 @@ namespace _57Finance
         }
         private void cmbDvzTuru_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbDvzTuru.SelectedItem == "USD")
+            if (cmbDvzTuru.SelectedItem.ToString() == "USD")
             {
                 lbldolar.Text = "$ 1,0000";
                 lblEuro.Text = Convert.ToString(Math.Round(Forex.USDTEUR, 4)) + " €";
@@ -223,7 +228,7 @@ namespace _57Finance
                 Forex.SelectedAZN = 1.0000;
                 Forex.SelectedTL = Math.Round(Forex.USDtoTL, 4);
             }
-            if (cmbDvzTuru.SelectedItem == "EUR")
+            if (cmbDvzTuru.SelectedItem.ToString() == "EUR")
             {
                 lbldolar.Text = "$ " + Convert.ToString(Math.Round(1 / Forex.EURUSDT, 4));
                 lblEuro.Text = "1,0000 €";
@@ -236,7 +241,7 @@ namespace _57Finance
                 Forex.SelectedAZN = 1.0000;
                 Forex.SelectedTL = Math.Round(Forex.EURtoTL);
             }
-            if (cmbDvzTuru.SelectedItem == "GBP")
+            if (cmbDvzTuru.SelectedItem.ToString() == "GBP")
             {
                 lbldolar.Text = "$ " + Convert.ToString(Math.Round(Forex.GBPUSDT, 4));
                 lblEuro.Text = Convert.ToString(Math.Round(Forex.GBPEUR, 4)) + " €";
@@ -250,7 +255,7 @@ namespace _57Finance
                 Forex.SelectedTL = Math.Round(Forex.GBPtoTL, 4);
 
             }
-            if (cmbDvzTuru.SelectedItem == "AZN")
+            if (cmbDvzTuru.SelectedItem.ToString() == "AZN")
             {
                 lbldolar.Text = "$ 1,0000";
                 lblEuro.Text = "1,0000 €";
@@ -299,21 +304,21 @@ namespace _57Finance
                     FSelectedTL = Forex.SelectedTL * Convert.ToDouble(txtDvzTutar.Text);
                 }
                 if (transactioninfo == null)
-                    komut = new SqlCommand($"INSERT INTO ClientTransactions(ClientID,Amount,Date,DocumentNo,DocumentType,Explanation,DepartmentID,PaymentType,ForexAmount,Forex,ForexUSD,ForexEUR,ForexGBP,ForexAZN,ForexTL) " +
+                    komut = new SqlCommand($"INSERT INTO ClientTransactions(ClientID,Debt,Date,DocumentNo,DocumentType,Explanation,DepartmentID,PaymentType,FDebt,Forex,ForexUSD,ForexEUR,ForexGBP,ForexAZN,ForexTL) " +
                                                     $"VALUES(@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8,@p9,@p10,@p12,@p13,@p14,@p15,@p16)", baglanti);
                 if (transactioninfo != null)
-                    komut = new SqlCommand($"UPDATE ClientTransactions SET ClientID=@p1,Amount=@p2,Date=@p3,DocumentNo=@p4,DocumentType=@p5,Explanation=@p6,DepartmentID=@p7," +
-                                           $"PaymentType=@p8,ForexAmount=@p9,Forex=@p10,ForexUSD=@p12,ForexEUR=@p13,ForexGBP=@p14,ForexAZN=@p15," +
+                    komut = new SqlCommand($"UPDATE ClientTransactions SET ClientID=@p1,Debt=@p2,Date=@p3,DocumentNo=@p4,DocumentType=@p5,Explanation=@p6,DepartmentID=@p7," +
+                                           $"PaymentType=@p8,FDebt=@p9,Forex=@p10,ForexUSD=@p12,ForexEUR=@p13,ForexGBP=@p14,ForexAZN=@p15," +
                                            $"ForexTL=@p16 WHERE ID={transactioninfo.ID}", baglanti);
                 komut.Parameters.AddWithValue("@p1", ClientID);
-                komut.Parameters.AddWithValue("@p2", TLField*-1);
+                komut.Parameters.AddWithValue("@p2", TLField);
                 komut.Parameters.AddWithValue("@p3", dtIslemTarihi.Value);
                 komut.Parameters.AddWithValue("@p4", txtBelgeNo.Text.Trim());
                 komut.Parameters.AddWithValue("@p5", 2);  // Tahsilat = 1, Tediye = 2, Alış fat =3, satış fat = 4, Masraf = 5, Alıştan iade = 6, satıştan iade =7
                 komut.Parameters.AddWithValue("@p6", rchAciklama.Text.Trim());
                 komut.Parameters.AddWithValue("@p7", cmbDepartman.SelectedValue);
                 komut.Parameters.AddWithValue("@p8", cmbDocumentType.SelectedIndex);
-                komut.Parameters.AddWithValue("@p9", FField*-1);
+                komut.Parameters.AddWithValue("@p9", FField);
                 komut.Parameters.AddWithValue("@p10", FSign);
                 komut.Parameters.AddWithValue("@p12", FSelectedUSD);
                 komut.Parameters.AddWithValue("@p13", FSelectedEUR);
@@ -322,10 +327,11 @@ namespace _57Finance
                 komut.Parameters.AddWithValue("@p16", FSelectedTL);
                 komut.ExecuteScalar();
                 baglanti.Close();
+                this.Close();
                 if (transactioninfo == null)
-                    MetroMessageBox.Show(this, "Ticari Unvanı :" + lblTicariUnvani.Text.Trim() + "\n Belge Numarası : " + txtBelgeNo.Text.Trim() + "\n Kayıt başarıyla eklenmiştir.", "Kaydetme Başarılı ✓", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MetroMessageBox.Show(this, "Belge Numarası : " + txtBelgeNo.Text.Trim() + "\n Kayıt başarıyla eklenmiştir.", "Kaydetme Başarılı ✓", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 if (transactioninfo != null)
-                    MetroMessageBox.Show(this, "Ticari Unvanı :" + lblTicariUnvani.Text.Trim() + "\n Belge Numarası : " + txtBelgeNo.Text.Trim() + "\n Kayıt başarıyla değiştirilmiştir..", " Değiştirme Başarılı ✓", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MetroMessageBox.Show(this, "Belge Numarası : " + txtBelgeNo.Text.Trim() + "\n Kayıt başarıyla değiştirilmiştir..", " Değiştirme Başarılı ✓", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception)
             {
@@ -336,7 +342,7 @@ namespace _57Finance
 
         private void btnSil_Click(object sender, EventArgs e)
         {
-            if (transactioninfo.ID != null)
+            if (transactioninfo != null)
             {
                 baglanti = new SqlConnection("Server=" + ServerAdress + ";Database=" + DatabaseName + ";User Id=" + UsrName + ";Password=" + Pw + ";");
                 baglanti.Open();
@@ -350,6 +356,18 @@ namespace _57Finance
                 MessageBox.Show("Silmeye çalıştığınız hareket sisteme kayıtlı görünmüyor. \n Hareketin, Cari hareket raporunda olduğundan emin olunuz...", "Veritabanı Sorgusu Boş !", MessageBoxButtons.OK, MessageBoxIcon.Hand);
 
 
+        }
+        private void txtBelgeNo_Click(object sender, EventArgs e)
+        {
+            this.txtBelgeNo.Select(0, 0);
+        }
+        private void txtTLTutar_Click(object sender, EventArgs e)
+        {
+            this.txtTLTutar.Select(0, 0);
+        }
+        private void txtDvzTutar_Click(object sender, EventArgs e)
+        {
+            this.txtDvzTutar.Select(0, 0);
         }
     }
 }

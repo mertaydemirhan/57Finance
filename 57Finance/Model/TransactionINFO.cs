@@ -10,7 +10,8 @@ namespace _57Finance.Model
     {
         public int ID { get; set; }
         public int ClientID { get; set; }
-        public double Amount { get; set; }
+        public double Debt { get; set; }
+        public double Credit { get; set; }
         public string ClientCommercialTitle { get; set; }
         public string ClientCode { get; set; }
         public DateTime Date { get; set; }
@@ -20,7 +21,8 @@ namespace _57Finance.Model
         public int DepartmentID { get; set; }
         public int VATRate { get; set; }
         public int PaymentType { get; set; }
-        public double ForexAmount { get; set; } 
+        public double FDebt { get; set; }
+        public double FCredit { get; set; }
         public string Forex { get; set; }
         public double Balance { get; set; }
         public double ForexUSD { get; set; }

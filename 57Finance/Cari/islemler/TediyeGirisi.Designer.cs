@@ -208,6 +208,7 @@
             this.txtBelgeNo.PromptChar = ' ';
             this.txtBelgeNo.Size = new System.Drawing.Size(163, 20);
             this.txtBelgeNo.TabIndex = 16;
+            this.txtBelgeNo.Click += new System.EventHandler(this.txtBelgeNo_Click);
             // 
             // metroLabel8
             // 
@@ -387,6 +388,7 @@
             this.txtTLTutar.PromptChar = ' ';
             this.txtTLTutar.Size = new System.Drawing.Size(107, 20);
             this.txtTLTutar.TabIndex = 10;
+            this.txtTLTutar.Click += new System.EventHandler(this.txtTLTutar_Click);
             this.txtTLTutar.TextChanged += new System.EventHandler(this.txtTLTutar_TextChanged);
             // 
             // metroLabel5
@@ -550,6 +552,7 @@
             this.txtDvzTutar.ResetOnPrompt = false;
             this.txtDvzTutar.Size = new System.Drawing.Size(107, 20);
             this.txtDvzTutar.TabIndex = 12;
+            this.txtDvzTutar.Click += new System.EventHandler(this.txtDvzTutar_Click);
             this.txtDvzTutar.TextChanged += new System.EventHandler(this.txtDvzTutar_TextChanged);
             // 
             // metroLabel7

@@ -22,7 +22,6 @@ namespace _57Finance.Cari.Raporlar
         public readonly string UsrName = ConfigurationManager.AppSettings["UsrName"];
         public readonly string Pw = ConfigurationManager.AppSettings["Pw"];
         SqlConnection baglanti;
-        SqlCommand komut;
         DataSet ds;
         public CariListesi()
         {

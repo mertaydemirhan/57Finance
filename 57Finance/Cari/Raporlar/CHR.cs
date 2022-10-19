@@ -27,6 +27,7 @@ namespace _57Finance
         public CHR()
         {
             InitializeComponent();
+
         }
 
         private void CHR_Load(object sender, EventArgs e)
@@ -41,12 +42,12 @@ namespace _57Finance
             DataTable tablo = new DataTable();
             tablo.Clear();
             ds = new DataSet();
-            string query =  $"SELECT C.ID ClientID,ClientCode,CommercialTitle,TaxNo,CHR.ID,CHR.Amount,CHR.Date, CHR.DocumentNo," +
+            string query =  $"SELECT C.ID ClientID,ClientCode,CommercialTitle,TaxNo,CHR.ID,CHR.Debt,CHR.Credit,CHR.Date, CHR.DocumentNo," +
                             $"CASE WHEN CHR.DocumentType = 1 THEN 'Tahsilat' WHEN CHR.DocumentNo=2 THEN 'Tediye' END DocumentType," +
                             $"CHR.Explanation, D.DepartmentName,CHR.VATRate," +
                             $"CASE WHEN CHR.PaymentType = 0 THEN 'Nakit' WHEN CHR.PaymentType=1 THEN 'Kredi Kartı' WHEN CHR.PaymentType=2 THEN 'Havale / EFT' " +
                             $"WHEN CHR.PaymentType=3 THEN 'Mahsup' WHEN CHR.PaymentType=4 THEN 'Diğer' END PaymentType," +
-                            $"CHR.ForexAmount, CHR.Forex, CHR.Balance,CHR.ForexUSD,CHR.ForexEUR,CHR.ForexGBP,CHR.ForexAZN,CHR.ForexTL,CHR.DocumentNo DocumentTypeID,CHR.DepartmentID,CHR.PaymentType PaymentTypeID" +
+                            $"CHR.FDebt,CHR.FCredit, CHR.Forex, CHR.Balance,CHR.ForexUSD,CHR.ForexEUR,CHR.ForexGBP,CHR.ForexAZN,CHR.ForexTL,CHR.DocumentType DocumentTypeID,CHR.DepartmentID,CHR.PaymentType PaymentTypeID" +
                             $" from ClientTransactions AS CHR " +
                             $"JOIN Clients C ON(CHR.ClientID = C.ID) JOIN Departments D ON(CHR.DepartmentID = D.ID)" +
                             $"WHERE C.isActive=1";
@@ -60,24 +61,27 @@ namespace _57Finance
             GridCHR.Columns[2].HeaderText = "Ticari Ünvanı";
             GridCHR.Columns[3].HeaderText = "Vergi Numarası";
             GridCHR.Columns[4].Visible = false; // ID CHR
-            GridCHR.Columns[5].HeaderText = "Tutar";
-            GridCHR.Columns[6].HeaderText = "İşlem Tarihi";
-            GridCHR.Columns[7].HeaderText = "Evrak Numarası";
-            GridCHR.Columns[8].HeaderText = "Evrak Türü";
-            GridCHR.Columns[9].HeaderText = "Açıklama";
-            GridCHR.Columns[10].HeaderText = "Departmanı";
-            GridCHR.Columns[11].HeaderText = "KDV Oranı";
-            GridCHR.Columns[12].HeaderText = "Ödeme Türü";
-            GridCHR.Columns[13].HeaderText = "Döviz Tutarı";
-            GridCHR.Columns[14].HeaderText = "Döviz Tipi";
-            GridCHR.Columns[15].HeaderText = "Bakiyesi";
-            GridCHR.Columns[16].HeaderText = "Dolar Karşılığı";
-            GridCHR.Columns[17].HeaderText = "Euro Karşılığı";
-            GridCHR.Columns[18].HeaderText = "Stg Karşılığı";
-            GridCHR.Columns[19].HeaderText = "TL Karşılığı";
-            GridCHR.Columns[20].Visible = false;
-            GridCHR.Columns[21].Visible = false;
+            GridCHR.Columns[5].HeaderText = "Borç Tutarı";
+            GridCHR.Columns[6].HeaderText = "Alacak Tutarı";
+            GridCHR.Columns[7].HeaderText = "İşlem Tarihi";
+            GridCHR.Columns[8].HeaderText = "Evrak Numarası";
+            GridCHR.Columns[9].HeaderText = "Evrak Türü";
+            GridCHR.Columns[10].HeaderText = "Açıklama";
+            GridCHR.Columns[11].HeaderText = "Departmanı";
+            GridCHR.Columns[12].HeaderText = "KDV Oranı";
+            GridCHR.Columns[13].HeaderText = "Ödeme Türü";
+            GridCHR.Columns[14].HeaderText = "Dvz. Borç";
+            GridCHR.Columns[15].HeaderText = "Dvz. Alacak";
+            GridCHR.Columns[16].HeaderText = "Döviz Tipi";
+            GridCHR.Columns[17].HeaderText = "Bakiyesi";
+            GridCHR.Columns[18].HeaderText = "Dolar Karşılığı";
+            GridCHR.Columns[19].HeaderText = "Euro Karşılığı";
+            GridCHR.Columns[20].HeaderText = "Stg Karşılığı";
+            GridCHR.Columns[21].HeaderText = "TL Karşılığı";
             GridCHR.Columns[22].Visible = false;
+            GridCHR.Columns[23].Visible = false;
+            GridCHR.Columns[24].Visible = false;
+            GridCHR.Columns[25].Visible = false;
 
         }
         public void BindDataDepartment()
@@ -106,15 +110,15 @@ namespace _57Finance
                 DataTable tablo = new DataTable();
                 tablo.Clear();
                 ds = new DataSet();
-                string query =  $"SELECT C.ID ClientID,ClientCode,CommercialTitle,TaxNo,CHR.ID,CHR.Amount,CHR.Date, CHR.DocumentNo," +
-                                $"CASE WHEN CHR.DocumentType = 1 THEN 'Tahsilat' WHEN CHR.DocumentType=2 THEN 'Tediye' END DocumentType," +
-                                $"CHR.Explanation, D.DepartmentName,CHR.VATRate," +
-                                $"CASE WHEN CHR.PaymentType = 0 THEN 'Nakit' WHEN CHR.PaymentType=1 THEN 'Kredi Kartı' WHEN CHR.PaymentType=2 THEN 'Havale / EFT' " +
-                                $"WHEN CHR.PaymentType=3 THEN 'Mahsup' WHEN CHR.PaymentType=4 THEN 'Diğer' END PaymentType," +
-                                $"CHR.ForexAmount, CHR.Forex, CHR.Balance,CHR.ForexUSD,CHR.ForexEUR,CHR.ForexGBP,CHR.ForexAZN,CHR.ForexTL,CHR.DocumentType DocumentTypeID,CHR.DepartmentID,CHR.PaymentType PaymentTypeID" +
-                                $" from ClientTransactions CHR " +
-                                $"JOIN Clients C ON(CHR.ClientID = C.ID) JOIN Departments D ON(CHR.DepartmentID = D.ID)" +
-                                $"WHERE C.isActive=1";
+                string query = $"SELECT C.ID ClientID,ClientCode,CommercialTitle,TaxNo,CHR.ID,CHR.Debt,CHR.Credit,CHR.Date, CHR.DocumentNo," +
+                            $"CASE WHEN CHR.DocumentType = 1 THEN 'Tahsilat' WHEN CHR.DocumentNo=2 THEN 'Tediye' END DocumentType," +
+                            $"CHR.Explanation, D.DepartmentName,CHR.VATRate," +
+                            $"CASE WHEN CHR.PaymentType = 0 THEN 'Nakit' WHEN CHR.PaymentType=1 THEN 'Kredi Kartı' WHEN CHR.PaymentType=2 THEN 'Havale / EFT' " +
+                            $"WHEN CHR.PaymentType=3 THEN 'Mahsup' WHEN CHR.PaymentType=4 THEN 'Diğer' END PaymentType," +
+                            $"CHR.FDebt,CHR.FCredit, CHR.Forex, CHR.Balance,CHR.ForexUSD,CHR.ForexEUR,CHR.ForexGBP,CHR.ForexAZN,CHR.ForexTL,CHR.DocumentType DocumentTypeID,CHR.DepartmentID,CHR.PaymentType PaymentTypeID" +
+                            $" from ClientTransactions AS CHR " +
+                            $"JOIN Clients C ON(CHR.ClientID = C.ID) JOIN Departments D ON(CHR.DepartmentID = D.ID)" +
+                            $"WHERE C.isActive=1";
                 SqlDataAdapter adapter = new SqlDataAdapter();
                 if (ara != "")
                     adapter = new SqlDataAdapter(query + " AND " + ara + " like '%" + yer + "%'", baglanti);
@@ -128,24 +132,27 @@ namespace _57Finance
                 GridCHR.Columns[2].HeaderText = "Ticari Ünvanı";
                 GridCHR.Columns[3].HeaderText = "Vergi Numarası";
                 GridCHR.Columns[4].Visible = false; // ID CHR
-                GridCHR.Columns[5].HeaderText = "Tutar";
-                GridCHR.Columns[6].HeaderText = "İşlem Tarihi";
-                GridCHR.Columns[7].HeaderText = "Evrak Numarası";
-                GridCHR.Columns[8].HeaderText = "Evrak Türü";
-                GridCHR.Columns[9].HeaderText = "Açıklama";
-                GridCHR.Columns[10].HeaderText = "Departmanı";
-                GridCHR.Columns[11].HeaderText = "KDV Oranı";
-                GridCHR.Columns[12].HeaderText = "Ödeme Türü";
-                GridCHR.Columns[13].HeaderText = "Döviz Tutarı";
-                GridCHR.Columns[14].HeaderText = "Döviz Tipi";
-                GridCHR.Columns[15].HeaderText = "Bakiyesi";
-                GridCHR.Columns[16].HeaderText = "Dolar Karşılığı";
-                GridCHR.Columns[17].HeaderText = "Euro Karşılığı";
-                GridCHR.Columns[18].HeaderText = "Stg Karşılığı";
-                GridCHR.Columns[19].HeaderText = "TL Karşılığı";
-                GridCHR.Columns[20].Visible = false;
-                GridCHR.Columns[21].Visible = false;
+                GridCHR.Columns[5].HeaderText = "Borç Tutarı";
+                GridCHR.Columns[6].HeaderText = "Alacak Tutarı";
+                GridCHR.Columns[7].HeaderText = "İşlem Tarihi";
+                GridCHR.Columns[8].HeaderText = "Evrak Numarası";
+                GridCHR.Columns[9].HeaderText = "Evrak Türü";
+                GridCHR.Columns[10].HeaderText = "Açıklama";
+                GridCHR.Columns[11].HeaderText = "Departmanı";
+                GridCHR.Columns[12].HeaderText = "KDV Oranı";
+                GridCHR.Columns[13].HeaderText = "Ödeme Türü";
+                GridCHR.Columns[14].HeaderText = "Dvz. Borç";
+                GridCHR.Columns[15].HeaderText = "Dvz. Alacak";
+                GridCHR.Columns[16].HeaderText = "Döviz Tipi";
+                GridCHR.Columns[17].HeaderText = "Bakiyesi";
+                GridCHR.Columns[18].HeaderText = "Dolar Karşılığı";
+                GridCHR.Columns[19].HeaderText = "Euro Karşılığı";
+                GridCHR.Columns[20].HeaderText = "Stg Karşılığı";
+                GridCHR.Columns[21].HeaderText = "TL Karşılığı";
                 GridCHR.Columns[22].Visible = false;
+                GridCHR.Columns[23].Visible = false;
+                GridCHR.Columns[24].Visible = false;
+                GridCHR.Columns[25].Visible = false;
             }
         }
         private void txtCariKodu_OnValueChanged(object sender, EventArgs e)
@@ -182,7 +189,7 @@ namespace _57Finance
         {
             if( cmbIslemTuru.SelectedIndex != -1)
             {
-                string al = cmbIslemTuru.SelectedItem.ToString();
+                string al = cmbIslemTuru.SelectedIndex.ToString();
                 ara("CHR.PaymentType", al);
             }
         }
@@ -222,7 +229,10 @@ namespace _57Finance
                 transactionINFO.ClientID = Convert.ToInt32(selectedRow.Cells["ClientID"].Value);
                 transactionINFO.ClientCode = selectedRow.Cells["ClientCode"].Value.ToString();
                 transactionINFO.ClientCommercialTitle = selectedRow.Cells["CommercialTitle"].Value.ToString();
-                transactionINFO.Amount = Convert.ToDouble(selectedRow.Cells["Amount"].Value);
+                if (transactionINFO.DocumentType == 1 && !string.IsNullOrEmpty(selectedRow.Cells["Credit"].Value.ToString()))
+                    transactionINFO.Credit = Convert.ToDouble(selectedRow.Cells["Credit"].Value);
+                if(transactionINFO.DocumentType != 1 && !string.IsNullOrEmpty(selectedRow.Cells["Debt"].Value.ToString()))
+                    transactionINFO.Debt = Convert.ToDouble(selectedRow.Cells["Debt"].Value);
                 transactionINFO.Date = Convert.ToDateTime(selectedRow.Cells["Date"].Value);
                 transactionINFO.DocumentNo = Convert.ToUInt32(selectedRow.Cells["DocumentNo"].Value);
                 transactionINFO.DocumentType = Convert.ToInt32(selectedRow.Cells["DocumentTypeID"].Value);
@@ -231,7 +241,10 @@ namespace _57Finance
                 if (!string.IsNullOrEmpty(selectedRow.Cells["VATRate"].Value.ToString()))
                     transactionINFO.VATRate = Convert.ToInt32(selectedRow.Cells["VATRate"].Value.ToString());
                 transactionINFO.PaymentType = Convert.ToInt32(selectedRow.Cells["PaymentTypeID"].Value);
-                transactionINFO.ForexAmount = Convert.ToDouble(selectedRow.Cells["ForexAmount"].Value);
+                if (transactionINFO.DocumentType == 1 && !string.IsNullOrEmpty(selectedRow.Cells["FCredit"].Value.ToString()))
+                    transactionINFO.FCredit = Convert.ToDouble(selectedRow.Cells["FCredit"].Value);
+                if (transactionINFO.DocumentType != 1 && !string.IsNullOrEmpty(selectedRow.Cells["FDebt"].Value.ToString()))
+                    transactionINFO.FDebt = Convert.ToDouble(selectedRow.Cells["FDebt"].Value);
                 transactionINFO.Forex = selectedRow.Cells["Forex"].Value.ToString();
                 if (!string.IsNullOrEmpty(selectedRow.Cells["Balance"].Value.ToString()))
                     transactionINFO.Balance = Convert.ToDouble(selectedRow.Cells["Balance"].Value);
