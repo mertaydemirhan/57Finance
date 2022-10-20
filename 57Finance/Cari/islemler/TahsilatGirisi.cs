@@ -46,8 +46,23 @@ namespace _57Finance
             this.txtDvzTutar.Click += new EventHandler(txtDvzTutar_Click);
             this.txtTLTutar.Click += new EventHandler(txtTLTutar_Click);
         }
+
+        private void GetBalanceFromDB(int ClientID)
+        {
+            baglanti = new SqlConnection("Server=" + ServerAdress + ";Database=" + DatabaseName + ";User Id=" + UsrName + ";Password=" + Pw + ";");
+            DataTable tablo = new DataTable();
+            tablo.Clear();
+            ds = new DataSet();
+            string query = $"SELECT * FROM [{DatabaseName}].dbo.GetClientBalance({ClientID})";
+            SqlDataAdapter adapter = new SqlDataAdapter(query, baglanti);
+            adapter.Fill(tablo);
+            ds.Merge(tablo);
+            GridCariBKY.DataSource = tablo;
+        }
         private void TahsilatGirisi_Load(object sender, EventArgs e)
         {
+            cmbDepartman.Visible = false;
+            metroLabel10.Visible = false; // Departman Label ve cmb kapatıldı.
             if (transactioninfo == null)
                 grpBForex.Visible = false;
             grpIslem.Enabled = false;
@@ -59,6 +74,7 @@ namespace _57Finance
             if (transactioninfo != null)
             {
                 GetValuesFromClient();
+                GetBalanceFromDB(transactioninfo.ClientID);
             }
         }
         private void CalculateForex()
@@ -74,7 +90,6 @@ namespace _57Finance
                 lblTL.Text = Convert.ToString(Math.Round(tutar * Forex.SelectedTL, 4)) + " ₺";
             }
         }
-
         private void GetValuesFromClient()
         {
             lblTicariUnvani.Text = transactioninfo.ClientCommercialTitle;
@@ -100,7 +115,6 @@ namespace _57Finance
             cmbDvzTuru.SelectedIndex = cmbDvzTuru.Items.IndexOf(transactioninfo.Forex);
             CalculateForex();
         }
-
         private void btnCariSec_Click(object sender, EventArgs e)
         {
             CariSec CariSec = new CariSec(1);
@@ -148,7 +162,6 @@ namespace _57Finance
 
 
         }
-
         private void downloadForex()
         {
             using (WebClient wc = new WebClient())
@@ -189,12 +202,11 @@ namespace _57Finance
             {
                 grpIslem.Enabled = true;
                 rdTL.Checked = true;
+                GetBalanceFromDB(Convert.ToInt32(ClientID));
                 if (transactioninfo == null)
                     txtBelgeNo.Text = GetDocNumber("Tahsilat", "THKey");
             }
         }
-
-
         private string GetDocNumber(string Group, string Key)
         {
             var parser = new FileIniDataParser();
@@ -204,18 +216,14 @@ namespace _57Finance
             //parser.WriteFile("Configuration.ini", data);
             return useFullScreenStr;
         }
-
         private void WriteDocNumber(string Group, string Key)
         {
             var parser = new FileIniDataParser();
             IniData data = parser.ReadFile("Configuration.ini");
-            string GetFileNumber = Convert.ToString(Convert.ToDouble(GetDocNumber(Group, Key)) + 1);
+            string GetFileNumber = Convert.ToString(Convert.ToDouble(GetDocNumber(Group, Key)) + 1).PadLeft(5,Convert.ToChar("0"));
             data[Group][Key] =GetFileNumber;
             parser.WriteFile("Configuration.ini", data);
         }
-
-
-
         private void rdTL_CheckedChanged(object sender, EventArgs e)
         {
             grpTL.Enabled = true;
@@ -224,7 +232,6 @@ namespace _57Finance
             txtDvzTutar.Text = "";
 
         }
-
         private void txtTLTutar_TextChanged(object sender, EventArgs e)
         {
             if (txtTLTutar.Text != "")
@@ -236,14 +243,12 @@ namespace _57Finance
                 TLtoAZN.Text = Convert.ToString(Math.Round(tutar / Forex.AZNtoTL, 4)) + " AZN";
             }
         }
-
         private void rdDoviz_CheckedChanged(object sender, EventArgs e)
         {
             grpTL.Enabled = false;
             grpDvz.Enabled = true;
             txtTLTutar.Text = "";
         }
-
         private void cmbDvzTuru_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cmbDvzTuru.SelectedItem.ToString() == "USD")
@@ -369,7 +374,6 @@ namespace _57Finance
                 MetroMessageBox.Show(this, "Bir hata ile karşılaşıldı... Sebebi girilen veriler ile alakalı olabilir...", "Kayıt tamamlanamadı !", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
         }
-
         private void btnSil_Click(object sender, EventArgs e)
         {
             if (transactioninfo != null)
@@ -386,7 +390,6 @@ namespace _57Finance
                 MessageBox.Show("Silmeye çalıştığınız hareket sisteme kayıtlı görünmüyor. \n Hareketin, Cari hareket raporunda olduğundan emin olunuz...", "Veritabanı Sorgusu Boş !", MessageBoxButtons.OK, MessageBoxIcon.Hand);
 
         }
-
         private void txtBelgeNo_Click(object sender, EventArgs e)
         {
             this.txtBelgeNo.Select(0, 0);

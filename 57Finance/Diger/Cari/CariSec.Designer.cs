@@ -44,8 +44,12 @@
             this.bunifuCustomLabel3 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel2 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel1 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.txtCariKodu2 = new Bunifu.Framework.UI.BunifuMetroTextbox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnFiltrele = new MetroFramework.Controls.MetroButton();
             ((System.ComponentModel.ISupportInitialize)(this.GridCari)).BeginInit();
             this.grpArama.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnCariSec
@@ -88,7 +92,7 @@
             this.GridCari.EnableHeadersVisualStyles = false;
             this.GridCari.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.GridCari.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.GridCari.Location = new System.Drawing.Point(12, 169);
+            this.GridCari.Location = new System.Drawing.Point(12, 179);
             this.GridCari.Name = "GridCari";
             this.GridCari.ReadOnly = true;
             this.GridCari.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -102,7 +106,7 @@
             this.GridCari.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.GridCari.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.GridCari.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.GridCari.Size = new System.Drawing.Size(455, 286);
+            this.GridCari.Size = new System.Drawing.Size(455, 276);
             this.GridCari.TabIndex = 1;
             this.GridCari.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.GridCari_CellMouseDoubleClick);
             // 
@@ -119,17 +123,17 @@
             // 
             // grpArama
             // 
+            this.grpArama.Controls.Add(this.btnFiltrele);
+            this.grpArama.Controls.Add(this.groupBox1);
             this.grpArama.Controls.Add(this.txtMuhSatis);
             this.grpArama.Controls.Add(this.txtVergiNo);
             this.grpArama.Controls.Add(this.txtTicariUnvani);
-            this.grpArama.Controls.Add(this.txtCariKodu);
             this.grpArama.Controls.Add(this.bunifuCustomLabel4);
             this.grpArama.Controls.Add(this.bunifuCustomLabel3);
             this.grpArama.Controls.Add(this.bunifuCustomLabel2);
-            this.grpArama.Controls.Add(this.bunifuCustomLabel1);
             this.grpArama.Location = new System.Drawing.Point(9, 3);
             this.grpArama.Name = "grpArama";
-            this.grpArama.Size = new System.Drawing.Size(458, 159);
+            this.grpArama.Size = new System.Drawing.Size(458, 170);
             this.grpArama.TabIndex = 3;
             this.grpArama.TabStop = false;
             this.grpArama.Text = "Arama Bölümü";
@@ -144,13 +148,12 @@
             this.txtMuhSatis.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.txtMuhSatis.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtMuhSatis.isPassword = false;
-            this.txtMuhSatis.Location = new System.Drawing.Point(135, 115);
+            this.txtMuhSatis.Location = new System.Drawing.Point(135, 139);
             this.txtMuhSatis.Margin = new System.Windows.Forms.Padding(4);
             this.txtMuhSatis.Name = "txtMuhSatis";
             this.txtMuhSatis.Size = new System.Drawing.Size(144, 25);
             this.txtMuhSatis.TabIndex = 10;
             this.txtMuhSatis.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtMuhSatis.OnValueChanged += new System.EventHandler(this.txtMuhSatis_OnValueChanged);
             // 
             // txtVergiNo
             // 
@@ -162,13 +165,12 @@
             this.txtVergiNo.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.txtVergiNo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtVergiNo.isPassword = false;
-            this.txtVergiNo.Location = new System.Drawing.Point(135, 85);
+            this.txtVergiNo.Location = new System.Drawing.Point(135, 109);
             this.txtVergiNo.Margin = new System.Windows.Forms.Padding(4);
             this.txtVergiNo.Name = "txtVergiNo";
             this.txtVergiNo.Size = new System.Drawing.Size(144, 25);
             this.txtVergiNo.TabIndex = 9;
             this.txtVergiNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtVergiNo.OnValueChanged += new System.EventHandler(this.txtVergiNo_OnValueChanged);
             // 
             // txtTicariUnvani
             // 
@@ -180,13 +182,12 @@
             this.txtTicariUnvani.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.txtTicariUnvani.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtTicariUnvani.isPassword = false;
-            this.txtTicariUnvani.Location = new System.Drawing.Point(135, 52);
+            this.txtTicariUnvani.Location = new System.Drawing.Point(135, 81);
             this.txtTicariUnvani.Margin = new System.Windows.Forms.Padding(4);
             this.txtTicariUnvani.Name = "txtTicariUnvani";
             this.txtTicariUnvani.Size = new System.Drawing.Size(202, 25);
             this.txtTicariUnvani.TabIndex = 8;
             this.txtTicariUnvani.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtTicariUnvani.OnValueChanged += new System.EventHandler(this.txtTicariUnvani_OnValueChanged);
             // 
             // txtCariKodu
             // 
@@ -198,18 +199,17 @@
             this.txtCariKodu.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.txtCariKodu.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtCariKodu.isPassword = false;
-            this.txtCariKodu.Location = new System.Drawing.Point(135, 20);
+            this.txtCariKodu.Location = new System.Drawing.Point(129, 7);
             this.txtCariKodu.Margin = new System.Windows.Forms.Padding(4);
             this.txtCariKodu.Name = "txtCariKodu";
             this.txtCariKodu.Size = new System.Drawing.Size(144, 25);
             this.txtCariKodu.TabIndex = 7;
             this.txtCariKodu.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtCariKodu.OnValueChanged += new System.EventHandler(this.txtCariKodu_OnValueChanged);
             // 
             // bunifuCustomLabel4
             // 
             this.bunifuCustomLabel4.AutoSize = true;
-            this.bunifuCustomLabel4.Location = new System.Drawing.Point(16, 121);
+            this.bunifuCustomLabel4.Location = new System.Drawing.Point(16, 145);
             this.bunifuCustomLabel4.Name = "bunifuCustomLabel4";
             this.bunifuCustomLabel4.Size = new System.Drawing.Size(117, 13);
             this.bunifuCustomLabel4.TabIndex = 3;
@@ -218,7 +218,7 @@
             // bunifuCustomLabel3
             // 
             this.bunifuCustomLabel3.AutoSize = true;
-            this.bunifuCustomLabel3.Location = new System.Drawing.Point(16, 90);
+            this.bunifuCustomLabel3.Location = new System.Drawing.Point(16, 114);
             this.bunifuCustomLabel3.Name = "bunifuCustomLabel3";
             this.bunifuCustomLabel3.Size = new System.Drawing.Size(78, 13);
             this.bunifuCustomLabel3.TabIndex = 2;
@@ -227,7 +227,7 @@
             // bunifuCustomLabel2
             // 
             this.bunifuCustomLabel2.AutoSize = true;
-            this.bunifuCustomLabel2.Location = new System.Drawing.Point(16, 59);
+            this.bunifuCustomLabel2.Location = new System.Drawing.Point(16, 88);
             this.bunifuCustomLabel2.Name = "bunifuCustomLabel2";
             this.bunifuCustomLabel2.Size = new System.Drawing.Size(70, 13);
             this.bunifuCustomLabel2.TabIndex = 1;
@@ -236,11 +236,50 @@
             // bunifuCustomLabel1
             // 
             this.bunifuCustomLabel1.AutoSize = true;
-            this.bunifuCustomLabel1.Location = new System.Drawing.Point(16, 26);
+            this.bunifuCustomLabel1.Location = new System.Drawing.Point(10, 31);
             this.bunifuCustomLabel1.Name = "bunifuCustomLabel1";
             this.bunifuCustomLabel1.Size = new System.Drawing.Size(56, 13);
             this.bunifuCustomLabel1.TabIndex = 0;
             this.bunifuCustomLabel1.Text = "Cari Kodu ";
+            // 
+            // txtCariKodu2
+            // 
+            this.txtCariKodu2.BorderColorFocused = System.Drawing.Color.Blue;
+            this.txtCariKodu2.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtCariKodu2.BorderColorMouseHover = System.Drawing.Color.Blue;
+            this.txtCariKodu2.BorderThickness = 3;
+            this.txtCariKodu2.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtCariKodu2.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.txtCariKodu2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtCariKodu2.isPassword = false;
+            this.txtCariKodu2.Location = new System.Drawing.Point(129, 35);
+            this.txtCariKodu2.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCariKodu2.Name = "txtCariKodu2";
+            this.txtCariKodu2.Size = new System.Drawing.Size(144, 25);
+            this.txtCariKodu2.TabIndex = 11;
+            this.txtCariKodu2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.txtCariKodu);
+            this.groupBox1.Controls.Add(this.txtCariKodu2);
+            this.groupBox1.Controls.Add(this.bunifuCustomLabel1);
+            this.groupBox1.Location = new System.Drawing.Point(6, 13);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(298, 66);
+            this.groupBox1.TabIndex = 12;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Cari Kodu Arama";
+            // 
+            // btnFiltrele
+            // 
+            this.btnFiltrele.Location = new System.Drawing.Point(344, 13);
+            this.btnFiltrele.Name = "btnFiltrele";
+            this.btnFiltrele.Size = new System.Drawing.Size(108, 151);
+            this.btnFiltrele.TabIndex = 12;
+            this.btnFiltrele.Text = "Filtrele(F2)";
+            this.btnFiltrele.UseSelectable = true;
+            this.btnFiltrele.Click += new System.EventHandler(this.btnFiltrele_Click);
             // 
             // CariSec
             // 
@@ -261,6 +300,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.GridCari)).EndInit();
             this.grpArama.ResumeLayout(false);
             this.grpArama.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -279,5 +320,8 @@
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel3;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel2;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel1;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private Bunifu.Framework.UI.BunifuMetroTextbox txtCariKodu2;
+        private MetroFramework.Controls.MetroButton btnFiltrele;
     }
 }

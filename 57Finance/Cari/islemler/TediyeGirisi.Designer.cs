@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TediyeGirisi));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnKaydet = new Bunifu.Framework.UI.BunifuThinButton2();
             this.grpIslem = new System.Windows.Forms.GroupBox();
             this.cmbDepartman = new MetroFramework.Controls.MetroComboBox();
@@ -91,6 +94,7 @@
             this.lblCariKod = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.btnSil = new Bunifu.Framework.UI.BunifuThinButton2();
+            this.GridCariBKY = new MetroFramework.Controls.MetroGrid();
             this.grpIslem.SuspendLayout();
             this.grpTur.SuspendLayout();
             this.grpTL.SuspendLayout();
@@ -99,6 +103,7 @@
             this.grpDvzBilgi.SuspendLayout();
             this.grpCariSec.SuspendLayout();
             this.grpBForex.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GridCariBKY)).BeginInit();
             this.SuspendLayout();
             // 
             // btnKaydet
@@ -122,7 +127,7 @@
             this.btnKaydet.Location = new System.Drawing.Point(8, 417);
             this.btnKaydet.Margin = new System.Windows.Forms.Padding(5);
             this.btnKaydet.Name = "btnKaydet";
-            this.btnKaydet.Size = new System.Drawing.Size(177, 52);
+            this.btnKaydet.Size = new System.Drawing.Size(177, 75);
             this.btnKaydet.TabIndex = 9;
             this.btnKaydet.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnKaydet.Click += new System.EventHandler(this.btnKaydet_Click);
@@ -843,20 +848,65 @@
             this.btnSil.IdleFillColor = System.Drawing.Color.White;
             this.btnSil.IdleForecolor = System.Drawing.Color.DimGray;
             this.btnSil.IdleLineColor = System.Drawing.Color.Red;
-            this.btnSil.Location = new System.Drawing.Point(444, 416);
+            this.btnSil.Location = new System.Drawing.Point(8, 493);
             this.btnSil.Margin = new System.Windows.Forms.Padding(5);
             this.btnSil.Name = "btnSil";
-            this.btnSil.Size = new System.Drawing.Size(187, 53);
+            this.btnSil.Size = new System.Drawing.Size(177, 61);
             this.btnSil.TabIndex = 10;
             this.btnSil.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnSil.Click += new System.EventHandler(this.btnSil_Click);
+            // 
+            // GridCariBKY
+            // 
+            this.GridCariBKY.AllowUserToResizeRows = false;
+            this.GridCariBKY.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.GridCariBKY.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.GridCariBKY.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.GridCariBKY.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.GridCariBKY.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.GridCariBKY.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.GridCariBKY.DefaultCellStyle = dataGridViewCellStyle2;
+            this.GridCariBKY.EnableHeadersVisualStyles = false;
+            this.GridCariBKY.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.GridCariBKY.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.GridCariBKY.Location = new System.Drawing.Point(222, 417);
+            this.GridCariBKY.Name = "GridCariBKY";
+            this.GridCariBKY.ReadOnly = true;
+            this.GridCariBKY.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.GridCariBKY.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.GridCariBKY.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.GridCariBKY.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.GridCariBKY.Size = new System.Drawing.Size(409, 129);
+            this.GridCariBKY.TabIndex = 11;
             // 
             // TediyeGirisi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.ClientSize = new System.Drawing.Size(649, 477);
+            this.ClientSize = new System.Drawing.Size(649, 555);
+            this.Controls.Add(this.GridCariBKY);
             this.Controls.Add(this.btnSil);
             this.Controls.Add(this.btnKaydet);
             this.Controls.Add(this.grpIslem);
@@ -882,6 +932,7 @@
             this.grpCariSec.PerformLayout();
             this.grpBForex.ResumeLayout(false);
             this.grpBForex.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GridCariBKY)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -950,5 +1001,6 @@
         public Bunifu.Framework.UI.BunifuCustomLabel lblCariKod;
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private Bunifu.Framework.UI.BunifuThinButton2 btnSil;
+        private MetroFramework.Controls.MetroGrid GridCariBKY;
     }
 }

@@ -14,6 +14,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using _57Finance.Diger.Cari;
 using MetroFramework;
+using IniParser;
+using IniParser.Model;
 
 namespace _57Finance
 {
@@ -59,12 +61,25 @@ namespace _57Finance
             if (transactioninfo != null)
             {
                 GetValuesFromClient();
+                GetBalanceFromDB(transactioninfo.ClientID);
             }
         }
         private void btnCariSec_Click(object sender, EventArgs e)
         {
             CariSec CariSec = new CariSec(2);
             CariSec.Show();
+        }
+        private void GetBalanceFromDB(int ClientID)
+        {
+            baglanti = new SqlConnection("Server=" + ServerAdress + ";Database=" + DatabaseName + ";User Id=" + UsrName + ";Password=" + Pw + ";");
+            DataTable tablo = new DataTable();
+            tablo.Clear();
+            ds = new DataSet();
+            string query = $"SELECT * FROM [{DatabaseName}].dbo.GetClientBalance({ClientID})";
+            SqlDataAdapter adapter = new SqlDataAdapter(query, baglanti);
+            adapter.Fill(tablo);
+            ds.Merge(tablo);
+            GridCariBKY.DataSource = tablo;
         }
         private void CalculateForex()
         {
@@ -180,14 +195,32 @@ namespace _57Finance
             public string symbol { get; set; }
             public double price { get; set; }
         }
-
         private void lblCariKod_TextChanged(object sender, EventArgs e)
         {
             if (lblCariKod.Text != "")
             {
+                GetBalanceFromDB(Convert.ToInt32(ClientID));
                 grpIslem.Enabled = true;
                 rdTL.Checked = true;
+                txtBelgeNo.Text = GetDocNumber("Tediye", "TDKey");
             }
+        }
+        private string GetDocNumber(string Group, string Key)
+        {
+            var parser = new FileIniDataParser();
+            IniData data = parser.ReadFile("Configuration.ini");
+            string useFullScreenStr = data[Group][Key];
+
+            //parser.WriteFile("Configuration.ini", data);
+            return useFullScreenStr;
+        }
+        private void WriteDocNumber(string Group, string Key)
+        {
+            var parser = new FileIniDataParser();
+            IniData data = parser.ReadFile("Configuration.ini");
+            string GetFileNumber = Convert.ToString(Convert.ToDouble(GetDocNumber(Group, Key)) + 1).PadLeft(5, Convert.ToChar("0"));
+            data[Group][Key] = GetFileNumber;
+            parser.WriteFile("Configuration.ini", data);
         }
         private void rdTL_CheckedChanged(object sender, EventArgs e)
         {
@@ -269,12 +302,10 @@ namespace _57Finance
                 Forex.SelectedTL = Math.Round(Forex.AZNtoTL, 4);
             }
         }
-
         private void txtDvzTutar_TextChanged(object sender, EventArgs e)
         {
             CalculateForex();
         }
-
         private void btnKaydet_Click(object sender, EventArgs e)
         {
             try
@@ -327,6 +358,7 @@ namespace _57Finance
                 komut.Parameters.AddWithValue("@p16", FSelectedTL);
                 komut.ExecuteScalar();
                 baglanti.Close();
+                WriteDocNumber("Tediye", "TDKey");
                 this.Close();
                 if (transactioninfo == null)
                     MetroMessageBox.Show(this, "Belge Numarası : " + txtBelgeNo.Text.Trim() + "\n Kayıt başarıyla eklenmiştir.", "Kaydetme Başarılı ✓", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -339,7 +371,6 @@ namespace _57Finance
                 MetroMessageBox.Show(this, "Bir hata ile karşılaşıldı... Sebebi girilen veriler ile alakalı olabilir...", "Kayıt tamamlanamadı !", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
         }
-
         private void btnSil_Click(object sender, EventArgs e)
         {
             if (transactioninfo != null)

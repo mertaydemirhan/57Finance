@@ -36,7 +36,6 @@ namespace _57Finance.Diger.Cari
         private void CariSec_Load(object sender, EventArgs e)
         {
             ToList();
-
         }
         private void ToList()
         {
@@ -59,6 +58,7 @@ namespace _57Finance.Diger.Cari
         public void ara(string ara, string yer)
         {
             //MetroFramework.MetroMessageBox.Show(this,yer,"Harika");
+            
             baglanti = new SqlConnection("Server=" + ServerAdress + ";Database=" + DatabaseName + ";User Id=" + UsrName + ";Password=" + Pw + ";");
             if (yer.Trim() == "")
             {
@@ -70,7 +70,11 @@ namespace _57Finance.Diger.Cari
                 tablo.Clear();
                 ds = new DataSet();
                 string query = "SELECT C.ID,ClientCode,CommercialTitle,TaxNo,IsBlackListed from Clients C JOIN Departments D ON(C.DepartmentID = D.ID) Where isActive=1";
-                SqlDataAdapter adapter = new SqlDataAdapter(query + " AND " + ara + " like '%" + yer + "%'", baglanti);
+                SqlDataAdapter adapter = new SqlDataAdapter();
+                if (ara != null)
+                    adapter = new SqlDataAdapter(query + " AND " + ara + " like '%" + yer + "%'", baglanti);
+                else
+                    adapter = new SqlDataAdapter(query + " AND " + yer, baglanti);
                 adapter.Fill(tablo);
                 ds.Merge(tablo);
                 GridCari.DataSource = tablo;
@@ -87,26 +91,6 @@ namespace _57Finance.Diger.Cari
         {
             this.Close();
         }
-        private void txtCariKodu_OnValueChanged(object sender, EventArgs e)
-        {
-            string al = txtCariKodu.Text;
-            ara("ClientCode", al);
-        }
-        private void txtTicariUnvani_OnValueChanged(object sender, EventArgs e)
-        {
-            string al = txtTicariUnvani.Text;
-            ara("CommercialTitle", al);
-        }
-        private void txtVergiNo_OnValueChanged(object sender, EventArgs e)
-        {
-            string al = txtVergiNo.Text;
-            ara("TaxNo", al);
-        }
-        private void txtMuhSatis_OnValueChanged(object sender, EventArgs e)
-        {
-            string al = txtMuhSatis.Text;
-            ara("ClientAccSale", al);
-        }
 
         private void btnCariSec_Click(object sender, EventArgs e)
         {
@@ -122,15 +106,17 @@ namespace _57Finance.Diger.Cari
             {
                 if(typeForm == 1)
                 {
+                    ((TahsilatGirisi)TahsilatGiris).ClientID = selectedRow.Cells["ID"].Value.ToString();
                     ((TahsilatGirisi)TahsilatGiris).lblTicariUnvani.Text = selectedRow.Cells["CommercialTitle"].Value.ToString();
                     ((TahsilatGirisi)TahsilatGiris).lblCariKod.Text = selectedRow.Cells["ClientCode"].Value.ToString();
-                    ((TahsilatGirisi)TahsilatGiris).ClientID = selectedRow.Cells["ID"].Value.ToString();
+                   
                 }
                 else if(typeForm == 2)
                 {
+                    ((TediyeGirisi)TediyeGiris).ClientID = selectedRow.Cells["ID"].Value.ToString();
                     ((TediyeGirisi)TediyeGiris).lblTicariUnvani.Text = selectedRow.Cells["CommercialTitle"].Value.ToString();
                     ((TediyeGirisi)TediyeGiris).lblCariKod.Text = selectedRow.Cells["ClientCode"].Value.ToString();
-                    ((TediyeGirisi)TediyeGiris).ClientID = selectedRow.Cells["ID"].Value.ToString();
+                    
                 }
                 this.Close();
             }
@@ -145,7 +131,16 @@ namespace _57Finance.Diger.Cari
 
         private void CariSec_KeyPress(object sender, KeyPressEventArgs e)
         {
-            CariyiAc();
+            //CariyiAc();
+        }
+
+
+        private void btnFiltrele_Click(object sender, EventArgs e)
+        {
+            string al = txtCariKodu.Text;
+            string al1 = txtCariKodu2.Text;
+            string Query = $"ClientCode>='{al}' AND ClientCode<='{al1}'";
+            ara(null,Query);
         }
     }
 }
