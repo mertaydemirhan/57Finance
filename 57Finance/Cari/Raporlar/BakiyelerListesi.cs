@@ -10,9 +10,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace _57Finance
+namespace _57Finance.Cari.Raporlar
 {
-    public partial class GecmisKurlar : Form
+    public partial class BakiyelerListesi : Form
     {
         public readonly string ServerAdress = ConfigurationManager.AppSettings["ServerAdress"];
         public readonly string DatabaseName = ConfigurationManager.AppSettings["DatabaseName"];
@@ -20,52 +20,37 @@ namespace _57Finance
         public readonly string Pw = ConfigurationManager.AppSettings["Pw"];
         SqlConnection baglanti;
         DataSet ds;
-        public GecmisKurlar()
+        public BakiyelerListesi()
         {
             InitializeComponent();
         }
 
-        private void GecmisKurlar_Load(object sender, EventArgs e)
+        private void BakiyelerListesi_Load(object sender, EventArgs e)
         {
             ToList();
         }
 
-        private void ToList() {
-
+        private void ToList()
+        {
             baglanti = new SqlConnection("Server=" + ServerAdress + ";Database=" + DatabaseName + ";User Id=" + UsrName + ";Password=" + Pw + ";");
             DataTable tablo = new DataTable();
             tablo.Clear();
             ds = new DataSet();
-            string query = $"SELECT * from DovizKurlari ORDER BY Tarih ASC";
+            string query = $"SELECT * FROM [{DatabaseName}].dbo.BalanceList('2000-01-01','2500-01-01')";
+
             SqlDataAdapter adapter = new SqlDataAdapter(query, baglanti);
             adapter.Fill(tablo);
             ds.Merge(tablo);
-            GridForex.DataSource = tablo;
+            GridCHR.DataSource = tablo;
 
         }
-
-        private void btnFiltrele_Click(object sender, EventArgs e)
-        {
-            baglanti = new SqlConnection("Server=" + ServerAdress + ";Database=" + DatabaseName + ";User Id=" + UsrName + ";Password=" + Pw + ";");
-                DataTable tablo = new DataTable();
-                tablo.Clear();
-                ds = new DataSet();
-                string query = $"Select * from DovizKurlari WHERE 1=1 ";
-                SqlDataAdapter adapter = new SqlDataAdapter();
-                adapter = new SqlDataAdapter(query + " AND Isim like '%" + txtDoviz.Text.Trim() + $"%' AND Tarih=Convert(Date,CAST('{dtTarih.Value.ToString("yyyy-MM-dd")}' AS DATE),103)", baglanti);
-                adapter.Fill(tablo);
-                ds.Merge(tablo);
-                GridForex.DataSource = tablo;
-        }
-
         private void copyAlltoClipboard()
         {
-            GridForex.SelectAll();
-            DataObject dataObj = GridForex.GetClipboardContent();
+            GridCHR.SelectAll();
+            DataObject dataObj = GridCHR.GetClipboardContent();
             if (dataObj != null)
                 Clipboard.SetDataObject(dataObj);
         }
-
         private void btnExcel_Click(object sender, EventArgs e)
         {
             copyAlltoClipboard();

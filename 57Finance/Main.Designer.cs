@@ -35,6 +35,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnMainClientReport = new Bunifu.Framework.UI.BunifuImageButton();
             this.grpTahsilTediye = new System.Windows.Forms.GroupBox();
+            this.btnBkyListesi = new Bunifu.Framework.UI.BunifuImageButton();
+            this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.btnMainTransactions = new Bunifu.Framework.UI.BunifuImageButton();
             this.label3 = new System.Windows.Forms.Label();
@@ -42,17 +44,11 @@
             this.label4 = new System.Windows.Forms.Label();
             this.btnMainPayment = new Bunifu.Framework.UI.BunifuImageButton();
             this.grpDoviz = new System.Windows.Forms.GroupBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.btnMainForexDefinition = new Bunifu.Framework.UI.BunifuImageButton();
             this.label7 = new System.Windows.Forms.Label();
             this.btnMainForexRates = new Bunifu.Framework.UI.BunifuImageButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label13 = new System.Windows.Forms.Label();
             this.btnMainInvoiceReport = new Bunifu.Framework.UI.BunifuImageButton();
-            this.label11 = new System.Windows.Forms.Label();
-            this.btnMainSaleReturn = new Bunifu.Framework.UI.BunifuImageButton();
-            this.label12 = new System.Windows.Forms.Label();
-            this.btnMainPurchaseReturn = new Bunifu.Framework.UI.BunifuImageButton();
             this.label8 = new System.Windows.Forms.Label();
             this.btnMainExpenseInvoice = new Bunifu.Framework.UI.BunifuImageButton();
             this.label9 = new System.Windows.Forms.Label();
@@ -64,6 +60,7 @@
             this.cariTanımlarıToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.raporlarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CariListesiMenuStrip = new System.Windows.Forms.ToolStripMenuItem();
+            this.bakiyelerListesiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripDropDownButton2 = new System.Windows.Forms.ToolStripDropDownButton();
             this.işlemlerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tahsilatGirişiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -71,37 +68,43 @@
             this.raporlarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.cariHareketRaporuToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripDropDownButton();
-            this.dövizTanımlarıToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.geçmişKurlarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripDropDownButton();
             this.alisFaturasıToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SatisFaturasiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.masrafFaturasıToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.iadeFaturasıToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.alistaniadeFaturasiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.satistaniadeFaturasiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.raporlarToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.faturaRaporuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.btnHizmet = new Bunifu.Framework.UI.BunifuImageButton();
+            this.label15 = new System.Windows.Forms.Label();
+            this.btnHizmetList = new Bunifu.Framework.UI.BunifuImageButton();
+            this.toolStripButton4 = new System.Windows.Forms.ToolStripSplitButton();
+            this.hizmetTanımıToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.raporlarToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.hizmetTanımlarıToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.grpCari.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnMainClientDefinition)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMainClientReport)).BeginInit();
             this.grpTahsilTediye.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnBkyListesi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMainTransactions)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMainCollection)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMainPayment)).BeginInit();
             this.grpDoviz.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnMainForexDefinition)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMainForexRates)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnMainInvoiceReport)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnMainSaleReturn)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnMainPurchaseReturn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMainExpenseInvoice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMainPurchaseInvoice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMainSaleInvoice)).BeginInit();
             this.toolStrip1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnHizmet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnHizmetList)).BeginInit();
             this.SuspendLayout();
             // 
             // grpCari
@@ -166,6 +169,8 @@
             // 
             // grpTahsilTediye
             // 
+            this.grpTahsilTediye.Controls.Add(this.btnBkyListesi);
+            this.grpTahsilTediye.Controls.Add(this.label6);
             this.grpTahsilTediye.Controls.Add(this.label5);
             this.grpTahsilTediye.Controls.Add(this.btnMainTransactions);
             this.grpTahsilTediye.Controls.Add(this.label3);
@@ -173,17 +178,40 @@
             this.grpTahsilTediye.Controls.Add(this.label4);
             this.grpTahsilTediye.Controls.Add(this.btnMainPayment);
             this.grpTahsilTediye.Font = new System.Drawing.Font("Georgia", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grpTahsilTediye.Location = new System.Drawing.Point(12, 137);
+            this.grpTahsilTediye.Location = new System.Drawing.Point(12, 253);
             this.grpTahsilTediye.Name = "grpTahsilTediye";
             this.grpTahsilTediye.Size = new System.Drawing.Size(733, 120);
             this.grpTahsilTediye.TabIndex = 2;
             this.grpTahsilTediye.TabStop = false;
             this.grpTahsilTediye.Text = "Tahsilat-Tediye";
             // 
+            // btnBkyListesi
+            // 
+            this.btnBkyListesi.BackColor = System.Drawing.Color.Transparent;
+            this.btnBkyListesi.Image = ((System.Drawing.Image)(resources.GetObject("btnBkyListesi.Image")));
+            this.btnBkyListesi.ImageActive = null;
+            this.btnBkyListesi.Location = new System.Drawing.Point(485, 24);
+            this.btnBkyListesi.Name = "btnBkyListesi";
+            this.btnBkyListesi.Size = new System.Drawing.Size(144, 59);
+            this.btnBkyListesi.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnBkyListesi.TabIndex = 7;
+            this.btnBkyListesi.TabStop = false;
+            this.btnBkyListesi.Zoom = 10;
+            this.btnBkyListesi.Click += new System.EventHandler(this.btnBkyListesi_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(506, 86);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(115, 18);
+            this.label6.TabIndex = 6;
+            this.label6.Text = "Bakiyeler Listesi";
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(341, 86);
+            this.label5.Location = new System.Drawing.Point(322, 86);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(147, 18);
             this.label5.TabIndex = 5;
@@ -194,9 +222,9 @@
             this.btnMainTransactions.BackColor = System.Drawing.Color.Transparent;
             this.btnMainTransactions.Image = ((System.Drawing.Image)(resources.GetObject("btnMainTransactions.Image")));
             this.btnMainTransactions.ImageActive = null;
-            this.btnMainTransactions.Location = new System.Drawing.Point(340, 24);
+            this.btnMainTransactions.Location = new System.Drawing.Point(331, 24);
             this.btnMainTransactions.Name = "btnMainTransactions";
-            this.btnMainTransactions.Size = new System.Drawing.Size(144, 59);
+            this.btnMainTransactions.Size = new System.Drawing.Size(125, 59);
             this.btnMainTransactions.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnMainTransactions.TabIndex = 4;
             this.btnMainTransactions.TabStop = false;
@@ -242,7 +270,7 @@
             this.btnMainPayment.ImageActive = null;
             this.btnMainPayment.Location = new System.Drawing.Point(174, 24);
             this.btnMainPayment.Name = "btnMainPayment";
-            this.btnMainPayment.Size = new System.Drawing.Size(144, 59);
+            this.btnMainPayment.Size = new System.Drawing.Size(135, 59);
             this.btnMainPayment.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnMainPayment.TabIndex = 0;
             this.btnMainPayment.TabStop = false;
@@ -251,45 +279,20 @@
             // 
             // grpDoviz
             // 
-            this.grpDoviz.Controls.Add(this.label6);
-            this.grpDoviz.Controls.Add(this.btnMainForexDefinition);
             this.grpDoviz.Controls.Add(this.label7);
             this.grpDoviz.Controls.Add(this.btnMainForexRates);
             this.grpDoviz.Font = new System.Drawing.Font("Georgia", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grpDoviz.Location = new System.Drawing.Point(12, 263);
+            this.grpDoviz.Location = new System.Drawing.Point(12, 510);
             this.grpDoviz.Name = "grpDoviz";
             this.grpDoviz.Size = new System.Drawing.Size(733, 111);
             this.grpDoviz.TabIndex = 4;
             this.grpDoviz.TabStop = false;
             this.grpDoviz.Text = "Döviz İşlemleri";
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(54, 82);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(116, 18);
-            this.label6.TabIndex = 3;
-            this.label6.Text = "Döviz Tanımları";
-            // 
-            // btnMainForexDefinition
-            // 
-            this.btnMainForexDefinition.BackColor = System.Drawing.Color.Transparent;
-            this.btnMainForexDefinition.Image = ((System.Drawing.Image)(resources.GetObject("btnMainForexDefinition.Image")));
-            this.btnMainForexDefinition.ImageActive = null;
-            this.btnMainForexDefinition.Location = new System.Drawing.Point(52, 21);
-            this.btnMainForexDefinition.Name = "btnMainForexDefinition";
-            this.btnMainForexDefinition.Size = new System.Drawing.Size(110, 59);
-            this.btnMainForexDefinition.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnMainForexDefinition.TabIndex = 2;
-            this.btnMainForexDefinition.TabStop = false;
-            this.btnMainForexDefinition.Zoom = 10;
-            this.btnMainForexDefinition.Click += new System.EventHandler(this.btnMainForexDefinition_Click);
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(198, 83);
+            this.label7.Location = new System.Drawing.Point(62, 86);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(105, 18);
             this.label7.TabIndex = 1;
@@ -300,7 +303,7 @@
             this.btnMainForexRates.BackColor = System.Drawing.Color.Transparent;
             this.btnMainForexRates.Image = ((System.Drawing.Image)(resources.GetObject("btnMainForexRates.Image")));
             this.btnMainForexRates.ImageActive = null;
-            this.btnMainForexRates.Location = new System.Drawing.Point(182, 21);
+            this.btnMainForexRates.Location = new System.Drawing.Point(48, 24);
             this.btnMainForexRates.Name = "btnMainForexRates";
             this.btnMainForexRates.Size = new System.Drawing.Size(146, 59);
             this.btnMainForexRates.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -313,10 +316,6 @@
             // 
             this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Controls.Add(this.btnMainInvoiceReport);
-            this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Controls.Add(this.btnMainSaleReturn);
-            this.groupBox1.Controls.Add(this.label12);
-            this.groupBox1.Controls.Add(this.btnMainPurchaseReturn);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.btnMainExpenseInvoice);
             this.groupBox1.Controls.Add(this.label9);
@@ -324,7 +323,7 @@
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.btnMainSaleInvoice);
             this.groupBox1.Font = new System.Drawing.Font("Georgia", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(12, 385);
+            this.groupBox1.Location = new System.Drawing.Point(12, 384);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(733, 120);
             this.groupBox1.TabIndex = 6;
@@ -334,7 +333,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(593, 73);
+            this.label13.Location = new System.Drawing.Point(401, 88);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(107, 18);
             this.label13.TabIndex = 11;
@@ -345,65 +344,19 @@
             this.btnMainInvoiceReport.BackColor = System.Drawing.Color.Transparent;
             this.btnMainInvoiceReport.Image = ((System.Drawing.Image)(resources.GetObject("btnMainInvoiceReport.Image")));
             this.btnMainInvoiceReport.ImageActive = null;
-            this.btnMainInvoiceReport.Location = new System.Drawing.Point(590, 28);
+            this.btnMainInvoiceReport.Location = new System.Drawing.Point(398, 25);
             this.btnMainInvoiceReport.Name = "btnMainInvoiceReport";
-            this.btnMainInvoiceReport.Size = new System.Drawing.Size(101, 41);
+            this.btnMainInvoiceReport.Size = new System.Drawing.Size(101, 58);
             this.btnMainInvoiceReport.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnMainInvoiceReport.TabIndex = 10;
             this.btnMainInvoiceReport.TabStop = false;
             this.btnMainInvoiceReport.Zoom = 10;
             this.btnMainInvoiceReport.Click += new System.EventHandler(this.btnMainInvoiceReport_Click);
             // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(478, 73);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(92, 18);
-            this.label11.TabIndex = 9;
-            this.label11.Text = "Satıştan iade";
-            // 
-            // btnMainSaleReturn
-            // 
-            this.btnMainSaleReturn.BackColor = System.Drawing.Color.Transparent;
-            this.btnMainSaleReturn.Image = ((System.Drawing.Image)(resources.GetObject("btnMainSaleReturn.Image")));
-            this.btnMainSaleReturn.ImageActive = null;
-            this.btnMainSaleReturn.Location = new System.Drawing.Point(463, 29);
-            this.btnMainSaleReturn.Name = "btnMainSaleReturn";
-            this.btnMainSaleReturn.Size = new System.Drawing.Size(122, 41);
-            this.btnMainSaleReturn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnMainSaleReturn.TabIndex = 8;
-            this.btnMainSaleReturn.TabStop = false;
-            this.btnMainSaleReturn.Zoom = 10;
-            this.btnMainSaleReturn.Click += new System.EventHandler(this.btnMainSaleReturn_Click);
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(360, 72);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(88, 18);
-            this.label12.TabIndex = 7;
-            this.label12.Text = "Alıştan İade";
-            // 
-            // btnMainPurchaseReturn
-            // 
-            this.btnMainPurchaseReturn.BackColor = System.Drawing.Color.Transparent;
-            this.btnMainPurchaseReturn.Image = ((System.Drawing.Image)(resources.GetObject("btnMainPurchaseReturn.Image")));
-            this.btnMainPurchaseReturn.ImageActive = null;
-            this.btnMainPurchaseReturn.Location = new System.Drawing.Point(352, 28);
-            this.btnMainPurchaseReturn.Name = "btnMainPurchaseReturn";
-            this.btnMainPurchaseReturn.Size = new System.Drawing.Size(103, 41);
-            this.btnMainPurchaseReturn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnMainPurchaseReturn.TabIndex = 6;
-            this.btnMainPurchaseReturn.TabStop = false;
-            this.btnMainPurchaseReturn.Zoom = 10;
-            this.btnMainPurchaseReturn.Click += new System.EventHandler(this.btnMainPurchaseReturn_Click);
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(230, 71);
+            this.label8.Location = new System.Drawing.Point(264, 87);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(114, 18);
             this.label8.TabIndex = 5;
@@ -414,9 +367,9 @@
             this.btnMainExpenseInvoice.BackColor = System.Drawing.Color.Transparent;
             this.btnMainExpenseInvoice.Image = ((System.Drawing.Image)(resources.GetObject("btnMainExpenseInvoice.Image")));
             this.btnMainExpenseInvoice.ImageActive = null;
-            this.btnMainExpenseInvoice.Location = new System.Drawing.Point(226, 27);
+            this.btnMainExpenseInvoice.Location = new System.Drawing.Point(260, 25);
             this.btnMainExpenseInvoice.Name = "btnMainExpenseInvoice";
-            this.btnMainExpenseInvoice.Size = new System.Drawing.Size(122, 41);
+            this.btnMainExpenseInvoice.Size = new System.Drawing.Size(122, 58);
             this.btnMainExpenseInvoice.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnMainExpenseInvoice.TabIndex = 4;
             this.btnMainExpenseInvoice.TabStop = false;
@@ -426,7 +379,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(13, 70);
+            this.label9.Location = new System.Drawing.Point(47, 86);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(91, 18);
             this.label9.TabIndex = 3;
@@ -437,9 +390,9 @@
             this.btnMainPurchaseInvoice.BackColor = System.Drawing.Color.Transparent;
             this.btnMainPurchaseInvoice.Image = ((System.Drawing.Image)(resources.GetObject("btnMainPurchaseInvoice.Image")));
             this.btnMainPurchaseInvoice.ImageActive = null;
-            this.btnMainPurchaseInvoice.Location = new System.Drawing.Point(14, 26);
+            this.btnMainPurchaseInvoice.Location = new System.Drawing.Point(48, 24);
             this.btnMainPurchaseInvoice.Name = "btnMainPurchaseInvoice";
-            this.btnMainPurchaseInvoice.Size = new System.Drawing.Size(85, 41);
+            this.btnMainPurchaseInvoice.Size = new System.Drawing.Size(85, 59);
             this.btnMainPurchaseInvoice.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnMainPurchaseInvoice.TabIndex = 2;
             this.btnMainPurchaseInvoice.TabStop = false;
@@ -449,7 +402,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(120, 70);
+            this.label10.Location = new System.Drawing.Point(154, 86);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(98, 18);
             this.label10.TabIndex = 1;
@@ -460,9 +413,9 @@
             this.btnMainSaleInvoice.BackColor = System.Drawing.Color.Transparent;
             this.btnMainSaleInvoice.Image = ((System.Drawing.Image)(resources.GetObject("btnMainSaleInvoice.Image")));
             this.btnMainSaleInvoice.ImageActive = null;
-            this.btnMainSaleInvoice.Location = new System.Drawing.Point(115, 26);
+            this.btnMainSaleInvoice.Location = new System.Drawing.Point(149, 24);
             this.btnMainSaleInvoice.Name = "btnMainSaleInvoice";
-            this.btnMainSaleInvoice.Size = new System.Drawing.Size(103, 41);
+            this.btnMainSaleInvoice.Size = new System.Drawing.Size(103, 59);
             this.btnMainSaleInvoice.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnMainSaleInvoice.TabIndex = 0;
             this.btnMainSaleInvoice.TabStop = false;
@@ -503,7 +456,8 @@
             // 
             this.raporlarToolStripMenuItem.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.raporlarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.CariListesiMenuStrip});
+            this.CariListesiMenuStrip,
+            this.bakiyelerListesiToolStripMenuItem});
             this.raporlarToolStripMenuItem.Name = "raporlarToolStripMenuItem";
             this.raporlarToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.raporlarToolStripMenuItem.Text = "Raporlar";
@@ -512,9 +466,16 @@
             // 
             this.CariListesiMenuStrip.BackColor = System.Drawing.Color.LightGray;
             this.CariListesiMenuStrip.Name = "CariListesiMenuStrip";
-            this.CariListesiMenuStrip.Size = new System.Drawing.Size(144, 22);
+            this.CariListesiMenuStrip.Size = new System.Drawing.Size(179, 22);
             this.CariListesiMenuStrip.Text = "Cari Listesi";
             this.CariListesiMenuStrip.Click += new System.EventHandler(this.CariListesiMenuStrip_Click);
+            // 
+            // bakiyelerListesiToolStripMenuItem
+            // 
+            this.bakiyelerListesiToolStripMenuItem.Name = "bakiyelerListesiToolStripMenuItem";
+            this.bakiyelerListesiToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.bakiyelerListesiToolStripMenuItem.Text = "Bakiyeler Listesi";
+            this.bakiyelerListesiToolStripMenuItem.Click += new System.EventHandler(this.bakiyelerListesiToolStripMenuItem_Click);
             // 
             // toolStripDropDownButton2
             // 
@@ -574,7 +535,6 @@
             // 
             this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.toolStripButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.dövizTanımlarıToolStripMenuItem,
             this.geçmişKurlarToolStripMenuItem});
             this.toolStripButton1.Font = new System.Drawing.Font("Cambria", 11.25F);
             this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
@@ -583,19 +543,11 @@
             this.toolStripButton1.Size = new System.Drawing.Size(116, 22);
             this.toolStripButton1.Text = "Döviz İşlemleri";
             // 
-            // dövizTanımlarıToolStripMenuItem
-            // 
-            this.dövizTanımlarıToolStripMenuItem.BackColor = System.Drawing.Color.Khaki;
-            this.dövizTanımlarıToolStripMenuItem.Name = "dövizTanımlarıToolStripMenuItem";
-            this.dövizTanımlarıToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
-            this.dövizTanımlarıToolStripMenuItem.Text = "Döviz Tanımları";
-            this.dövizTanımlarıToolStripMenuItem.Click += new System.EventHandler(this.dövizTanımlarıToolStripMenuItem_Click);
-            // 
             // geçmişKurlarToolStripMenuItem
             // 
             this.geçmişKurlarToolStripMenuItem.BackColor = System.Drawing.Color.DarkKhaki;
             this.geçmişKurlarToolStripMenuItem.Name = "geçmişKurlarToolStripMenuItem";
-            this.geçmişKurlarToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.geçmişKurlarToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.geçmişKurlarToolStripMenuItem.Text = "Geçmiş Kurlar";
             this.geçmişKurlarToolStripMenuItem.Click += new System.EventHandler(this.geçmişKurlarToolStripMenuItem_Click);
             // 
@@ -606,7 +558,6 @@
             this.alisFaturasıToolStripMenuItem,
             this.SatisFaturasiToolStripMenuItem,
             this.masrafFaturasıToolStripMenuItem,
-            this.iadeFaturasıToolStripMenuItem,
             this.raporlarToolStripMenuItem2});
             this.toolStripButton2.Font = new System.Drawing.Font("Cambria", 11.25F);
             this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
@@ -619,7 +570,7 @@
             // 
             this.alisFaturasıToolStripMenuItem.BackColor = System.Drawing.Color.SeaGreen;
             this.alisFaturasıToolStripMenuItem.Name = "alisFaturasıToolStripMenuItem";
-            this.alisFaturasıToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.alisFaturasıToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.alisFaturasıToolStripMenuItem.Text = "Alış Faturası";
             this.alisFaturasıToolStripMenuItem.Click += new System.EventHandler(this.alisFaturasıToolStripMenuItem_Click);
             // 
@@ -627,7 +578,7 @@
             // 
             this.SatisFaturasiToolStripMenuItem.BackColor = System.Drawing.Color.LightBlue;
             this.SatisFaturasiToolStripMenuItem.Name = "SatisFaturasiToolStripMenuItem";
-            this.SatisFaturasiToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.SatisFaturasiToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.SatisFaturasiToolStripMenuItem.Text = "Satış Faturası";
             this.SatisFaturasiToolStripMenuItem.Click += new System.EventHandler(this.SatisFaturasiToolStripMenuItem_Click);
             // 
@@ -635,35 +586,9 @@
             // 
             this.masrafFaturasıToolStripMenuItem.BackColor = System.Drawing.Color.Thistle;
             this.masrafFaturasıToolStripMenuItem.Name = "masrafFaturasıToolStripMenuItem";
-            this.masrafFaturasıToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.masrafFaturasıToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.masrafFaturasıToolStripMenuItem.Text = "Masraf Faturası";
             this.masrafFaturasıToolStripMenuItem.Click += new System.EventHandler(this.masrafFaturasıToolStripMenuItem_Click);
-            // 
-            // iadeFaturasıToolStripMenuItem
-            // 
-            this.iadeFaturasıToolStripMenuItem.BackColor = System.Drawing.Color.Moccasin;
-            this.iadeFaturasıToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.alistaniadeFaturasiToolStripMenuItem,
-            this.satistaniadeFaturasiToolStripMenuItem});
-            this.iadeFaturasıToolStripMenuItem.Name = "iadeFaturasıToolStripMenuItem";
-            this.iadeFaturasıToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.iadeFaturasıToolStripMenuItem.Text = "İade Faturası";
-            // 
-            // alistaniadeFaturasiToolStripMenuItem
-            // 
-            this.alistaniadeFaturasiToolStripMenuItem.BackColor = System.Drawing.Color.PaleGreen;
-            this.alistaniadeFaturasiToolStripMenuItem.Name = "alistaniadeFaturasiToolStripMenuItem";
-            this.alistaniadeFaturasiToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
-            this.alistaniadeFaturasiToolStripMenuItem.Text = "Alıştan İade Faturası";
-            this.alistaniadeFaturasiToolStripMenuItem.Click += new System.EventHandler(this.alistaniadeFaturasiToolStripMenuItem_Click);
-            // 
-            // satistaniadeFaturasiToolStripMenuItem
-            // 
-            this.satistaniadeFaturasiToolStripMenuItem.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.satistaniadeFaturasiToolStripMenuItem.Name = "satistaniadeFaturasiToolStripMenuItem";
-            this.satistaniadeFaturasiToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
-            this.satistaniadeFaturasiToolStripMenuItem.Text = "Satıştan İade Faturası";
-            this.satistaniadeFaturasiToolStripMenuItem.Click += new System.EventHandler(this.satistaniadeFaturasiToolStripMenuItem_Click);
             // 
             // raporlarToolStripMenuItem2
             // 
@@ -671,7 +596,7 @@
             this.raporlarToolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.faturaRaporuToolStripMenuItem});
             this.raporlarToolStripMenuItem2.Name = "raporlarToolStripMenuItem2";
-            this.raporlarToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.raporlarToolStripMenuItem2.Size = new System.Drawing.Size(172, 22);
             this.raporlarToolStripMenuItem2.Text = "Raporlar";
             // 
             // faturaRaporuToolStripMenuItem
@@ -699,6 +624,7 @@
             this.toolStrip1.BackColor = System.Drawing.Color.LightGray;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripDropDownButton1,
+            this.toolStripButton4,
             this.toolStripDropDownButton2,
             this.toolStripButton1,
             this.toolStripButton2,
@@ -709,12 +635,107 @@
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.label14);
+            this.groupBox2.Controls.Add(this.btnHizmet);
+            this.groupBox2.Controls.Add(this.label15);
+            this.groupBox2.Controls.Add(this.btnHizmetList);
+            this.groupBox2.Font = new System.Drawing.Font("Georgia", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(12, 137);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(733, 117);
+            this.groupBox2.TabIndex = 4;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Hizmet İşlemleri";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(54, 88);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(127, 18);
+            this.label14.TabIndex = 3;
+            this.label14.Text = "Hizmet Tanımları";
+            // 
+            // btnHizmet
+            // 
+            this.btnHizmet.BackColor = System.Drawing.Color.Transparent;
+            this.btnHizmet.Image = ((System.Drawing.Image)(resources.GetObject("btnHizmet.Image")));
+            this.btnHizmet.ImageActive = null;
+            this.btnHizmet.Location = new System.Drawing.Point(57, 26);
+            this.btnHizmet.Name = "btnHizmet";
+            this.btnHizmet.Size = new System.Drawing.Size(110, 59);
+            this.btnHizmet.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnHizmet.TabIndex = 2;
+            this.btnHizmet.TabStop = false;
+            this.btnHizmet.Zoom = 10;
+            this.btnHizmet.Click += new System.EventHandler(this.btnHizmet_Click);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(188, 89);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(168, 18);
+            this.label15.TabIndex = 1;
+            this.label15.Text = "Hizmet Tanımlar Listesi";
+            // 
+            // btnHizmetList
+            // 
+            this.btnHizmetList.BackColor = System.Drawing.Color.Transparent;
+            this.btnHizmetList.Image = ((System.Drawing.Image)(resources.GetObject("btnHizmetList.Image")));
+            this.btnHizmetList.ImageActive = null;
+            this.btnHizmetList.Location = new System.Drawing.Point(191, 26);
+            this.btnHizmetList.Name = "btnHizmetList";
+            this.btnHizmetList.Size = new System.Drawing.Size(144, 59);
+            this.btnHizmetList.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnHizmetList.TabIndex = 0;
+            this.btnHizmetList.TabStop = false;
+            this.btnHizmetList.Zoom = 10;
+            this.btnHizmetList.Click += new System.EventHandler(this.btnHizmetList_Click);
+            // 
+            // toolStripButton4
+            // 
+            this.toolStripButton4.BackColor = System.Drawing.Color.LightGray;
+            this.toolStripButton4.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.hizmetTanımıToolStripMenuItem,
+            this.raporlarToolStripMenuItem3});
+            this.toolStripButton4.Font = new System.Drawing.Font("Cambria", 11.25F);
+            this.toolStripButton4.Name = "toolStripButton4";
+            this.toolStripButton4.Size = new System.Drawing.Size(69, 22);
+            this.toolStripButton4.Text = "Hizmet";
+            // 
+            // hizmetTanımıToolStripMenuItem
+            // 
+            this.hizmetTanımıToolStripMenuItem.BackColor = System.Drawing.Color.LightGray;
+            this.hizmetTanımıToolStripMenuItem.Name = "hizmetTanımıToolStripMenuItem";
+            this.hizmetTanımıToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.hizmetTanımıToolStripMenuItem.Text = "Hizmet Tanımı";
+            this.hizmetTanımıToolStripMenuItem.Click += new System.EventHandler(this.hizmetTanımıToolStripMenuItem_Click);
+            // 
+            // raporlarToolStripMenuItem3
+            // 
+            this.raporlarToolStripMenuItem3.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.hizmetTanımlarıToolStripMenuItem});
+            this.raporlarToolStripMenuItem3.Name = "raporlarToolStripMenuItem3";
+            this.raporlarToolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
+            this.raporlarToolStripMenuItem3.Text = "Raporlar";
+            // 
+            // hizmetTanımlarıToolStripMenuItem
+            // 
+            this.hizmetTanımlarıToolStripMenuItem.Name = "hizmetTanımlarıToolStripMenuItem";
+            this.hizmetTanımlarıToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.hizmetTanımlarıToolStripMenuItem.Text = "Hizmet Tanımları";
+            this.hizmetTanımlarıToolStripMenuItem.Click += new System.EventHandler(this.hizmetTanımlarıToolStripMenuItem_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.ClientSize = new System.Drawing.Size(757, 517);
+            this.ClientSize = new System.Drawing.Size(757, 665);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.grpDoviz);
             this.Controls.Add(this.grpTahsilTediye);
@@ -723,29 +744,32 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Main";
             this.Text = "57 Finans Uygulaması";
+            this.Load += new System.EventHandler(this.Main_Load);
             this.grpCari.ResumeLayout(false);
             this.grpCari.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnMainClientDefinition)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMainClientReport)).EndInit();
             this.grpTahsilTediye.ResumeLayout(false);
             this.grpTahsilTediye.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnBkyListesi)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMainTransactions)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMainCollection)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMainPayment)).EndInit();
             this.grpDoviz.ResumeLayout(false);
             this.grpDoviz.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnMainForexDefinition)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMainForexRates)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnMainInvoiceReport)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnMainSaleReturn)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnMainPurchaseReturn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMainExpenseInvoice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMainPurchaseInvoice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMainSaleInvoice)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnHizmet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnHizmetList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -765,8 +789,6 @@
         private System.Windows.Forms.Label label4;
         private Bunifu.Framework.UI.BunifuImageButton btnMainPayment;
         private System.Windows.Forms.GroupBox grpDoviz;
-        private System.Windows.Forms.Label label6;
-        private Bunifu.Framework.UI.BunifuImageButton btnMainForexDefinition;
         private System.Windows.Forms.Label label7;
         private Bunifu.Framework.UI.BunifuImageButton btnMainForexRates;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -778,10 +800,6 @@
         private Bunifu.Framework.UI.BunifuImageButton btnMainSaleInvoice;
         private System.Windows.Forms.Label label13;
         private Bunifu.Framework.UI.BunifuImageButton btnMainInvoiceReport;
-        private System.Windows.Forms.Label label11;
-        private Bunifu.Framework.UI.BunifuImageButton btnMainSaleReturn;
-        private System.Windows.Forms.Label label12;
-        private Bunifu.Framework.UI.BunifuImageButton btnMainPurchaseReturn;
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
         private System.Windows.Forms.ToolStripMenuItem tanımlarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cariTanımlarıToolStripMenuItem;
@@ -794,19 +812,27 @@
         private System.Windows.Forms.ToolStripMenuItem raporlarToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem cariHareketRaporuToolStripMenuItem1;
         private System.Windows.Forms.ToolStripDropDownButton toolStripButton1;
-        private System.Windows.Forms.ToolStripMenuItem dövizTanımlarıToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem geçmişKurlarToolStripMenuItem;
         private System.Windows.Forms.ToolStripDropDownButton toolStripButton2;
         private System.Windows.Forms.ToolStripMenuItem alisFaturasıToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem SatisFaturasiToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem masrafFaturasıToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem iadeFaturasıToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem alistaniadeFaturasiToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem satistaniadeFaturasiToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem raporlarToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem faturaRaporuToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton toolStripButton3;
         private System.Windows.Forms.ToolStrip toolStrip1;
+        private Bunifu.Framework.UI.BunifuImageButton btnBkyListesi;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ToolStripMenuItem bakiyelerListesiToolStripMenuItem;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label label14;
+        private Bunifu.Framework.UI.BunifuImageButton btnHizmet;
+        private System.Windows.Forms.Label label15;
+        private Bunifu.Framework.UI.BunifuImageButton btnHizmetList;
+        private System.Windows.Forms.ToolStripSplitButton toolStripButton4;
+        private System.Windows.Forms.ToolStripMenuItem hizmetTanımıToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem raporlarToolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem hizmetTanımlarıToolStripMenuItem;
     }
 }
 

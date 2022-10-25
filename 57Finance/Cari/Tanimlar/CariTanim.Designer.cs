@@ -43,12 +43,13 @@
             this.bunifuCustomLabel11 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel10 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmbDoviz = new System.Windows.Forms.ComboBox();
+            this.bunifuCustomLabel13 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel12 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.chkKaraListe = new Bunifu.Framework.UI.BunifuCheckbox();
             this.cmbDepartman = new System.Windows.Forms.ComboBox();
             this.cmbili = new System.Windows.Forms.ComboBox();
             this.cmbUlkesi = new System.Windows.Forms.ComboBox();
-            this.txtCariKodu = new System.Windows.Forms.MaskedTextBox();
             this.txtAdres = new System.Windows.Forms.RichTextBox();
             this.txtVergiDairesi = new Bunifu.Framework.UI.BunifuMetroTextbox();
             this.txtVergiNo = new Bunifu.Framework.UI.BunifuMetroTextbox();
@@ -57,6 +58,7 @@
             this.txtilcesi = new Bunifu.Framework.UI.BunifuMetroTextbox();
             this.txtTicariUnvani = new Bunifu.Framework.UI.BunifuMetroTextbox();
             this.lblID = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.txtCariKodu = new Bunifu.Framework.UI.BunifuMetroTextbox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -224,12 +226,14 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtCariKodu);
+            this.groupBox1.Controls.Add(this.cmbDoviz);
+            this.groupBox1.Controls.Add(this.bunifuCustomLabel13);
             this.groupBox1.Controls.Add(this.bunifuCustomLabel12);
             this.groupBox1.Controls.Add(this.chkKaraListe);
             this.groupBox1.Controls.Add(this.cmbDepartman);
             this.groupBox1.Controls.Add(this.cmbili);
             this.groupBox1.Controls.Add(this.cmbUlkesi);
-            this.groupBox1.Controls.Add(this.txtCariKodu);
             this.groupBox1.Controls.Add(this.txtAdres);
             this.groupBox1.Controls.Add(this.txtVergiDairesi);
             this.groupBox1.Controls.Add(this.txtVergiNo);
@@ -256,6 +260,30 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Cari Bilgileri";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // cmbDoviz
+            // 
+            this.cmbDoviz.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbDoviz.FormattingEnabled = true;
+            this.cmbDoviz.Items.AddRange(new object[] {
+            "USD",
+            "EUR",
+            "GBP",
+            "AZN"});
+            this.cmbDoviz.Location = new System.Drawing.Point(521, 172);
+            this.cmbDoviz.Name = "cmbDoviz";
+            this.cmbDoviz.Size = new System.Drawing.Size(189, 29);
+            this.cmbDoviz.TabIndex = 44;
+            // 
+            // bunifuCustomLabel13
+            // 
+            this.bunifuCustomLabel13.AutoSize = true;
+            this.bunifuCustomLabel13.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuCustomLabel13.Location = new System.Drawing.Point(393, 177);
+            this.bunifuCustomLabel13.Name = "bunifuCustomLabel13";
+            this.bunifuCustomLabel13.Size = new System.Drawing.Size(128, 20);
+            this.bunifuCustomLabel13.TabIndex = 43;
+            this.bunifuCustomLabel13.Text = "Varsayılan Döviz";
             // 
             // bunifuCustomLabel12
             // 
@@ -305,7 +333,6 @@
             this.cmbili.Size = new System.Drawing.Size(181, 23);
             this.cmbili.TabIndex = 39;
             this.cmbili.ValueMember = "ID";
-            this.cmbili.SelectedIndexChanged += new System.EventHandler(this.cmbili_TextChanged);
             // 
             // cmbUlkesi
             // 
@@ -321,16 +348,6 @@
             this.cmbUlkesi.ValueMember = "ID";
             this.cmbUlkesi.SelectedIndexChanged += new System.EventHandler(this.cmbUlkesi_SelectedIndexChanged);
             this.cmbUlkesi.TextChanged += new System.EventHandler(this.cmbUlkesi_TextChanged);
-            // 
-            // txtCariKodu
-            // 
-            this.txtCariKodu.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;
-            this.txtCariKodu.Location = new System.Drawing.Point(96, 20);
-            this.txtCariKodu.Mask = "000000";
-            this.txtCariKodu.Name = "txtCariKodu";
-            this.txtCariKodu.Size = new System.Drawing.Size(175, 27);
-            this.txtCariKodu.TabIndex = 37;
-            this.txtCariKodu.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // txtAdres
             // 
@@ -452,6 +469,23 @@
             this.lblID.TabIndex = 43;
             this.lblID.Text = "0";
             // 
+            // txtCariKodu
+            // 
+            this.txtCariKodu.BorderColorFocused = System.Drawing.Color.Firebrick;
+            this.txtCariKodu.BorderColorIdle = System.Drawing.Color.Silver;
+            this.txtCariKodu.BorderColorMouseHover = System.Drawing.Color.Blue;
+            this.txtCariKodu.BorderThickness = 1;
+            this.txtCariKodu.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtCariKodu.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.txtCariKodu.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtCariKodu.isPassword = false;
+            this.txtCariKodu.Location = new System.Drawing.Point(93, 20);
+            this.txtCariKodu.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCariKodu.Name = "txtCariKodu";
+            this.txtCariKodu.Size = new System.Drawing.Size(178, 30);
+            this.txtCariKodu.TabIndex = 45;
+            this.txtCariKodu.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            // 
             // CariTanim
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -498,12 +532,14 @@
         private Bunifu.Framework.UI.BunifuMetroTextbox txtVergiDairesi;
         private Bunifu.Framework.UI.BunifuMetroTextbox txtVergiNo;
         private System.Windows.Forms.RichTextBox txtAdres;
-        private System.Windows.Forms.MaskedTextBox txtCariKodu;
         private System.Windows.Forms.ComboBox cmbDepartman;
         private System.Windows.Forms.ComboBox cmbili;
         private System.Windows.Forms.ComboBox cmbUlkesi;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel12;
         private Bunifu.Framework.UI.BunifuCheckbox chkKaraListe;
         private Bunifu.Framework.UI.BunifuCustomLabel lblID;
+        private System.Windows.Forms.ComboBox cmbDoviz;
+        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel13;
+        private Bunifu.Framework.UI.BunifuMetroTextbox txtCariKodu;
     }
 }

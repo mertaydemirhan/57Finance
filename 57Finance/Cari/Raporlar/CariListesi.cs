@@ -22,7 +22,6 @@ namespace _57Finance.Cari.Raporlar
         public readonly string UsrName = ConfigurationManager.AppSettings["UsrName"];
         public readonly string Pw = ConfigurationManager.AppSettings["Pw"];
         SqlConnection baglanti;
-        SqlCommand komut;
         DataSet ds;
         public CariListesi()
         {
@@ -170,6 +169,13 @@ namespace _57Finance.Cari.Raporlar
             Microsoft.Office.Interop.Excel.Range CR = (Microsoft.Office.Interop.Excel.Range)xlWorkSheet.Cells[1, 1];
             CR.Select();
             xlWorkSheet.PasteSpecial(CR, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, true);
+        }
+
+        private void btnEkle_Click(object sender, EventArgs e)
+        {
+            CariTanim Ct = new CariTanim();
+            Ct.Show();
+
         }
     }
 }

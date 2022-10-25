@@ -1,5 +1,7 @@
 ﻿using _57Finance.Cari.Raporlar;
 using _57Finance.Diger.Doviz;
+using _57Finance.Hizmet;
+using _57Finance.Hizmet.Raporlar;
 using _57Finance.Faturalar;
 using System;
 using System.Collections.Generic;
@@ -56,8 +58,7 @@ namespace _57Finance
 
         private void dövizTanımlarıToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DovizTanim DvTanim = new DovizTanim();
-            DvTanim.Show();
+
         }
 
         private void geçmişKurlarToolStripMenuItem_Click(object sender, EventArgs e)
@@ -84,17 +85,8 @@ namespace _57Finance
             mfFaturasi.Show();
         }
 
-        private void alistaniadeFaturasiToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Alistaniade alistaniade = new Alistaniade();
-            alistaniade.Show();
-        }
 
-        private void satistaniadeFaturasiToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Satistaniade satistaniade = new Satistaniade();
-            satistaniade.Show();
-        }
+
 
         private void faturaRaporuToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -131,11 +123,6 @@ namespace _57Finance
             CHR.Show();
         }
 
-        private void btnMainForexDefinition_Click(object sender, EventArgs e)
-        {
-            DovizTanim Dv = new DovizTanim();
-            Dv.Show();
-        }
 
         private void btnMainForexRates_Click(object sender, EventArgs e)
         {
@@ -161,17 +148,6 @@ namespace _57Finance
             mfFat.Show();
         }
 
-        private void btnMainPurchaseReturn_Click(object sender, EventArgs e)
-        {
-            Alistaniade aliadeFat = new Alistaniade();
-            aliadeFat.Show();
-        }
-
-        private void btnMainSaleReturn_Click(object sender, EventArgs e)
-        {
-            Satistaniade satiadefat = new Satistaniade();
-            satiadefat.Show();
-        }
 
         private void btnMainInvoiceReport_Click(object sender, EventArgs e)
         {
@@ -183,6 +159,44 @@ namespace _57Finance
         {
             Departmanlar Dept = new Departmanlar();
             Dept.Show();
+        }
+
+        private void btnBkyListesi_Click(object sender, EventArgs e)
+        {
+            BakiyelerListesi BkList = new BakiyelerListesi();
+            BkList.Show();
+        }
+
+        private void bakiyelerListesiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btnBkyListesi_Click(sender, e);
+        }
+
+        private void Main_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnHizmet_Click(object sender, EventArgs e)
+        {
+            HizmetTanim HzTanim = new HizmetTanim();
+            HzTanim.Show();
+        }
+
+        private void btnHizmetList_Click(object sender, EventArgs e)
+        {
+            HizmetRaporu HzRapor = new HizmetRaporu();
+            HzRapor.Show();
+        }
+
+        private void hizmetTanımıToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btnHizmet_Click(sender, e);
+        }
+
+        private void hizmetTanımlarıToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btnHizmetList_Click(sender, e);
         }
     }
 }

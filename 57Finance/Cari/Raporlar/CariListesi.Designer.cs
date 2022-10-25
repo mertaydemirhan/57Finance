@@ -41,6 +41,7 @@
             this.bunifuCustomLabel1 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.btnExcel = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnKartAc = new Bunifu.Framework.UI.BunifuThinButton2();
+            this.btnEkle = new Bunifu.Framework.UI.BunifuThinButton2();
             ((System.ComponentModel.ISupportInitialize)(this.GridCari)).BeginInit();
             this.grpArama.SuspendLayout();
             this.SuspendLayout();
@@ -242,12 +243,39 @@
             this.btnKartAc.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnKartAc.Click += new System.EventHandler(this.btnKartAc_Click);
             // 
+            // btnEkle
+            // 
+            this.btnEkle.ActiveBorderThickness = 1;
+            this.btnEkle.ActiveCornerRadius = 20;
+            this.btnEkle.ActiveFillColor = System.Drawing.Color.LightSteelBlue;
+            this.btnEkle.ActiveForecolor = System.Drawing.Color.Black;
+            this.btnEkle.ActiveLineColor = System.Drawing.Color.LightSteelBlue;
+            this.btnEkle.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.btnEkle.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnEkle.BackgroundImage")));
+            this.btnEkle.ButtonText = "Yeni Kart Aç";
+            this.btnEkle.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEkle.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEkle.ForeColor = System.Drawing.Color.SeaGreen;
+            this.btnEkle.IdleBorderThickness = 1;
+            this.btnEkle.IdleCornerRadius = 20;
+            this.btnEkle.IdleFillColor = System.Drawing.Color.MediumTurquoise;
+            this.btnEkle.IdleForecolor = System.Drawing.Color.MintCream;
+            this.btnEkle.IdleLineColor = System.Drawing.Color.DarkSlateGray;
+            this.btnEkle.Location = new System.Drawing.Point(580, 14);
+            this.btnEkle.Margin = new System.Windows.Forms.Padding(5);
+            this.btnEkle.Name = "btnEkle";
+            this.btnEkle.Size = new System.Drawing.Size(237, 51);
+            this.btnEkle.TabIndex = 4;
+            this.btnEkle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnEkle.Click += new System.EventHandler(this.btnEkle_Click);
+            // 
             // CariListesi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.HighlightText;
             this.ClientSize = new System.Drawing.Size(829, 528);
+            this.Controls.Add(this.btnEkle);
             this.Controls.Add(this.btnKartAc);
             this.Controls.Add(this.btnExcel);
             this.Controls.Add(this.grpArama);
@@ -277,5 +305,6 @@
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel1;
         private Bunifu.Framework.UI.BunifuFlatButton btnExcel;
         private Bunifu.Framework.UI.BunifuThinButton2 btnKartAc;
+        private Bunifu.Framework.UI.BunifuThinButton2 btnEkle;
     }
 }
