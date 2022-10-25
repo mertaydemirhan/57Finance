@@ -30,5 +30,6 @@ namespace _57Finance.Model
         public double ForexGBP { get; set; }
         public double ForexAZN { get; set; }
         public double ForexTL { get; set; }
+        public string DefaultForex { get; set; }
     }
 }

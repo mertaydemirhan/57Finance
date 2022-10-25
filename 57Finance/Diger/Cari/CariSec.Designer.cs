@@ -29,24 +29,24 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CariSec));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnCariSec = new System.Windows.Forms.Button();
             this.GridCari = new MetroFramework.Controls.MetroGrid();
             this.btnKapat = new System.Windows.Forms.Button();
             this.grpArama = new System.Windows.Forms.GroupBox();
+            this.btnFiltrele = new MetroFramework.Controls.MetroButton();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtCariKodu = new Bunifu.Framework.UI.BunifuMetroTextbox();
+            this.txtCariKodu2 = new Bunifu.Framework.UI.BunifuMetroTextbox();
+            this.bunifuCustomLabel1 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.txtMuhSatis = new Bunifu.Framework.UI.BunifuMetroTextbox();
             this.txtVergiNo = new Bunifu.Framework.UI.BunifuMetroTextbox();
             this.txtTicariUnvani = new Bunifu.Framework.UI.BunifuMetroTextbox();
-            this.txtCariKodu = new Bunifu.Framework.UI.BunifuMetroTextbox();
             this.bunifuCustomLabel4 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel3 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel2 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.bunifuCustomLabel1 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.txtCariKodu2 = new Bunifu.Framework.UI.BunifuMetroTextbox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnFiltrele = new MetroFramework.Controls.MetroButton();
             ((System.ComponentModel.ISupportInitialize)(this.GridCari)).BeginInit();
             this.grpArama.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -72,23 +72,23 @@
             this.GridCari.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.GridCari.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.GridCari.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.GridCari.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.GridCari.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.GridCari.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.GridCari.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.GridCari.DefaultCellStyle = dataGridViewCellStyle2;
             this.GridCari.EnableHeadersVisualStyles = false;
             this.GridCari.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.GridCari.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
@@ -96,14 +96,14 @@
             this.GridCari.Name = "GridCari";
             this.GridCari.ReadOnly = true;
             this.GridCari.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.GridCari.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.GridCari.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.GridCari.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.GridCari.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.GridCari.Size = new System.Drawing.Size(455, 276);
@@ -137,6 +137,72 @@
             this.grpArama.TabIndex = 3;
             this.grpArama.TabStop = false;
             this.grpArama.Text = "Arama Bölümü";
+            this.grpArama.Enter += new System.EventHandler(this.grpArama_Enter);
+            // 
+            // btnFiltrele
+            // 
+            this.btnFiltrele.Location = new System.Drawing.Point(344, 13);
+            this.btnFiltrele.Name = "btnFiltrele";
+            this.btnFiltrele.Size = new System.Drawing.Size(108, 151);
+            this.btnFiltrele.TabIndex = 12;
+            this.btnFiltrele.Text = "Filtrele(F2)";
+            this.btnFiltrele.UseSelectable = true;
+            this.btnFiltrele.Click += new System.EventHandler(this.btnFiltrele_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.txtCariKodu);
+            this.groupBox1.Controls.Add(this.txtCariKodu2);
+            this.groupBox1.Controls.Add(this.bunifuCustomLabel1);
+            this.groupBox1.Location = new System.Drawing.Point(6, 13);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(298, 66);
+            this.groupBox1.TabIndex = 12;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Cari Kodu Arama";
+            // 
+            // txtCariKodu
+            // 
+            this.txtCariKodu.BorderColorFocused = System.Drawing.Color.Blue;
+            this.txtCariKodu.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtCariKodu.BorderColorMouseHover = System.Drawing.Color.Blue;
+            this.txtCariKodu.BorderThickness = 3;
+            this.txtCariKodu.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtCariKodu.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.txtCariKodu.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtCariKodu.isPassword = false;
+            this.txtCariKodu.Location = new System.Drawing.Point(129, 7);
+            this.txtCariKodu.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCariKodu.Name = "txtCariKodu";
+            this.txtCariKodu.Size = new System.Drawing.Size(144, 25);
+            this.txtCariKodu.TabIndex = 7;
+            this.txtCariKodu.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            // 
+            // txtCariKodu2
+            // 
+            this.txtCariKodu2.BorderColorFocused = System.Drawing.Color.Blue;
+            this.txtCariKodu2.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtCariKodu2.BorderColorMouseHover = System.Drawing.Color.Blue;
+            this.txtCariKodu2.BorderThickness = 3;
+            this.txtCariKodu2.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtCariKodu2.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.txtCariKodu2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtCariKodu2.isPassword = false;
+            this.txtCariKodu2.Location = new System.Drawing.Point(129, 35);
+            this.txtCariKodu2.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCariKodu2.Name = "txtCariKodu2";
+            this.txtCariKodu2.Size = new System.Drawing.Size(144, 25);
+            this.txtCariKodu2.TabIndex = 11;
+            this.txtCariKodu2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            // 
+            // bunifuCustomLabel1
+            // 
+            this.bunifuCustomLabel1.AutoSize = true;
+            this.bunifuCustomLabel1.Location = new System.Drawing.Point(10, 31);
+            this.bunifuCustomLabel1.Name = "bunifuCustomLabel1";
+            this.bunifuCustomLabel1.Size = new System.Drawing.Size(56, 13);
+            this.bunifuCustomLabel1.TabIndex = 0;
+            this.bunifuCustomLabel1.Text = "Cari Kodu ";
             // 
             // txtMuhSatis
             // 
@@ -189,23 +255,6 @@
             this.txtTicariUnvani.TabIndex = 8;
             this.txtTicariUnvani.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
-            // txtCariKodu
-            // 
-            this.txtCariKodu.BorderColorFocused = System.Drawing.Color.Blue;
-            this.txtCariKodu.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtCariKodu.BorderColorMouseHover = System.Drawing.Color.Blue;
-            this.txtCariKodu.BorderThickness = 3;
-            this.txtCariKodu.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtCariKodu.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.txtCariKodu.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtCariKodu.isPassword = false;
-            this.txtCariKodu.Location = new System.Drawing.Point(129, 7);
-            this.txtCariKodu.Margin = new System.Windows.Forms.Padding(4);
-            this.txtCariKodu.Name = "txtCariKodu";
-            this.txtCariKodu.Size = new System.Drawing.Size(144, 25);
-            this.txtCariKodu.TabIndex = 7;
-            this.txtCariKodu.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            // 
             // bunifuCustomLabel4
             // 
             this.bunifuCustomLabel4.AutoSize = true;
@@ -232,54 +281,6 @@
             this.bunifuCustomLabel2.Size = new System.Drawing.Size(70, 13);
             this.bunifuCustomLabel2.TabIndex = 1;
             this.bunifuCustomLabel2.Text = "Ticari Ünvanı";
-            // 
-            // bunifuCustomLabel1
-            // 
-            this.bunifuCustomLabel1.AutoSize = true;
-            this.bunifuCustomLabel1.Location = new System.Drawing.Point(10, 31);
-            this.bunifuCustomLabel1.Name = "bunifuCustomLabel1";
-            this.bunifuCustomLabel1.Size = new System.Drawing.Size(56, 13);
-            this.bunifuCustomLabel1.TabIndex = 0;
-            this.bunifuCustomLabel1.Text = "Cari Kodu ";
-            // 
-            // txtCariKodu2
-            // 
-            this.txtCariKodu2.BorderColorFocused = System.Drawing.Color.Blue;
-            this.txtCariKodu2.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtCariKodu2.BorderColorMouseHover = System.Drawing.Color.Blue;
-            this.txtCariKodu2.BorderThickness = 3;
-            this.txtCariKodu2.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtCariKodu2.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.txtCariKodu2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtCariKodu2.isPassword = false;
-            this.txtCariKodu2.Location = new System.Drawing.Point(129, 35);
-            this.txtCariKodu2.Margin = new System.Windows.Forms.Padding(4);
-            this.txtCariKodu2.Name = "txtCariKodu2";
-            this.txtCariKodu2.Size = new System.Drawing.Size(144, 25);
-            this.txtCariKodu2.TabIndex = 11;
-            this.txtCariKodu2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.txtCariKodu);
-            this.groupBox1.Controls.Add(this.txtCariKodu2);
-            this.groupBox1.Controls.Add(this.bunifuCustomLabel1);
-            this.groupBox1.Location = new System.Drawing.Point(6, 13);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(298, 66);
-            this.groupBox1.TabIndex = 12;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Cari Kodu Arama";
-            // 
-            // btnFiltrele
-            // 
-            this.btnFiltrele.Location = new System.Drawing.Point(344, 13);
-            this.btnFiltrele.Name = "btnFiltrele";
-            this.btnFiltrele.Size = new System.Drawing.Size(108, 151);
-            this.btnFiltrele.TabIndex = 12;
-            this.btnFiltrele.Text = "Filtrele(F2)";
-            this.btnFiltrele.UseSelectable = true;
-            this.btnFiltrele.Click += new System.EventHandler(this.btnFiltrele_Click);
             // 
             // CariSec
             // 

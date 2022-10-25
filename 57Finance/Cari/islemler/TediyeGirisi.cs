@@ -14,13 +14,12 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using _57Finance.Diger.Cari;
 using MetroFramework;
-using IniParser;
-using IniParser.Model;
 
 namespace _57Finance
 {
     public partial class TediyeGirisi : Form
     {
+        Setters Setters = new Setters();
         public readonly string ServerAdress = ConfigurationManager.AppSettings["ServerAdress"];
         public readonly string DatabaseName = ConfigurationManager.AppSettings["DatabaseName"];
         public readonly string UsrName = ConfigurationManager.AppSettings["UsrName"];
@@ -36,7 +35,6 @@ namespace _57Finance
         public TediyeGirisi()
         {
             InitializeComponent();
-            this.txtBelgeNo.Click += new EventHandler(txtBelgeNo_Click);
             this.txtDvzTutar.Click += new EventHandler(txtDvzTutar_Click);
             this.txtTLTutar.Click += new EventHandler(txtTLTutar_Click);
         }
@@ -44,7 +42,6 @@ namespace _57Finance
         {
             InitializeComponent();
             transactioninfo = transaction;
-            this.txtBelgeNo.Click += new EventHandler(txtBelgeNo_Click);
             this.txtDvzTutar.Click += new EventHandler(txtDvzTutar_Click);
             this.txtTLTutar.Click += new EventHandler(txtTLTutar_Click);
         }
@@ -202,26 +199,10 @@ namespace _57Finance
                 GetBalanceFromDB(Convert.ToInt32(ClientID));
                 grpIslem.Enabled = true;
                 rdTL.Checked = true;
-                txtBelgeNo.Text = GetDocNumber("Tediye", "TDKey");
+                txtBelgeNo.Text = Setters.GetDocNumber("Tediye", "TDKey");
             }
         }
-        private string GetDocNumber(string Group, string Key)
-        {
-            var parser = new FileIniDataParser();
-            IniData data = parser.ReadFile("Configuration.ini");
-            string useFullScreenStr = data[Group][Key];
-
-            //parser.WriteFile("Configuration.ini", data);
-            return useFullScreenStr;
-        }
-        private void WriteDocNumber(string Group, string Key)
-        {
-            var parser = new FileIniDataParser();
-            IniData data = parser.ReadFile("Configuration.ini");
-            string GetFileNumber = Convert.ToString(Convert.ToDouble(GetDocNumber(Group, Key)) + 1).PadLeft(5, Convert.ToChar("0"));
-            data[Group][Key] = GetFileNumber;
-            parser.WriteFile("Configuration.ini", data);
-        }
+  
         private void rdTL_CheckedChanged(object sender, EventArgs e)
         {
             grpTL.Enabled = true;
@@ -358,7 +339,7 @@ namespace _57Finance
                 komut.Parameters.AddWithValue("@p16", FSelectedTL);
                 komut.ExecuteScalar();
                 baglanti.Close();
-                WriteDocNumber("Tediye", "TDKey");
+                Setters.WriteDocNumber("Tediye", "TDKey");
                 this.Close();
                 if (transactioninfo == null)
                     MetroMessageBox.Show(this, "Belge Numarası : " + txtBelgeNo.Text.Trim() + "\n Kayıt başarıyla eklenmiştir.", "Kaydetme Başarılı ✓", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -390,7 +371,6 @@ namespace _57Finance
         }
         private void txtBelgeNo_Click(object sender, EventArgs e)
         {
-            this.txtBelgeNo.Select(0, 0);
         }
         private void txtTLTutar_Click(object sender, EventArgs e)
         {
@@ -400,5 +380,6 @@ namespace _57Finance
         {
             this.txtDvzTutar.Select(0, 0);
         }
+
     }
 }

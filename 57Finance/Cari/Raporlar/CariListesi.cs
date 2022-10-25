@@ -170,5 +170,12 @@ namespace _57Finance.Cari.Raporlar
             CR.Select();
             xlWorkSheet.PasteSpecial(CR, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, true);
         }
+
+        private void btnEkle_Click(object sender, EventArgs e)
+        {
+            CariTanim Ct = new CariTanim();
+            Ct.Show();
+
+        }
     }
 }

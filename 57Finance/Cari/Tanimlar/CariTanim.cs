@@ -17,6 +17,7 @@ namespace _57Finance
 {
     public partial class CariTanim : Form
     {
+        Setters Setters = new Setters();
         public readonly string ServerAdress = ConfigurationManager.AppSettings["ServerAdress"];
         public readonly string DatabaseName = ConfigurationManager.AppSettings["DatabaseName"];
         public readonly string UsrName = ConfigurationManager.AppSettings["UsrName"];
@@ -44,6 +45,7 @@ namespace _57Finance
 
         private void CariTanim_Load(object sender, EventArgs e)
         {
+            cmbDoviz.SelectedIndex = 0;
             if (info == null)
             {
                 BindDataUlkesi();
@@ -52,6 +54,7 @@ namespace _57Finance
                 cmbili.SelectedValue = 3703;
                 BindDataDepartment();
                 chkKaraListe.Checked = false;
+                txtCariKodu.Text = Setters.GetDocNumber("CariTanim", "CRKey");
             }
             if (info != null)
             {
@@ -83,9 +86,7 @@ namespace _57Finance
                 BindData_ili();
             }
         }
-        private void cmbili_TextChanged(object sender, EventArgs e)
-        {
-        }
+  
         public void GetInfo()
         {
             baglanti = new SqlConnection("Server=" + ServerAdress + ";Database=" + DatabaseName + ";User Id=" + UsrName + ";Password=" + Pw + ";");
@@ -143,11 +144,11 @@ namespace _57Finance
             baglanti = new SqlConnection("Server=" + ServerAdress + ";Database=" + DatabaseName + ";User Id=" + UsrName + ";Password=" + Pw + ";");
             baglanti.Open();
             if(info == null)
-                komut = new SqlCommand($"INSERT INTO Clients(ClientCode,CommercialTitle,Adress,Country,City,District,ClientAccSale,ClientAccBuy,DepartmentID,TaxNo,TaxOffice,IsBlackListed,IsActive) " +
-                                                $"VALUES(@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8,@p9,@p10,@p11,@p12,1)", baglanti);
+                komut = new SqlCommand($"INSERT INTO Clients(ClientCode,CommercialTitle,Adress,Country,City,District,ClientAccSale,ClientAccBuy,DepartmentID,TaxNo,TaxOffice,IsBlackListed,IsActive,DefaultForex) " +
+                                                $"VALUES(@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8,@p9,@p10,@p11,@p12,1,@p13)", baglanti);
             if (info != null)
                 komut = new SqlCommand($"UPDATE Clients SET ClientCode=@p1,CommercialTitle=@p2,Adress=@p3,Country=@p4,City=@p5,District=@p6,ClientAccSale=@p7,ClientAccBuy=@p8,DepartmentID=@p9," +
-                                       $"TaxNo=@p10,TaxOffice=@p11,IsBlackListed=@p12 WHERE ID={lblID.Text}",baglanti);
+                                       $"TaxNo=@p10,TaxOffice=@p11,IsBlackListed=@p12,DefaultForex=@p13 WHERE ID={lblID.Text}",baglanti);
             komut.Parameters.AddWithValue("@p1",  txtCariKodu.Text.Trim());
             komut.Parameters.AddWithValue("@p2",  txtTicariUnvani.Text.Trim());
             komut.Parameters.AddWithValue("@p3",  txtAdres.Text.Trim());
@@ -160,7 +161,9 @@ namespace _57Finance
             komut.Parameters.AddWithValue("@p10", txtVergiNo.Text.Trim());
             komut.Parameters.AddWithValue("@p11", txtVergiDairesi.Text.Trim());
             komut.Parameters.AddWithValue("@p12", chkKaraListe.Checked.ToString());
+            komut.Parameters.AddWithValue("@p13", cmbDoviz.SelectedText.Trim());
             komut.ExecuteScalar();
+            Setters.WriteDocNumber("CariTanim", "CRKey");
             baglanti.Close();
             if(info==null)
                 MetroMessageBox.Show(this, "Ticari Unvanı :"+txtTicariUnvani.Text.Trim()+"\n Cari Kodu : "+txtCariKodu.Text.Trim()+"\n Kayıt başarıyla eklenmiştir.", "Kaydetme Başarılı ✓",MessageBoxButtons.OK,MessageBoxIcon.Information);
@@ -206,6 +209,10 @@ namespace _57Finance
         private void cmbUlkesi_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtCariKodu_Click(object sender, EventArgs e)
+        {
         }
     }
 }

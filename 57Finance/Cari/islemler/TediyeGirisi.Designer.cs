@@ -38,7 +38,6 @@
             this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
             this.cmbDocumentType = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
-            this.txtBelgeNo = new System.Windows.Forms.MaskedTextBox();
             this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
             this.label2 = new System.Windows.Forms.Label();
             this.grpTur = new System.Windows.Forms.GroupBox();
@@ -95,6 +94,7 @@
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.btnSil = new Bunifu.Framework.UI.BunifuThinButton2();
             this.GridCariBKY = new MetroFramework.Controls.MetroGrid();
+            this.txtBelgeNo = new MetroFramework.Controls.MetroTextBox();
             this.grpIslem.SuspendLayout();
             this.grpTur.SuspendLayout();
             this.grpTL.SuspendLayout();
@@ -134,11 +134,11 @@
             // 
             // grpIslem
             // 
+            this.grpIslem.Controls.Add(this.txtBelgeNo);
             this.grpIslem.Controls.Add(this.cmbDepartman);
             this.grpIslem.Controls.Add(this.metroLabel10);
             this.grpIslem.Controls.Add(this.cmbDocumentType);
             this.grpIslem.Controls.Add(this.metroLabel9);
-            this.grpIslem.Controls.Add(this.txtBelgeNo);
             this.grpIslem.Controls.Add(this.metroLabel8);
             this.grpIslem.Controls.Add(this.label2);
             this.grpIslem.Controls.Add(this.grpTur);
@@ -204,16 +204,6 @@
             this.metroLabel9.Size = new System.Drawing.Size(67, 19);
             this.metroLabel9.TabIndex = 17;
             this.metroLabel9.Text = "İşlem Türü";
-            // 
-            // txtBelgeNo
-            // 
-            this.txtBelgeNo.Location = new System.Drawing.Point(445, 70);
-            this.txtBelgeNo.Mask = "000000000";
-            this.txtBelgeNo.Name = "txtBelgeNo";
-            this.txtBelgeNo.PromptChar = ' ';
-            this.txtBelgeNo.Size = new System.Drawing.Size(163, 20);
-            this.txtBelgeNo.TabIndex = 16;
-            this.txtBelgeNo.Click += new System.EventHandler(this.txtBelgeNo_Click);
             // 
             // metroLabel8
             // 
@@ -900,6 +890,36 @@
             this.GridCariBKY.Size = new System.Drawing.Size(409, 129);
             this.GridCariBKY.TabIndex = 11;
             // 
+            // txtBelgeNo
+            // 
+            // 
+            // 
+            // 
+            this.txtBelgeNo.CustomButton.Image = null;
+            this.txtBelgeNo.CustomButton.Location = new System.Drawing.Point(146, 1);
+            this.txtBelgeNo.CustomButton.Name = "";
+            this.txtBelgeNo.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.txtBelgeNo.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtBelgeNo.CustomButton.TabIndex = 1;
+            this.txtBelgeNo.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtBelgeNo.CustomButton.UseSelectable = true;
+            this.txtBelgeNo.CustomButton.Visible = false;
+            this.txtBelgeNo.Lines = new string[0];
+            this.txtBelgeNo.Location = new System.Drawing.Point(445, 70);
+            this.txtBelgeNo.MaxLength = 32767;
+            this.txtBelgeNo.Name = "txtBelgeNo";
+            this.txtBelgeNo.PasswordChar = '\0';
+            this.txtBelgeNo.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtBelgeNo.SelectedText = "";
+            this.txtBelgeNo.SelectionLength = 0;
+            this.txtBelgeNo.SelectionStart = 0;
+            this.txtBelgeNo.ShortcutsEnabled = true;
+            this.txtBelgeNo.Size = new System.Drawing.Size(168, 23);
+            this.txtBelgeNo.TabIndex = 21;
+            this.txtBelgeNo.UseSelectable = true;
+            this.txtBelgeNo.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtBelgeNo.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
             // TediyeGirisi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -945,7 +965,6 @@
         private MetroFramework.Controls.MetroLabel metroLabel10;
         private MetroFramework.Controls.MetroComboBox cmbDocumentType;
         private MetroFramework.Controls.MetroLabel metroLabel9;
-        private System.Windows.Forms.MaskedTextBox txtBelgeNo;
         private MetroFramework.Controls.MetroLabel metroLabel8;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox grpTur;
@@ -1002,5 +1021,6 @@
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private Bunifu.Framework.UI.BunifuThinButton2 btnSil;
         private MetroFramework.Controls.MetroGrid GridCariBKY;
+        private MetroFramework.Controls.MetroTextBox txtBelgeNo;
     }
 }

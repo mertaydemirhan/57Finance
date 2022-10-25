@@ -106,6 +106,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cari\Raporlar\BakiyelerListesi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cari\Raporlar\BakiyelerListesi.Designer.cs">
+      <DependentUpon>BakiyelerListesi.cs</DependentUpon>
+    </Compile>
     <Compile Include="Cari\Raporlar\CariListesi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -142,12 +148,6 @@
     <Compile Include="Cari\Raporlar\CHR.Designer.cs">
       <DependentUpon>CHR.cs</DependentUpon>
     </Compile>
-    <Compile Include="Faturalar\Alistaniade.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Faturalar\Alistaniade.Designer.cs">
-      <DependentUpon>Alistaniade.cs</DependentUpon>
-    </Compile>
     <Compile Include="Faturalar\MasrafFaturasi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -172,11 +172,17 @@
     <Compile Include="Diger\Doviz\GecmisKurlar.Designer.cs">
       <DependentUpon>GecmisKurlar.cs</DependentUpon>
     </Compile>
-    <Compile Include="Faturalar\Satistaniade.cs">
+    <Compile Include="Hizmet\HizmetTanim.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Faturalar\Satistaniade.Designer.cs">
-      <DependentUpon>Satistaniade.cs</DependentUpon>
+    <Compile Include="Hizmet\HizmetTanim.Designer.cs">
+      <DependentUpon>HizmetTanim.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Hizmet\Raporlar\HizmetRaporu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Hizmet\Raporlar\HizmetRaporu.Designer.cs">
+      <DependentUpon>HizmetRaporu.cs</DependentUpon>
     </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
@@ -186,6 +192,8 @@
     </Compile>
     <Compile Include="Model\ClientInfo.cs" />
     <Compile Include="Model\Forexes.cs" />
+    <Compile Include="Model\ServiceInfo.cs" />
+    <Compile Include="Model\Setters.cs" />
     <Compile Include="Model\TransactionINFO.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -206,6 +214,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Cari\islemler\TediyeGirisi.resx">
       <DependentUpon>TediyeGirisi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cari\Raporlar\BakiyelerListesi.resx">
+      <DependentUpon>BakiyelerListesi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Cari\Raporlar\CariListesi.resx">
       <DependentUpon>CariListesi.cs</DependentUpon>
@@ -228,9 +239,6 @@
     <EmbeddedResource Include="Faturalar\AlisFaturasi.resx">
       <DependentUpon>AlisFaturasi.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Faturalar\Alistaniade.resx">
-      <DependentUpon>Alistaniade.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Faturalar\MasrafFaturasi.resx">
       <DependentUpon>MasrafFaturasi.cs</DependentUpon>
     </EmbeddedResource>
@@ -240,8 +248,11 @@
     <EmbeddedResource Include="Faturalar\SatisFaturasi.resx">
       <DependentUpon>SatisFaturasi.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Faturalar\Satistaniade.resx">
-      <DependentUpon>Satistaniade.cs</DependentUpon>
+    <EmbeddedResource Include="Hizmet\HizmetTanim.resx">
+      <DependentUpon>HizmetTanim.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Hizmet\Raporlar\HizmetRaporu.resx">
+      <DependentUpon>HizmetRaporu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
@@ -255,6 +266,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -272,6 +284,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="57logo.ico" />
+    <None Include="images\trash.png" />
+    <None Include="images\ServiceAdd.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.8">

@@ -137,6 +137,11 @@ namespace _57Finance.Diger.Doviz
                 {
                     baglanti = new SqlConnection("Server=" + ServerAdress + ";Database=" + DatabaseName + ";User Id=" + UsrName + ";Password=" + Pw + ";");
                     baglanti.Open();
+                    string sql = "SELECT COUNT(CT.ID) FROM ClientTransactions CT JOIN Clients C on(C.ID = CT.ClientID) JOIN Departments D on(C.DepartmentID = D.ID) WHERE D.ID = 2";
+                    SqlCommand cmd = new SqlCommand(sql, baglanti);
+                    Int32 count = Convert.ToInt32(cmd.ExecuteScalar());
+                    cmd.Dispose();
+                    if (count > 0) { MetroFramework.MetroMessageBox.Show(this, "Hareketleri olan departman silinememektedir. Lütfen Önce hareketleri siliniz ve ya değiştiriniz.", "Departman Silinemedi !!", MessageBoxButtons.OK, MessageBoxIcon.Error); return; }
                     komut = new SqlCommand($"DELETE FROM Departments WHERE ID={cellID}", baglanti);
                     komut.ExecuteScalar();
                     baglanti.Close();
