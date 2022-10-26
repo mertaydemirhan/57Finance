@@ -44,7 +44,7 @@ namespace _57Finance.Diger.Cari
             DataTable tablo = new DataTable();
             tablo.Clear();
             ds = new DataSet();
-            string query = "SELECT C.ID,ClientCode,CommercialTitle,TaxNo,DefaultForex,IsBlackListed from Clients C JOIN Departments D ON(C.DepartmentID = D.ID) WHERE isActive=1";
+            string query = "SELECT C.ID,ClientCode,CommercialTitle,TaxNo,TaxOffice,DefaultForex,IsBlackListed from Clients C JOIN Departments D ON(C.DepartmentID = D.ID) Where isActive=1";
             SqlDataAdapter adapter = new SqlDataAdapter(query, baglanti);
             adapter.Fill(tablo);
             ds.Merge(tablo);
@@ -53,8 +53,9 @@ namespace _57Finance.Diger.Cari
             GridCari.Columns[1].HeaderText = "Cari Kodu";
             GridCari.Columns[2].HeaderText = "Ticari Ünvanı";
             GridCari.Columns[3].HeaderText = "Vergi Numarası";
-            GridCari.Columns[4].HeaderText = "Varsayılan Döviz";
-            GridCari.Columns[5].HeaderText = "Kara Listede";
+            GridCari.Columns[4].HeaderText = "Vergi Dairesi";
+            GridCari.Columns[5].HeaderText = "Varsayılan Döviz";
+            GridCari.Columns[6].HeaderText = "Kara Listede";
         }
 
         public void ara(string ara, string yer)

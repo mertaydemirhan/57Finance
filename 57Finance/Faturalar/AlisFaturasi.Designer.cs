@@ -29,9 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AlisFaturasi));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.grpCari = new System.Windows.Forms.GroupBox();
             this.lblTaxOffice = new MetroFramework.Controls.MetroLabel();
             this.lblTaxNo = new MetroFramework.Controls.MetroLabel();
@@ -51,16 +50,22 @@
             this.btnCariSec = new Bunifu.Framework.UI.BunifuTileButton();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.grpHareket = new System.Windows.Forms.GroupBox();
+            this.GridHr = new Bunifu.Framework.UI.BunifuCustomDataGrid();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnHrkSil = new Bunifu.Framework.UI.BunifuImageButton();
             this.btnHrkEkle = new Bunifu.Framework.UI.BunifuImageButton();
-            this.GridHr = new MetroFramework.Controls.MetroGrid();
+            this.lblToplamDvz = new MetroFramework.Controls.MetroLabel();
+            this.lblToplamTL = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel11 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel12 = new MetroFramework.Controls.MetroLabel();
+            this.grpAltToplam = new System.Windows.Forms.GroupBox();
             this.grpCari.SuspendLayout();
             this.grpHareket.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GridHr)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnHrkSil)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnHrkEkle)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GridHr)).BeginInit();
+            this.grpAltToplam.SuspendLayout();
             this.SuspendLayout();
             // 
             // grpCari
@@ -283,14 +288,45 @@
             // 
             // grpHareket
             // 
-            this.grpHareket.Controls.Add(this.groupBox1);
             this.grpHareket.Controls.Add(this.GridHr);
+            this.grpHareket.Controls.Add(this.groupBox1);
             this.grpHareket.Location = new System.Drawing.Point(12, 169);
             this.grpHareket.Name = "grpHareket";
             this.grpHareket.Size = new System.Drawing.Size(1155, 340);
             this.grpHareket.TabIndex = 0;
             this.grpHareket.TabStop = false;
             this.grpHareket.Text = "Hareketler";
+            this.grpHareket.EnabledChanged += new System.EventHandler(this.grpHareket_EnabledChanged);
+            // 
+            // GridHr
+            // 
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.GridHr.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            this.GridHr.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.GridHr.BackgroundColor = System.Drawing.Color.Gainsboro;
+            this.GridHr.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.GridHr.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.DeepSkyBlue;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.GridHr.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.GridHr.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.GridHr.DoubleBuffered = true;
+            this.GridHr.EnableHeadersVisualStyles = false;
+            this.GridHr.HeaderBgColor = System.Drawing.Color.DeepSkyBlue;
+            this.GridHr.HeaderForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.GridHr.Location = new System.Drawing.Point(53, 24);
+            this.GridHr.MultiSelect = false;
+            this.GridHr.Name = "GridHr";
+            this.GridHr.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.GridHr.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.GridHr.Size = new System.Drawing.Size(1093, 310);
+            this.GridHr.TabIndex = 5;
+            this.GridHr.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.GridHr_RowsAdded);
             // 
             // groupBox1
             // 
@@ -330,49 +366,54 @@
             this.btnHrkEkle.Zoom = 10;
             this.btnHrkEkle.Click += new System.EventHandler(this.btnHrkEkle_Click);
             // 
-            // GridHr
+            // lblToplamDvz
             // 
-            this.GridHr.AllowUserToResizeRows = false;
-            this.GridHr.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.GridHr.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.GridHr.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.GridHr.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.GridHr.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.GridHr.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.GridHr.DefaultCellStyle = dataGridViewCellStyle5;
-            this.GridHr.EnableHeadersVisualStyles = false;
-            this.GridHr.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.GridHr.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.GridHr.Location = new System.Drawing.Point(50, 19);
-            this.GridHr.MultiSelect = false;
-            this.GridHr.Name = "GridHr";
-            this.GridHr.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.GridHr.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
-            this.GridHr.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.GridHr.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.GridHr.Size = new System.Drawing.Size(1099, 306);
-            this.GridHr.TabIndex = 3;
+            this.lblToplamDvz.AutoSize = true;
+            this.lblToplamDvz.Location = new System.Drawing.Point(105, 46);
+            this.lblToplamDvz.Name = "lblToplamDvz";
+            this.lblToplamDvz.Size = new System.Drawing.Size(16, 19);
+            this.lblToplamDvz.TabIndex = 23;
+            this.lblToplamDvz.Text = "0";
+            // 
+            // lblToplamTL
+            // 
+            this.lblToplamTL.AutoSize = true;
+            this.lblToplamTL.Location = new System.Drawing.Point(105, 25);
+            this.lblToplamTL.Name = "lblToplamTL";
+            this.lblToplamTL.Size = new System.Drawing.Size(16, 19);
+            this.lblToplamTL.TabIndex = 22;
+            this.lblToplamTL.Text = "0";
+            // 
+            // metroLabel11
+            // 
+            this.metroLabel11.AutoSize = true;
+            this.metroLabel11.Location = new System.Drawing.Point(9, 45);
+            this.metroLabel11.Name = "metroLabel11";
+            this.metroLabel11.Size = new System.Drawing.Size(95, 19);
+            this.metroLabel11.TabIndex = 21;
+            this.metroLabel11.Text = "Döviz Toplam :";
+            // 
+            // metroLabel12
+            // 
+            this.metroLabel12.AutoSize = true;
+            this.metroLabel12.Location = new System.Drawing.Point(9, 25);
+            this.metroLabel12.Name = "metroLabel12";
+            this.metroLabel12.Size = new System.Drawing.Size(76, 19);
+            this.metroLabel12.TabIndex = 20;
+            this.metroLabel12.Text = "TL Toplam :";
+            // 
+            // grpAltToplam
+            // 
+            this.grpAltToplam.Controls.Add(this.metroLabel12);
+            this.grpAltToplam.Controls.Add(this.lblToplamDvz);
+            this.grpAltToplam.Controls.Add(this.metroLabel11);
+            this.grpAltToplam.Controls.Add(this.lblToplamTL);
+            this.grpAltToplam.Location = new System.Drawing.Point(18, 522);
+            this.grpAltToplam.Name = "grpAltToplam";
+            this.grpAltToplam.Size = new System.Drawing.Size(314, 86);
+            this.grpAltToplam.TabIndex = 24;
+            this.grpAltToplam.TabStop = false;
+            this.grpAltToplam.Text = "Alt Toplam";
             // 
             // AlisFaturasi
             // 
@@ -380,6 +421,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.HighlightText;
             this.ClientSize = new System.Drawing.Size(1177, 649);
+            this.Controls.Add(this.grpAltToplam);
             this.Controls.Add(this.grpHareket);
             this.Controls.Add(this.grpCari);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -390,10 +432,12 @@
             this.grpCari.ResumeLayout(false);
             this.grpCari.PerformLayout();
             this.grpHareket.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.GridHr)).EndInit();
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.btnHrkSil)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnHrkEkle)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GridHr)).EndInit();
+            this.grpAltToplam.ResumeLayout(false);
+            this.grpAltToplam.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -408,7 +452,6 @@
         private MetroFramework.Controls.MetroLabel metroLabel8;
         private System.Windows.Forms.RichTextBox rcAciklama;
         private MetroFramework.Controls.MetroLabel metroLabel7;
-        private System.Windows.Forms.DateTimePicker dtFaturaTarihi;
         private MetroFramework.Controls.MetroTextBox txtFaturaNo;
         private MetroFramework.Controls.MetroLabel metroLabel6;
         private MetroFramework.Controls.MetroLabel metroLabel5;
@@ -416,12 +459,18 @@
         private MetroFramework.Controls.MetroLabel metroLabel4;
         private MetroFramework.Controls.MetroLabel metroLabel3;
         private System.Windows.Forms.GroupBox groupBox1;
-        private MetroFramework.Controls.MetroGrid GridHr;
         private Bunifu.Framework.UI.BunifuImageButton btnHrkSil;
         private Bunifu.Framework.UI.BunifuImageButton btnHrkEkle;
         public MetroFramework.Controls.MetroLabel lblTaxOffice;
         public MetroFramework.Controls.MetroLabel lblTaxNo;
         public MetroFramework.Controls.MetroLabel lblCommercialTitle;
         public MetroFramework.Controls.MetroLabel lblClientCode;
+        public Bunifu.Framework.UI.BunifuCustomDataGrid GridHr;
+        public System.Windows.Forms.DateTimePicker dtFaturaTarihi;
+        public MetroFramework.Controls.MetroLabel lblToplamDvz;
+        public MetroFramework.Controls.MetroLabel lblToplamTL;
+        private MetroFramework.Controls.MetroLabel metroLabel11;
+        private MetroFramework.Controls.MetroLabel metroLabel12;
+        private System.Windows.Forms.GroupBox grpAltToplam;
     }
 }

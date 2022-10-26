@@ -130,6 +130,12 @@
     <Compile Include="Diger\Doviz\Departmanlar.Designer.cs">
       <DependentUpon>Departmanlar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Diger\Hizmet\HizmetSec.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Diger\Hizmet\HizmetSec.Designer.cs">
+      <DependentUpon>HizmetSec.cs</DependentUpon>
+    </Compile>
     <Compile Include="Faturalar\AlisFaturasi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -192,6 +198,8 @@
     </Compile>
     <Compile Include="Model\ClientInfo.cs" />
     <Compile Include="Model\Forexes.cs" />
+    <Compile Include="Model\Invoice.cs" />
+    <Compile Include="Model\InvoiceTransactionINFO.cs" />
     <Compile Include="Model\ServiceInfo.cs" />
     <Compile Include="Model\Setters.cs" />
     <Compile Include="Model\TransactionINFO.cs" />
@@ -235,6 +243,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Diger\Doviz\GecmisKurlar.resx">
       <DependentUpon>GecmisKurlar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Diger\Hizmet\HizmetSec.resx">
+      <DependentUpon>HizmetSec.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Faturalar\AlisFaturasi.resx">
       <DependentUpon>AlisFaturasi.cs</DependentUpon>

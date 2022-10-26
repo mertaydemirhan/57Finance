@@ -16,7 +16,6 @@ namespace _57Finance
 
     public partial class TahsilatGirisi : Form
     {
-        Setters Setters = new Setters();
         public readonly string ServerAdress = ConfigurationManager.AppSettings["ServerAdress"];
         public readonly string DatabaseName = ConfigurationManager.AppSettings["DatabaseName"];
         public readonly string UsrName = ConfigurationManager.AppSettings["UsrName"];
@@ -27,6 +26,7 @@ namespace _57Finance
         DataSet ds;
         Forexes Forex = new Forexes();
         TransactionINFO transactioninfo;
+        Setters setters = new Setters();
 
         public string ClientID;
         public TahsilatGirisi()
@@ -117,7 +117,7 @@ namespace _57Finance
             CariSec CariSec = new CariSec(1);
             CariSec.Show();
         }
-        public void BindDataDepartment()
+        private void BindDataDepartment()
         {
 
             baglanti = new SqlConnection("Server=" + ServerAdress + ";Database=" + DatabaseName + ";User Id=" + UsrName + ";Password=" + Pw + ";");
@@ -154,7 +154,7 @@ namespace _57Finance
             }
             catch (Exception)
             {
-                MetroFramework.MetroMessageBox.Show(this, "Bugünün kurları çekilmemiştir. Veya bulunamadı... ", "Kurlar veritabanında bulunamadı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MetroMessageBox.Show(this, "Bugünün kurları çekilmemiştir. Veya bulunamadı... ", "Kurlar veritabanında bulunamadı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
 
@@ -201,7 +201,7 @@ namespace _57Finance
                 rdTL.Checked = true;
                 GetBalanceFromDB(Convert.ToInt32(ClientID));
                 if (transactioninfo == null)
-                    txtBelgeNo.Text = Setters.GetDocNumber("Tahsilat", "THKey");
+                    txtBelgeNo.Text = setters.GetDocNumber("Tahsilat", "THKey");
             }
         }
    
@@ -342,7 +342,7 @@ namespace _57Finance
                 komut.Parameters.AddWithValue("@p16", Math.Round(FSelectedTL, 4));
                 komut.ExecuteScalar();
                 baglanti.Close();
-                Setters.WriteDocNumber("Tahsilat", "THKey");
+                setters.WriteDocNumber("Tahsilat", "THKey");
                 this.Close();
                 if (transactioninfo == null)
                     MetroMessageBox.Show(this, "Belge Numarası : " + txtBelgeNo.Text.Trim() + "\n Kayıt başarıyla eklenmiştir.", "Kaydetme Başarılı ✓", MessageBoxButtons.OK, MessageBoxIcon.Information);
