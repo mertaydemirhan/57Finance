@@ -17,6 +17,7 @@ namespace _57Finance.Diger.Cari
         Form TahsilatGiris = Application.OpenForms["TahsilatGirisi"];
         Form TediyeGiris = Application.OpenForms["TediyeGirisi"];
         Form AlFaturasi = Application.OpenForms["AlisFaturasi"];
+        Form SatFaturasi = Application.OpenForms["SatisFaturasi"];
 
         public readonly string ServerAdress = ConfigurationManager.AppSettings["ServerAdress"];
         public readonly string DatabaseName = ConfigurationManager.AppSettings["DatabaseName"];
@@ -130,8 +131,20 @@ namespace _57Finance.Diger.Cari
                     ((AlisFaturasi)AlFaturasi).lblCommercialTitle.Text = selectedRow.Cells["CommercialTitle"].Value.ToString();
                     ((AlisFaturasi)AlFaturasi).lblTaxNo.Text = selectedRow.Cells["TaxNo"].Value.ToString();
                     ((AlisFaturasi)AlFaturasi).lblTaxOffice.Text = selectedRow.Cells["TaxOffice"].Value.ToString();
+                    ((AlisFaturasi)AlFaturasi).ClientForex = selectedRow.Cells["DefaultForex"].Value.ToString();
 
                 }
+                else if (typeForm == 4)
+                {
+                    ((SatisFaturasi)SatFaturasi).ClientID = selectedRow.Cells["ID"].Value.ToString();
+                    ((SatisFaturasi)SatFaturasi).lblClientCode.Text = selectedRow.Cells["ClientCode"].Value.ToString();
+                    ((SatisFaturasi)SatFaturasi).lblCommercialTitle.Text = selectedRow.Cells["CommercialTitle"].Value.ToString();
+                    ((SatisFaturasi)SatFaturasi).lblTaxNo.Text = selectedRow.Cells["TaxNo"].Value.ToString();
+                    ((SatisFaturasi)SatFaturasi).lblTaxOffice.Text = selectedRow.Cells["TaxOffice"].Value.ToString();
+                    ((SatisFaturasi)SatFaturasi).ClientForex = selectedRow.Cells["DefaultForex"].Value.ToString();
+
+                }
+
                 this.Close();
             }
             else

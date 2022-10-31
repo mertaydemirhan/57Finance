@@ -12,13 +12,13 @@ namespace _57Finance.Model
         public int InvoiceID { get; set; }
         public string ServiceCode { get; set; }
         public string ServiceName { get; set; }
-        public double Qty { get; set; }
-        public double Price { get; set; }
+        public decimal Qty { get; set; }
+        public decimal Price { get; set; }
         public string Forex { get; set; }
-        public double ForexRateBuy { get; set; }
-        public double ForexRateSell { get; set; }
-        public double FPrice { get; set; }
-        public double PriceTotal { get; set; }
+        public decimal ForexRateBuy { get; set; }
+        public decimal ForexRateSell { get; set; }
+        public decimal FPrice { get; set; }
+        public decimal PriceTotal { get; set; }
 
     }
 }

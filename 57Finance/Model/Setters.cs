@@ -20,8 +20,7 @@ namespace _57Finance.Model
         public readonly string UsrName = ConfigurationManager.AppSettings["UsrName"];
         public readonly string Pw = ConfigurationManager.AppSettings["Pw"];
         SqlConnection baglanti;
-        SqlDataAdapter sqlAdapter;
-        SqlCommand komut;
+        SqlCommand SQLCommand;
         DataSet ds;
         Forexes Forex = new Forexes();
         public string GetDocNumber(string Group, string Key)
@@ -41,10 +40,37 @@ namespace _57Finance.Model
             string docStart = DocumentNo.Substring(0, 2);
             DocumentNo = DocumentNo.Substring(2, DocumentNo.Length - 2);
             string GetFileNumber = Convert.ToString(Convert.ToDouble(DocumentNo) + 1).PadLeft(5, Convert.ToChar("0"));
+            if (Group == "AlisFaturasi")
+            {
+                string InvoiceID = GetDocNumber(Group, "FatID");
+                InvoiceID = Convert.ToString(Convert.ToInt32(InvoiceID) + 1);
+                data[Group]["FatID"] = InvoiceID;
+                parser.WriteFile("Configuration.ini", data);
+            }
             data[Group][Key] = docStart + GetFileNumber;
             parser.WriteFile("Configuration.ini", data);
         }
 
+        public int GetInvoiceID()
+        {
+            try
+            {
+                baglanti = new SqlConnection("Server=" + ServerAdress + ";Database=" + DatabaseName + ";User Id=" + UsrName + ";Password=" + Pw + ";");
+                baglanti.Open();
+                SQLCommand = new SqlCommand();
+                SQLCommand.CommandType = CommandType.Text;
+                //SQLCommand.Parameters.Add("USUsername", SqlDbType.VarChar).Value = CUSER;
+                SQLCommand.CommandText = "SELECT TOP 1 ID FROM Invoices ORDER BY ID DESC";
+                Int32 USRole = (Int32)SQLCommand.ExecuteScalar();
+
+                return USRole+1;
+
+            }
+            catch (Exception)
+            {                
+                return 0;
+            }
+        }
 
 
         public DataTable SendForexes(DateTime dt)

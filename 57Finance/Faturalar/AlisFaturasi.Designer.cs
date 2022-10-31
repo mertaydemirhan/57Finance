@@ -32,6 +32,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.grpCari = new System.Windows.Forms.GroupBox();
+            this.cmbDepartman = new MetroFramework.Controls.MetroComboBox();
+            this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
+            this.cmbFatKDV = new System.Windows.Forms.ComboBox();
             this.lblTaxOffice = new MetroFramework.Controls.MetroLabel();
             this.lblTaxNo = new MetroFramework.Controls.MetroLabel();
             this.lblCommercialTitle = new MetroFramework.Controls.MetroLabel();
@@ -59,6 +63,12 @@
             this.metroLabel11 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel12 = new MetroFramework.Controls.MetroLabel();
             this.grpAltToplam = new System.Windows.Forms.GroupBox();
+            this.lblKDVsizToplam = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel13 = new MetroFramework.Controls.MetroLabel();
+            this.btnSil = new Bunifu.Framework.UI.BunifuThinButton2();
+            this.btnKaydet = new Bunifu.Framework.UI.BunifuThinButton2();
+            this.metroLabel14 = new MetroFramework.Controls.MetroLabel();
+            this.lblKDV = new MetroFramework.Controls.MetroLabel();
             this.grpCari.SuspendLayout();
             this.grpHareket.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridHr)).BeginInit();
@@ -70,6 +80,10 @@
             // 
             // grpCari
             // 
+            this.grpCari.Controls.Add(this.cmbDepartman);
+            this.grpCari.Controls.Add(this.metroLabel10);
+            this.grpCari.Controls.Add(this.metroLabel9);
+            this.grpCari.Controls.Add(this.cmbFatKDV);
             this.grpCari.Controls.Add(this.lblTaxOffice);
             this.grpCari.Controls.Add(this.lblTaxNo);
             this.grpCari.Controls.Add(this.lblCommercialTitle);
@@ -89,10 +103,78 @@
             this.grpCari.Controls.Add(this.metroLabel1);
             this.grpCari.Location = new System.Drawing.Point(12, 12);
             this.grpCari.Name = "grpCari";
-            this.grpCari.Size = new System.Drawing.Size(1155, 130);
+            this.grpCari.Size = new System.Drawing.Size(1155, 151);
             this.grpCari.TabIndex = 0;
             this.grpCari.TabStop = false;
             this.grpCari.Text = "Cari - Fatura Bilgileri";
+            // 
+            // cmbDepartman
+            // 
+            this.cmbDepartman.DisplayMember = "DepartmentName";
+            this.cmbDepartman.ItemHeight = 23;
+            this.cmbDepartman.Items.AddRange(new object[] {
+            "Nakit",
+            "Kredi Kartı",
+            "Havale / EFT",
+            "Tahakkuk",
+            "Diğer"});
+            this.cmbDepartman.Location = new System.Drawing.Point(873, 116);
+            this.cmbDepartman.Name = "cmbDepartman";
+            this.cmbDepartman.Size = new System.Drawing.Size(121, 29);
+            this.cmbDepartman.TabIndex = 52;
+            this.cmbDepartman.UseSelectable = true;
+            this.cmbDepartman.ValueMember = "id";
+            // 
+            // metroLabel10
+            // 
+            this.metroLabel10.AutoSize = true;
+            this.metroLabel10.Location = new System.Drawing.Point(787, 120);
+            this.metroLabel10.Name = "metroLabel10";
+            this.metroLabel10.Size = new System.Drawing.Size(76, 19);
+            this.metroLabel10.TabIndex = 51;
+            this.metroLabel10.Text = "Departman";
+            // 
+            // metroLabel9
+            // 
+            this.metroLabel9.AutoSize = true;
+            this.metroLabel9.Location = new System.Drawing.Point(426, 119);
+            this.metroLabel9.Name = "metroLabel9";
+            this.metroLabel9.Size = new System.Drawing.Size(74, 19);
+            this.metroLabel9.TabIndex = 50;
+            this.metroLabel9.Text = "KDV Oranı ";
+            // 
+            // cmbFatKDV
+            // 
+            this.cmbFatKDV.Cursor = System.Windows.Forms.Cursors.Default;
+            this.cmbFatKDV.DisplayMember = "name";
+            this.cmbFatKDV.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbFatKDV.Font = new System.Drawing.Font("Corbel", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbFatKDV.FormattingEnabled = true;
+            this.cmbFatKDV.Items.AddRange(new object[] {
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18"});
+            this.cmbFatKDV.Location = new System.Drawing.Point(514, 119);
+            this.cmbFatKDV.Name = "cmbFatKDV";
+            this.cmbFatKDV.Size = new System.Drawing.Size(158, 23);
+            this.cmbFatKDV.TabIndex = 49;
+            this.cmbFatKDV.ValueMember = "ID";
             // 
             // lblTaxOffice
             // 
@@ -137,7 +219,7 @@
             // metroLabel8
             // 
             this.metroLabel8.AutoSize = true;
-            this.metroLabel8.Location = new System.Drawing.Point(792, 16);
+            this.metroLabel8.Location = new System.Drawing.Point(792, 12);
             this.metroLabel8.Name = "metroLabel8";
             this.metroLabel8.Size = new System.Drawing.Size(110, 19);
             this.metroLabel8.TabIndex = 15;
@@ -145,7 +227,7 @@
             // 
             // rcAciklama
             // 
-            this.rcAciklama.Location = new System.Drawing.Point(792, 44);
+            this.rcAciklama.Location = new System.Drawing.Point(792, 36);
             this.rcAciklama.Name = "rcAciklama";
             this.rcAciklama.Size = new System.Drawing.Size(223, 69);
             this.rcAciklama.TabIndex = 14;
@@ -156,9 +238,9 @@
             this.metroLabel7.AutoSize = true;
             this.metroLabel7.Location = new System.Drawing.Point(426, 93);
             this.metroLabel7.Name = "metroLabel7";
-            this.metroLabel7.Size = new System.Drawing.Size(86, 19);
+            this.metroLabel7.Size = new System.Drawing.Size(83, 19);
             this.metroLabel7.TabIndex = 13;
-            this.metroLabel7.Text = "Fatura Tarihi :";
+            this.metroLabel7.Text = "Fatura Tarihi ";
             // 
             // dtFaturaTarihi
             // 
@@ -201,26 +283,25 @@
             // metroLabel6
             // 
             this.metroLabel6.AutoSize = true;
-            this.metroLabel6.Location = new System.Drawing.Point(429, 64);
+            this.metroLabel6.Location = new System.Drawing.Point(427, 63);
             this.metroLabel6.Name = "metroLabel6";
-            this.metroLabel6.Size = new System.Drawing.Size(74, 19);
+            this.metroLabel6.Size = new System.Drawing.Size(71, 19);
             this.metroLabel6.TabIndex = 10;
-            this.metroLabel6.Text = "Fatura No :";
+            this.metroLabel6.Text = "Fatura No ";
             // 
             // metroLabel5
             // 
             this.metroLabel5.AutoSize = true;
-            this.metroLabel5.Location = new System.Drawing.Point(429, 29);
+            this.metroLabel5.Location = new System.Drawing.Point(427, 28);
             this.metroLabel5.Name = "metroLabel5";
-            this.metroLabel5.Size = new System.Drawing.Size(80, 19);
+            this.metroLabel5.Size = new System.Drawing.Size(77, 19);
             this.metroLabel5.TabIndex = 9;
-            this.metroLabel5.Text = "Fatura Türü :";
+            this.metroLabel5.Text = "Fatura Türü ";
             // 
             // cmbFaturaTur
             // 
             this.cmbFaturaTur.ItemHeight = 23;
             this.cmbFaturaTur.Items.AddRange(new object[] {
-            "Seçiniz",
             "Alış Faturası",
             "Alıştan İade Faturası"});
             this.cmbFaturaTur.Location = new System.Drawing.Point(514, 24);
@@ -326,6 +407,7 @@
             this.GridHr.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.GridHr.Size = new System.Drawing.Size(1093, 310);
             this.GridHr.TabIndex = 5;
+            this.GridHr.CellValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridHr_CellValidated);
             this.GridHr.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.GridHr_RowsAdded);
             // 
             // groupBox1
@@ -369,7 +451,7 @@
             // lblToplamDvz
             // 
             this.lblToplamDvz.AutoSize = true;
-            this.lblToplamDvz.Location = new System.Drawing.Point(105, 46);
+            this.lblToplamDvz.Location = new System.Drawing.Point(165, 84);
             this.lblToplamDvz.Name = "lblToplamDvz";
             this.lblToplamDvz.Size = new System.Drawing.Size(16, 19);
             this.lblToplamDvz.TabIndex = 23;
@@ -378,7 +460,7 @@
             // lblToplamTL
             // 
             this.lblToplamTL.AutoSize = true;
-            this.lblToplamTL.Location = new System.Drawing.Point(105, 25);
+            this.lblToplamTL.Location = new System.Drawing.Point(165, 65);
             this.lblToplamTL.Name = "lblToplamTL";
             this.lblToplamTL.Size = new System.Drawing.Size(16, 19);
             this.lblToplamTL.TabIndex = 22;
@@ -387,7 +469,7 @@
             // metroLabel11
             // 
             this.metroLabel11.AutoSize = true;
-            this.metroLabel11.Location = new System.Drawing.Point(9, 45);
+            this.metroLabel11.Location = new System.Drawing.Point(9, 84);
             this.metroLabel11.Name = "metroLabel11";
             this.metroLabel11.Size = new System.Drawing.Size(95, 19);
             this.metroLabel11.TabIndex = 21;
@@ -396,24 +478,116 @@
             // metroLabel12
             // 
             this.metroLabel12.AutoSize = true;
-            this.metroLabel12.Location = new System.Drawing.Point(9, 25);
+            this.metroLabel12.Location = new System.Drawing.Point(9, 65);
             this.metroLabel12.Name = "metroLabel12";
-            this.metroLabel12.Size = new System.Drawing.Size(76, 19);
+            this.metroLabel12.Size = new System.Drawing.Size(145, 19);
             this.metroLabel12.TabIndex = 20;
-            this.metroLabel12.Text = "TL Toplam :";
+            this.metroLabel12.Text = "TL Toplam (KDV Dahil) :";
             // 
             // grpAltToplam
             // 
+            this.grpAltToplam.Controls.Add(this.lblKDV);
+            this.grpAltToplam.Controls.Add(this.metroLabel14);
+            this.grpAltToplam.Controls.Add(this.lblKDVsizToplam);
+            this.grpAltToplam.Controls.Add(this.metroLabel13);
             this.grpAltToplam.Controls.Add(this.metroLabel12);
             this.grpAltToplam.Controls.Add(this.lblToplamDvz);
             this.grpAltToplam.Controls.Add(this.metroLabel11);
             this.grpAltToplam.Controls.Add(this.lblToplamTL);
             this.grpAltToplam.Location = new System.Drawing.Point(18, 522);
             this.grpAltToplam.Name = "grpAltToplam";
-            this.grpAltToplam.Size = new System.Drawing.Size(314, 86);
+            this.grpAltToplam.Size = new System.Drawing.Size(314, 115);
             this.grpAltToplam.TabIndex = 24;
             this.grpAltToplam.TabStop = false;
             this.grpAltToplam.Text = "Alt Toplam";
+            // 
+            // lblKDVsizToplam
+            // 
+            this.lblKDVsizToplam.AutoSize = true;
+            this.lblKDVsizToplam.Location = new System.Drawing.Point(165, 29);
+            this.lblKDVsizToplam.Name = "lblKDVsizToplam";
+            this.lblKDVsizToplam.Size = new System.Drawing.Size(16, 19);
+            this.lblKDVsizToplam.TabIndex = 25;
+            this.lblKDVsizToplam.Text = "0";
+            // 
+            // metroLabel13
+            // 
+            this.metroLabel13.AutoSize = true;
+            this.metroLabel13.Location = new System.Drawing.Point(9, 29);
+            this.metroLabel13.Name = "metroLabel13";
+            this.metroLabel13.Size = new System.Drawing.Size(40, 19);
+            this.metroLabel13.TabIndex = 24;
+            this.metroLabel13.Text = "KDV :";
+            // 
+            // btnSil
+            // 
+            this.btnSil.ActiveBorderThickness = 1;
+            this.btnSil.ActiveCornerRadius = 20;
+            this.btnSil.ActiveFillColor = System.Drawing.Color.Brown;
+            this.btnSil.ActiveForecolor = System.Drawing.Color.White;
+            this.btnSil.ActiveLineColor = System.Drawing.Color.IndianRed;
+            this.btnSil.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.btnSil.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSil.BackgroundImage")));
+            this.btnSil.ButtonText = "Kaydı Sil";
+            this.btnSil.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSil.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSil.ForeColor = System.Drawing.Color.SeaGreen;
+            this.btnSil.IdleBorderThickness = 1;
+            this.btnSil.IdleCornerRadius = 20;
+            this.btnSil.IdleFillColor = System.Drawing.Color.White;
+            this.btnSil.IdleForecolor = System.Drawing.Color.DimGray;
+            this.btnSil.IdleLineColor = System.Drawing.Color.Red;
+            this.btnSil.Location = new System.Drawing.Point(980, 593);
+            this.btnSil.Margin = new System.Windows.Forms.Padding(5);
+            this.btnSil.Name = "btnSil";
+            this.btnSil.Size = new System.Drawing.Size(177, 53);
+            this.btnSil.TabIndex = 9;
+            this.btnSil.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnSil.Click += new System.EventHandler(this.btnSil_Click);
+            // 
+            // btnKaydet
+            // 
+            this.btnKaydet.ActiveBorderThickness = 1;
+            this.btnKaydet.ActiveCornerRadius = 20;
+            this.btnKaydet.ActiveFillColor = System.Drawing.Color.SeaGreen;
+            this.btnKaydet.ActiveForecolor = System.Drawing.Color.White;
+            this.btnKaydet.ActiveLineColor = System.Drawing.Color.SeaGreen;
+            this.btnKaydet.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.btnKaydet.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnKaydet.BackgroundImage")));
+            this.btnKaydet.ButtonText = "Kaydet";
+            this.btnKaydet.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnKaydet.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnKaydet.ForeColor = System.Drawing.Color.SeaGreen;
+            this.btnKaydet.IdleBorderThickness = 1;
+            this.btnKaydet.IdleCornerRadius = 20;
+            this.btnKaydet.IdleFillColor = System.Drawing.Color.White;
+            this.btnKaydet.IdleForecolor = System.Drawing.Color.SeaGreen;
+            this.btnKaydet.IdleLineColor = System.Drawing.Color.SeaGreen;
+            this.btnKaydet.Location = new System.Drawing.Point(981, 511);
+            this.btnKaydet.Margin = new System.Windows.Forms.Padding(5);
+            this.btnKaydet.Name = "btnKaydet";
+            this.btnKaydet.Size = new System.Drawing.Size(177, 82);
+            this.btnKaydet.TabIndex = 8;
+            this.btnKaydet.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnKaydet.Click += new System.EventHandler(this.btnKaydet_Click);
+            // 
+            // metroLabel14
+            // 
+            this.metroLabel14.AutoSize = true;
+            this.metroLabel14.Location = new System.Drawing.Point(10, 48);
+            this.metroLabel14.Name = "metroLabel14";
+            this.metroLabel14.Size = new System.Drawing.Size(103, 19);
+            this.metroLabel14.TabIndex = 26;
+            this.metroLabel14.Text = "KDV\'siz Toplam :";
+            // 
+            // lblKDV
+            // 
+            this.lblKDV.AutoSize = true;
+            this.lblKDV.Location = new System.Drawing.Point(165, 47);
+            this.lblKDV.Name = "lblKDV";
+            this.lblKDV.Size = new System.Drawing.Size(16, 19);
+            this.lblKDV.TabIndex = 27;
+            this.lblKDV.Text = "0";
             // 
             // AlisFaturasi
             // 
@@ -421,7 +595,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.HighlightText;
             this.ClientSize = new System.Drawing.Size(1177, 649);
+            this.Controls.Add(this.btnSil);
             this.Controls.Add(this.grpAltToplam);
+            this.Controls.Add(this.btnKaydet);
             this.Controls.Add(this.grpHareket);
             this.Controls.Add(this.grpCari);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -472,5 +648,15 @@
         private MetroFramework.Controls.MetroLabel metroLabel11;
         private MetroFramework.Controls.MetroLabel metroLabel12;
         private System.Windows.Forms.GroupBox grpAltToplam;
+        private Bunifu.Framework.UI.BunifuThinButton2 btnSil;
+        private Bunifu.Framework.UI.BunifuThinButton2 btnKaydet;
+        private MetroFramework.Controls.MetroLabel metroLabel9;
+        private System.Windows.Forms.ComboBox cmbFatKDV;
+        private MetroFramework.Controls.MetroComboBox cmbDepartman;
+        private MetroFramework.Controls.MetroLabel metroLabel10;
+        public MetroFramework.Controls.MetroLabel lblKDVsizToplam;
+        private MetroFramework.Controls.MetroLabel metroLabel13;
+        public MetroFramework.Controls.MetroLabel lblKDV;
+        private MetroFramework.Controls.MetroLabel metroLabel14;
     }
 }

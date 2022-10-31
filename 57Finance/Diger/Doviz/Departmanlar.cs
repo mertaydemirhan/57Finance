@@ -1,4 +1,4 @@
-﻿
+﻿using MetroFramework;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -42,7 +42,7 @@ namespace _57Finance.Diger.Doviz
             baglanti = new SqlConnection("Server=" + ServerAdress + ";Database=" + DatabaseName + ";User Id=" + UsrName + ";Password=" + Pw + ";");
             baglanti.Open();
             DataTable table2 = new DataTable();
-            sqlAdapter = new SqlDataAdapter($"select * from Departments", baglanti);
+            sqlAdapter = new SqlDataAdapter($"select * from Departments WHERE DepartmentName is not null", baglanti);
             sqlAdapter.Fill(table2);
             gridDept.DataSource = table2;
             baglanti.Close();
@@ -76,6 +76,7 @@ namespace _57Finance.Diger.Doviz
 
             if (btnKaydet.ButtonText == "Düzenlemeyi Bitir")
             {
+                if (string.IsNullOrEmpty(txtDepartman.Text.Trim())) { MetroMessageBox.Show(this, "Departman Adı Boş olmamalıdır.", "Departman Adı Boş.", MessageBoxButtons.OK, MessageBoxIcon.Hand); return; }
                 baglanti = new SqlConnection("Server=" + ServerAdress + ";Database=" + DatabaseName + ";User Id=" + UsrName + ";Password=" + Pw + ";");
                 baglanti.Open();
                 komut = new SqlCommand($"Update  Departments Set DepartmentName=N'{txtDepartman.Text.Trim()}' WHERE ID={indexno}", baglanti);
@@ -95,7 +96,7 @@ namespace _57Finance.Diger.Doviz
         {
             if (btnKaydet.ButtonText == "Kaydet")
             {
-
+                if(string.IsNullOrEmpty(txtDepartman.Text.Trim())) { MetroMessageBox.Show(this, "Departman Adı Boş olmamalıdır.", "Departman Adı Boş.", MessageBoxButtons.OK, MessageBoxIcon.Hand); return; }
                 baglanti = new SqlConnection("Server=" + ServerAdress + ";Database=" + DatabaseName + ";User Id=" + UsrName + ";Password=" + Pw + ";");
                 baglanti.Open();
                 komut = new SqlCommand($"INSERT INTO Departments(DepartmentName) VALUES(N'{txtDepartman.Text.Trim()}')", baglanti);

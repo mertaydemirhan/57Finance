@@ -27,6 +27,7 @@ namespace _57Finance.Diger.Hizmet
         int typeForm = 0;
 
         Form AlFaturasi = Application.OpenForms["AlisFaturasi"];
+        Form SatFaturasi = Application.OpenForms["SatisFaturasi"];
         public HizmetSec()
         {
             InitializeComponent();
@@ -73,7 +74,7 @@ namespace _57Finance.Diger.Hizmet
         {
             string al = txtHizmetKodu.Text;
             string al1 = txtHizmetKodu2.Text;
-            string Query = $"ClientCode>='{al}' AND ClientCode<='{al1}'";
+            string Query = $"ServiceCode>='{al}' AND ServiceCode<='{al1}'";
             ara(null, Query);
         }
 
@@ -119,29 +120,29 @@ namespace _57Finance.Diger.Hizmet
             string cellValue = Convert.ToString(selectedRow.Cells["ID"].Value);
             if (cellValue != "")
             {
-                if (typeForm == 1)
+                if (typeForm == 1) // Alış faturası ise eklenecek ürünü gönder....
                 {
-                    // Alış Faturasıysa bla bla bla
+
                     DateTime FtDate = ((AlisFaturasi)AlFaturasi).dtFaturaTarihi.Value;
 
                     TrnInfo.InvoiceID = ((AlisFaturasi)AlFaturasi).FatID;
                     TrnInfo.ServiceCode = selectedRow.Cells["ServiceCode"].Value.ToString();
                     TrnInfo.ServiceName = selectedRow.Cells["ServiceName"].Value.ToString();
                     TrnInfo.Qty = 1;
-                    TrnInfo.Price = Convert.ToDouble(selectedRow.Cells["Price"].Value);
+                    TrnInfo.Price = Convert.ToDecimal(selectedRow.Cells["Price"].Value);
                     TrnInfo.Forex = selectedRow.Cells["Forex"].Value.ToString().Trim();
-                    TrnInfo.FPrice = Convert.ToDouble(selectedRow.Cells["FPrice"].Value);
+                    TrnInfo.FPrice = Convert.ToDecimal(selectedRow.Cells["FPrice"].Value);
                     if(TrnInfo.Forex != "")  // Eğer gelen değerde döviz seçimi yapıldıysa.....
                     {
                         DataRow[] filteredRows = setters.SendForexes(FtDate).Select($"Currency like '%{TrnInfo.Forex}%'");
                         // FilteredRows 0 = Buying Rate, 1 = Selling Rate, 3 = Currency
-                        TrnInfo.ForexRateBuy = Convert.ToDouble(filteredRows[0].ItemArray[0].ToString());
-                        TrnInfo.ForexRateSell = Convert.ToDouble(filteredRows[0].ItemArray[1].ToString());
+                        TrnInfo.ForexRateBuy = Convert.ToDecimal(filteredRows[0].ItemArray[0].ToString());
+                        TrnInfo.ForexRateSell = Convert.ToDecimal(filteredRows[0].ItemArray[1].ToString());
                         TrnInfo.Price = TrnInfo.ForexRateSell * TrnInfo.FPrice;
 
                     }
 
-                    TrnInfo.PriceTotal = TrnInfo.Qty * TrnInfo.Price;
+                    TrnInfo.PriceTotal = Convert.ToDecimal(TrnInfo.Qty * TrnInfo.Price);
                     DataTable dataTable = (DataTable)((AlisFaturasi)AlFaturasi).GridHr.DataSource;
                     DataRow drToAdd = dataTable.NewRow();
 
@@ -155,15 +156,49 @@ namespace _57Finance.Diger.Hizmet
                     drToAdd["FPrice"] = TrnInfo.FPrice;
                     drToAdd["ForexRateBuy"] = TrnInfo.ForexRateBuy;
                     drToAdd["ForexRateSell"] = TrnInfo.ForexRateSell;
-                    drToAdd["PriceTotal"] = TrnInfo.PriceTotal;
-
+                    drToAdd["PriceTotal"] = TrnInfo.PriceTotal.ToString("0.##");
                     dataTable.Rows.Add(drToAdd);
                     dataTable.AcceptChanges();
 
                 }
-                else if (typeForm == 2)
+                else if (typeForm == 2) // Satış faturası ise eklenecek ürünü gönder....
                 {
-                  // Satış faturasıysa bla bla bla
+                    DateTime FtDate = ((SatisFaturasi)SatFaturasi).dtFaturaTarihi.Value;
+
+                    TrnInfo.InvoiceID = ((SatisFaturasi)SatFaturasi).FatID;
+                    TrnInfo.ServiceCode = selectedRow.Cells["ServiceCode"].Value.ToString();
+                    TrnInfo.ServiceName = selectedRow.Cells["ServiceName"].Value.ToString();
+                    TrnInfo.Qty = 1;
+                    TrnInfo.Price = Convert.ToDecimal(selectedRow.Cells["Price"].Value);
+                    TrnInfo.Forex = selectedRow.Cells["Forex"].Value.ToString().Trim();
+                    TrnInfo.FPrice = Convert.ToDecimal(selectedRow.Cells["FPrice"].Value);
+                    if (TrnInfo.Forex != "")  // Eğer gelen değerde döviz seçimi yapıldıysa.....
+                    {
+                        DataRow[] filteredRows = setters.SendForexes(FtDate).Select($"Currency like '%{TrnInfo.Forex}%'");
+                        // FilteredRows 0 = Buying Rate, 1 = Selling Rate, 3 = Currency
+                        TrnInfo.ForexRateBuy = Convert.ToDecimal(filteredRows[0].ItemArray[0].ToString());
+                        TrnInfo.ForexRateSell = Convert.ToDecimal(filteredRows[0].ItemArray[1].ToString());
+                        TrnInfo.Price = TrnInfo.ForexRateSell * TrnInfo.FPrice;
+
+                    }
+
+                    TrnInfo.PriceTotal = Convert.ToDecimal(TrnInfo.Qty * TrnInfo.Price);
+                    DataTable dataTable = (DataTable)((SatisFaturasi)SatFaturasi).GridHr.DataSource;
+                    DataRow drToAdd = dataTable.NewRow();
+
+                    //drToAdd["ID"] = null;
+                    drToAdd["InvoiceID"] = TrnInfo.InvoiceID;
+                    drToAdd["ServiceCode"] = TrnInfo.ServiceCode;
+                    drToAdd["ServiceName"] = TrnInfo.ServiceName;
+                    drToAdd["Qty"] = TrnInfo.Qty;
+                    drToAdd["Price"] = TrnInfo.Price;
+                    drToAdd["Forex"] = TrnInfo.Forex;
+                    drToAdd["FPrice"] = TrnInfo.FPrice;
+                    drToAdd["ForexRateBuy"] = TrnInfo.ForexRateBuy;
+                    drToAdd["ForexRateSell"] = TrnInfo.ForexRateSell;
+                    drToAdd["PriceTotal"] = TrnInfo.PriceTotal.ToString("0.##");
+                    dataTable.Rows.Add(drToAdd);
+                    dataTable.AcceptChanges();
 
                 }
                 else if (typeForm == 3)
