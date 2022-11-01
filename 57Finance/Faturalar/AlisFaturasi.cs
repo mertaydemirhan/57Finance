@@ -54,18 +54,38 @@ namespace _57Finance
         }
         private void AlisFaturasi_Load(object sender, EventArgs e)
         {
-            FatID = zetters.GetInvoiceID();
-            FaturaNo = zetters.GetDocNumber("AlisFaturasi", "AFKey");
-            grpHareket.Enabled = false;
-            lblClientCode.Visible = false;
-            lblCommercialTitle.Visible = false;
-            lblTaxNo.Visible = false;
-            lblTaxOffice.Visible = false;
-            BindDataDepartment();
-            cmbFatKDV.SelectedIndex = 18;
-            cmbDepartman.SelectedIndex = 0;
-            GetInvoiceType();
-            txtFaturaNo.Text = FaturaNo;
+            if(invoice == null)
+            {
+                FatID = Convert.ToInt32(zetters.GetInvoiceID());
+                FaturaNo = zetters.GetDocNumber("AlisFaturasi", "AFKey");
+                grpHareket.Enabled = false;
+                lblClientCode.Visible = false;
+                lblCommercialTitle.Visible = false;
+                lblTaxNo.Visible = false;
+                lblTaxOffice.Visible = false;
+                BindDataDepartment();
+                cmbFatKDV.SelectedIndex = 18;
+                cmbDepartman.SelectedIndex = 0;
+                GetInvoiceType();
+                txtFaturaNo.Text = FaturaNo;
+                
+            }
+            else
+            {
+                FatID = invoice.InvoiceID;
+                FaturaNo = invoice.InvoiceNo;
+                txtFaturaNo.Text = invoice.InvoiceNo;
+                ClientID = invoice.ClientID.ToString();
+                lblClientCode.Text = invoice.ClientCode;
+                lblCommercialTitle.Text = invoice.ClientCommercialTitle;
+                lblTaxNo.Text = invoice.TaxNo;
+                lblTaxOffice.Text = invoice.TaxOffice;
+                cmbDepartman.SelectedIndex = cmbDepartman.FindString(invoice.DepartmentName);
+                cmbFatKDV.SelectedIndex = cmbFatKDV.FindString(invoice.VATRate.ToString());
+                cmbFaturaTur.SelectedIndex = cmbFaturaTur.FindString(invoice.InvoiceType);
+                GridHrCek();
+
+            }
 
         }
 
@@ -90,7 +110,8 @@ namespace _57Finance
             {
                 lblClientCode.Visible = true;
                 grpHareket.Enabled = true;
-                GridHrCek();
+                if(invoice == null)
+                    GridHrCek();
             }
 
         }
@@ -117,7 +138,7 @@ namespace _57Finance
             ds = new DataSet();
             string query = "";
             if (invoice == null)
-                query = $"SELECT ID,InvoiceID,ServiceCode,ServiceName,Qty,Price,Forex,ForexRateBuy,ForexRateSell,FPrice,PriceTotal FROM dbo.InvoiceTransactions WHERE 1=1 WHERE InvoiceID={FatID} ";
+                query = $"SELECT ID,InvoiceID,ServiceCode,ServiceName,Qty,Price,Forex,ForexRateBuy,ForexRateSell,FPrice,PriceTotal FROM dbo.InvoiceTransactions WHERE InvoiceID={FatID} ";
             else
                 query = $"SELECT ID,InvoiceID,ServiceCode,ServiceName,Qty,Price,Forex,ForexRateBuy,ForexRateSell,FPrice,PriceTotal FROM dbo.InvoiceTransactions WHERE 1=1 AND InvoiceID={invoice.InvoiceID}";
 
@@ -145,10 +166,13 @@ namespace _57Finance
 
         private void btnHrkSil_Click(object sender, EventArgs e)   // Gridde hareket silindiğinde çalışan kod....
         {
-            foreach (DataGridViewRow row in GridHr.SelectedRows)
+            GridHr.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            GridHr.CurrentRow.(GridHr.SelectedRows[0]);
+            if (GridHr.SelectedRows.Count > 0 && !GridHr.SelectedRows[0].IsNewRow)
             {
-                GridHr.Rows.Remove(row);
+                GridHr.Rows.Remove(GridHr.SelectedRows[0]);
             }
+            GridHr.SelectionMode = DataGridViewSelectionMode.RowHeaderSelect;
         }
         private void grpHareket_EnabledChanged(object sender, EventArgs e)
         {
@@ -213,16 +237,45 @@ namespace _57Finance
             }
             FatAmountTL = Convert.ToDecimal(BeforeTotalTL);
             FatAmountForex = Convert.ToDecimal(BeforeTotalF);
-            lblToplamTL.Text = String.Format("{0:C}", BeforeTotalTL);
+
             //(string.Format("{0:#.00}", Convert.ToDecimal(totalpriceTL) / 100));
-            lblKDV.Text = String.Format("{0:C}", FatAmountTL - ((FatAmountTL / 100) * Convert.ToInt16(cmbFatKDV.SelectedItem)));
-            lblKDVsizToplam.Text = String.Format("{0:C}", ((FatAmountTL / 100) * Convert.ToInt16(cmbFatKDV.SelectedItem)));
-            lblToplamDvz.Text = String.Format("{0:C}", BeforeTotalF);
+            if (invoice != null)
+            {
+                lblKDV.Text = String.Format("{0:C}", invoice.VAT);
+                lblKDVsizToplam.Text = String.Format("{0:C}", invoice.Amount);
+                lblToplamTL.Text = String.Format("{0:C}", invoice.AmountWithVAT);
+                lblToplamDvz.Text = String.Format("{0:C}", BeforeTotalF);
+            }
+            else
+            {
+                lblKDV.Text = String.Format("{0:C}", ((FatAmountTL / 100) * Convert.ToInt16(cmbFatKDV.SelectedItem)));
+                lblKDVsizToplam.Text = String.Format("{0:C}", FatAmountTL - ((FatAmountTL / 100) * Convert.ToInt16(cmbFatKDV.SelectedItem)));
+                lblToplamTL.Text = String.Format("{0:C}", BeforeTotalTL);
+                lblToplamDvz.Text = String.Format("{0:C}", BeforeTotalF);
+            }
         }  // Grid işlemlerinde tekrar toplamayı yapan fonksiyon....
 
         private void btnSil_Click(object sender, EventArgs e)
         {
-            MetroMessageBox.Show(this, "", "Henüz Silmeyi Yapmadım :)))) (UNDER CONSTRACTION)", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+            DialogResult dialogResult = MetroMessageBox.Show(this,"Silinsin mi?", "Ekranda gördüğünüz faturayı silmek istediğinizden emin misiniz ?", MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+            if (dialogResult == DialogResult.Yes)
+            {
+                baglanti = new SqlConnection("Server=" + ServerAdress + ";Database=" + DatabaseName + ";User Id=" + UsrName + ";Password=" + Pw + ";");
+                baglanti.Open();
+                komut = new SqlCommand($"DELETE FROM Invoices WHERE ID={FatID};  DELETE FROM InvoiceTransactions WHERE InvoiceID={FatID}", baglanti);
+                komut.ExecuteScalar();
+                baglanti.Close();
+                MetroMessageBox.Show(this, "Kayıt başarı ile silindi...\nFatura Numarası : " + txtFaturaNo.Text.Trim(), "Silme İşlemi Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
+                invoice = null;
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                return;
+            }
+
+
         }
 
         private void btnKaydet_Click(object sender, EventArgs e)

@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SatisFaturasi));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnSil = new Bunifu.Framework.UI.BunifuThinButton2();
             this.grpAltToplam = new System.Windows.Forms.GroupBox();
             this.lblKDV = new MetroFramework.Controls.MetroLabel();
@@ -48,6 +48,7 @@
             this.btnHrkSil = new Bunifu.Framework.UI.BunifuImageButton();
             this.btnHrkEkle = new Bunifu.Framework.UI.BunifuImageButton();
             this.grpCari = new System.Windows.Forms.GroupBox();
+            this.cmbFaturaTur = new System.Windows.Forms.ComboBox();
             this.cmbDepartman = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
@@ -68,7 +69,6 @@
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.btnCariSec = new Bunifu.Framework.UI.BunifuTileButton();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
-            this.cmbFaturaTur = new System.Windows.Forms.ComboBox();
             this.grpAltToplam.SuspendLayout();
             this.grpHareket.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridHr)).BeginInit();
@@ -124,7 +124,7 @@
             // lblKDV
             // 
             this.lblKDV.AutoSize = true;
-            this.lblKDV.Location = new System.Drawing.Point(165, 47);
+            this.lblKDV.Location = new System.Drawing.Point(165, 29);
             this.lblKDV.Name = "lblKDV";
             this.lblKDV.Size = new System.Drawing.Size(16, 19);
             this.lblKDV.TabIndex = 27;
@@ -142,7 +142,7 @@
             // lblKDVsizToplam
             // 
             this.lblKDVsizToplam.AutoSize = true;
-            this.lblKDVsizToplam.Location = new System.Drawing.Point(165, 29);
+            this.lblKDVsizToplam.Location = new System.Drawing.Point(165, 46);
             this.lblKDVsizToplam.Name = "lblKDVsizToplam";
             this.lblKDVsizToplam.Size = new System.Drawing.Size(16, 19);
             this.lblKDVsizToplam.TabIndex = 25;
@@ -233,20 +233,20 @@
             // 
             // GridHr
             // 
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.GridHr.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.GridHr.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.GridHr.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.GridHr.BackgroundColor = System.Drawing.Color.Gainsboro;
             this.GridHr.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.GridHr.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.DeepSkyBlue;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.ControlDarkDark;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.GridHr.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DeepSkyBlue;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.GridHr.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.GridHr.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.GridHr.DoubleBuffered = true;
             this.GridHr.EnableHeadersVisualStyles = false;
@@ -329,6 +329,16 @@
             this.grpCari.TabIndex = 26;
             this.grpCari.TabStop = false;
             this.grpCari.Text = "Cari - Fatura Bilgileri";
+            // 
+            // cmbFaturaTur
+            // 
+            this.cmbFaturaTur.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbFaturaTur.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbFaturaTur.FormattingEnabled = true;
+            this.cmbFaturaTur.Location = new System.Drawing.Point(514, 26);
+            this.cmbFaturaTur.Name = "cmbFaturaTur";
+            this.cmbFaturaTur.Size = new System.Drawing.Size(206, 23);
+            this.cmbFaturaTur.TabIndex = 53;
             // 
             // cmbDepartman
             // 
@@ -576,16 +586,6 @@
             this.metroLabel1.Size = new System.Drawing.Size(74, 19);
             this.metroLabel1.TabIndex = 3;
             this.metroLabel1.Text = "Cari Kodu :";
-            // 
-            // cmbFaturaTur
-            // 
-            this.cmbFaturaTur.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbFaturaTur.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbFaturaTur.FormattingEnabled = true;
-            this.cmbFaturaTur.Location = new System.Drawing.Point(514, 26);
-            this.cmbFaturaTur.Name = "cmbFaturaTur";
-            this.cmbFaturaTur.Size = new System.Drawing.Size(206, 23);
-            this.cmbFaturaTur.TabIndex = 53;
             // 
             // SatisFaturasi
             // 

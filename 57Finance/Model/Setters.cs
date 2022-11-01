@@ -51,24 +51,24 @@ namespace _57Finance.Model
             parser.WriteFile("Configuration.ini", data);
         }
 
-        public int GetInvoiceID()
+        public string GetInvoiceID()
         {
             try
             {
                 baglanti = new SqlConnection("Server=" + ServerAdress + ";Database=" + DatabaseName + ";User Id=" + UsrName + ";Password=" + Pw + ";");
-                baglanti.Open();
-                SQLCommand = new SqlCommand();
-                SQLCommand.CommandType = CommandType.Text;
+                string query = "SELECT IDENT_CURRENT('invoices') + 1";
+                SQLCommand = new SqlCommand(query,baglanti);
                 //SQLCommand.Parameters.Add("USUsername", SqlDbType.VarChar).Value = CUSER;
-                SQLCommand.CommandText = "SELECT TOP 1 ID FROM Invoices ORDER BY ID DESC";
-                Int32 USRole = (Int32)SQLCommand.ExecuteScalar();
+                baglanti.Open();
+                var USRole = SQLCommand.ExecuteScalar();
+                baglanti.Close();
 
-                return USRole+1;
+                return USRole.ToString();
 
             }
             catch (Exception)
             {                
-                return 0;
+                return "-1";
             }
         }
 

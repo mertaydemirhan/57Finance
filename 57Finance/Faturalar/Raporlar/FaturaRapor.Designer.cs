@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FaturaRapor));
             this.grpFaturalar = new System.Windows.Forms.GroupBox();
             this.GridFaturalar = new Bunifu.Framework.UI.BunifuCustomDataGrid();
@@ -57,6 +57,7 @@
             this.bunifuCustomLabel6 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.btnFiltrele = new Bunifu.Framework.UI.BunifuThinButton2();
             this.btnClear = new Bunifu.Framework.UI.BunifuThinButton2();
+            this.btnKaydiAc = new Bunifu.Framework.UI.BunifuThinButton2();
             this.grpFaturalar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridFaturalar)).BeginInit();
             this.grpAltToplam.SuspendLayout();
@@ -76,20 +77,20 @@
             // 
             // GridFaturalar
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.GridFaturalar.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.GridFaturalar.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.GridFaturalar.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.GridFaturalar.BackgroundColor = System.Drawing.Color.Gainsboro;
             this.GridFaturalar.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.GridFaturalar.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DeepSkyBlue;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.ControlDarkDark;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.GridFaturalar.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.DeepSkyBlue;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.GridFaturalar.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.GridFaturalar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.GridFaturalar.DoubleBuffered = true;
             this.GridFaturalar.EnableHeadersVisualStyles = false;
@@ -139,7 +140,6 @@
             this.lblToplamTL.Size = new System.Drawing.Size(43, 18);
             this.lblToplamTL.TabIndex = 34;
             this.lblToplamTL.Text = "0,00";
-            this.lblToplamTL.Click += new System.EventHandler(this.bunifuCustomLabel4_Click);
             // 
             // bunifuCustomLabel11
             // 
@@ -183,13 +183,13 @@
             this.btnExcel.IconVisible = true;
             this.btnExcel.IconZoom = 90D;
             this.btnExcel.IsTab = false;
-            this.btnExcel.Location = new System.Drawing.Point(1141, 463);
+            this.btnExcel.Location = new System.Drawing.Point(675, 469);
             this.btnExcel.Name = "btnExcel";
             this.btnExcel.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
             this.btnExcel.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
             this.btnExcel.OnHoverTextColor = System.Drawing.Color.White;
             this.btnExcel.selected = false;
-            this.btnExcel.Size = new System.Drawing.Size(230, 60);
+            this.btnExcel.Size = new System.Drawing.Size(221, 48);
             this.btnExcel.TabIndex = 18;
             this.btnExcel.Text = "Hareketleri Excele Aktar";
             this.btnExcel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -441,12 +441,39 @@
             this.btnClear.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
+            // btnKaydiAc
+            // 
+            this.btnKaydiAc.ActiveBorderThickness = 1;
+            this.btnKaydiAc.ActiveCornerRadius = 20;
+            this.btnKaydiAc.ActiveFillColor = System.Drawing.Color.SeaGreen;
+            this.btnKaydiAc.ActiveForecolor = System.Drawing.Color.White;
+            this.btnKaydiAc.ActiveLineColor = System.Drawing.Color.SeaGreen;
+            this.btnKaydiAc.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.btnKaydiAc.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnKaydiAc.BackgroundImage")));
+            this.btnKaydiAc.ButtonText = "Seçili Kaydı Aç";
+            this.btnKaydiAc.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnKaydiAc.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnKaydiAc.ForeColor = System.Drawing.Color.SeaGreen;
+            this.btnKaydiAc.IdleBorderThickness = 1;
+            this.btnKaydiAc.IdleCornerRadius = 20;
+            this.btnKaydiAc.IdleFillColor = System.Drawing.Color.White;
+            this.btnKaydiAc.IdleForecolor = System.Drawing.Color.SeaGreen;
+            this.btnKaydiAc.IdleLineColor = System.Drawing.Color.SeaGreen;
+            this.btnKaydiAc.Location = new System.Drawing.Point(379, 461);
+            this.btnKaydiAc.Margin = new System.Windows.Forms.Padding(5);
+            this.btnKaydiAc.Name = "btnKaydiAc";
+            this.btnKaydiAc.Size = new System.Drawing.Size(288, 62);
+            this.btnKaydiAc.TabIndex = 22;
+            this.btnKaydiAc.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnKaydiAc.Click += new System.EventHandler(this.btnKaydiAc_Click);
+            // 
             // FaturaRapor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.HighlightText;
             this.ClientSize = new System.Drawing.Size(1383, 535);
+            this.Controls.Add(this.btnKaydiAc);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnFiltrele);
             this.Controls.Add(this.PanelFiltre);
@@ -497,5 +524,6 @@
         private Bunifu.Framework.UI.BunifuCustomLabel lblToplamTL;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel11;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel10;
+        private Bunifu.Framework.UI.BunifuThinButton2 btnKaydiAc;
     }
 }

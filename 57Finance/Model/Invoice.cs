@@ -8,20 +8,27 @@ namespace _57Finance.Model
 {
     public class Invoice
     {
+        public int ClientID { get; set; }
         public int InvoiceID { get; set; }
+        public string ClientCode { get; set; }
+        public string ClientCommercialTitle { get; set; }
         public string InvoiceNo { get; set; }
-        public int InvoiceType { get; set; }
+        public string InvoiceType { get; set; }
         public DateTime InvoiceDate { get; set; }
         public string InvoiceDetails { get; set; }
-        public int VATRate { get; set; }
-        public double Amount { get; set; }
+        public decimal VATRate { get; set; }
+        public decimal Amount { get; set; }
+        public string DepartmentName { get; set; }
+        public decimal VATBasis { get; set; }
+        public decimal AmountWithVAT { get; set; }
+        public decimal TotalAmount { get; set; }
         public string Forex { get; set; }
-        public double ForexAmount { get; set; } 
-        public int ClientID { get; set; }
-        public double AmountWithVAT { get; set; }
-        public double TotalAmount { get; set; }
-        public double TotalAmountForex { get; set; }
-        public double VATBasis { get; set; }
+        public decimal ForexAmount { get; set; } 
+        public decimal TotalAmountForex { get; set; }
+        public string TaxNo { get; set; }
+        public string TaxOffice { get; set; }
+        public decimal VAT { get; set; }
+       
 
     }
 }

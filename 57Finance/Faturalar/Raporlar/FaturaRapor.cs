@@ -24,6 +24,7 @@ namespace _57Finance
         DataSet ds;
         Invoice Invoceinfo = new Invoice();
         //string FreeQuery = "";
+        DataTable tablobg = new DataTable();
         public FaturaRapor()
         {
             InitializeComponent();
@@ -56,52 +57,58 @@ namespace _57Finance
         }
         private void FaturaRapor_Load(object sender, EventArgs e)
         {
-            ToList();
+            ToList("");
             GetInvoiceType();
             BindDataDepartment();
         }
 
-        private void ToList()
+        private void ToList(string FilledQuery)
         {
             baglanti = new SqlConnection("Server=" + ServerAdress + ";Database=" + DatabaseName + ";User Id=" + UsrName + ";Password=" + Pw + ";");
-            DataTable tablo = new DataTable();
-            tablo.Clear();
+            DataTable tablobeauty = new DataTable();
+            tablobg = new DataTable();
+            string querybeauty = "", querybg = "";
+            tablobg.Clear();
+            tablobeauty.Clear();
             ds = new DataSet();
-            string query = $"SELECT * FROM [{DatabaseName}].dbo.InvoiceReport WHERE 1=1";
-            SqlDataAdapter adapter = new SqlDataAdapter(query, baglanti);
-            adapter.Fill(tablo);
-            ds.Merge(tablo);
-            GridFaturalar.DataSource = tablo;
+
+            if (FilledQuery == "")   // Listeleme için gelen FilledQuery boş ise normal listele değil ise filtreyi bas....
+            {
+                querybeauty = $"SELECT * FROM [{DatabaseName}].dbo.InvoiceReportBeauty WHERE 1=1";
+                querybg = $"Select * FROM [{DatabaseName}].dbo.InvoiceReportNormal WHERE 1=1  ";
+            }
+            else
+            {
+                querybeauty = $"SELECT * FROM [{DatabaseName}].dbo.InvoiceReportBeauty WHERE 1=1 and {FilledQuery}";
+                querybg = $"Select * FROM [{DatabaseName}].dbo.InvoiceReportNormal WHERE 1=1 and {FilledQuery} ";
+            }
+
+            SqlDataAdapter adapterbeauty = new SqlDataAdapter(querybeauty, baglanti);
+            SqlDataAdapter adapterbg = new SqlDataAdapter(querybg, baglanti);
+            adapterbg.Fill(tablobg);
+            adapterbeauty.Fill(tablobeauty);
+            ds.Merge(tablobeauty);
+            GridFaturalar.DataSource = tablobeauty;      /// Ekrana verilen Grid dışında arka tarafta bir grid daha döndürülüyor.. Veri çekebilmek adına
+
             GridFaturalar.Columns[0].Visible = false; //Fatura ID
-            GridFaturalar.Columns[1].HeaderText = "Ticari Ünvanı";
-            GridFaturalar.Columns[2].HeaderText = "Fatura Numarası";
-            GridFaturalar.Columns[3].HeaderText = "Fatura Türü";
-            GridFaturalar.Columns[4].HeaderText = "Fatura Tarihi";
-            GridFaturalar.Columns[5].HeaderText = "Fatura Açıklaması";
-            GridFaturalar.Columns[6].HeaderText = "KDV";
-            GridFaturalar.Columns[7].HeaderText = "Tutar";
-            GridFaturalar.Columns[8].HeaderText = "Departman";
-            GridFaturalar.Columns[9].HeaderText = "KDV Matrahı";
-            GridFaturalar.Columns[10].HeaderText = "KDV'Li Tutar";
-            GridFaturalar.Columns[11].HeaderText = "Toplam Tutar";
-            GridFaturalar.Columns[12].HeaderText = "Döviz Birimi";
-            GridFaturalar.Columns[13].HeaderText = "Dvz. Tutarı";
-            GridFaturalar.Columns[14].HeaderText = "Tpl.Döviz Tutar";
-            //GridFaturalar.Columns[15].HeaderText = "Dvz. Borç";
-            //GridFaturalar.Columns[16].HeaderText = "Dvz. Alacak";
-            //GridFaturalar.Columns[17].HeaderText = "Dvz.Bakiyesi";
-            //GridFaturalar.Columns[18].HeaderText = "Döviz Tipi";
-            //GridFaturalar.Columns[19].HeaderText = "Dolar Karşılığı";
-            //GridFaturalar.Columns[20].HeaderText = "Euro Karşılığı";
-            //GridFaturalar.Columns[21].HeaderText = "Stg Karşılığı";
-            //GridFaturalar.Columns[22].HeaderText = "TL Karşılığı";
-            //GridFaturalar.Columns[23].Visible = false;
-            //GridFaturalar.Columns[24].Visible = false;
-            //GridFaturalar.Columns[25].Visible = false;
-            //GridFaturalar.Columns[26].Visible = false;
-            //GridFaturalar.Columns[27].HeaderText = "Varsayılan Döviz";
-            CalculateTotalPrice();
-            
+            GridFaturalar.Columns[1].HeaderText = "Cari Kodu";
+            GridFaturalar.Columns[2].HeaderText = "Ticari Ünvanı";
+            GridFaturalar.Columns[3].HeaderText = "Fatura Numarası";
+            GridFaturalar.Columns[4].HeaderText = "Fatura Türü";
+            GridFaturalar.Columns[5].HeaderText = "Fatura Tarihi";
+            GridFaturalar.Columns[6].HeaderText = "Fatura Açıklaması";
+            GridFaturalar.Columns[7].HeaderText = "KDV";
+            GridFaturalar.Columns[8].HeaderText = "Tutar";
+            GridFaturalar.Columns[9].HeaderText = "Departman";
+            GridFaturalar.Columns[10].HeaderText = "KDV Matrahı";
+            GridFaturalar.Columns[11].HeaderText = "KDV'Li Tutar";
+            GridFaturalar.Columns[12].HeaderText = "Toplam Tutar";
+            GridFaturalar.Columns[13].HeaderText = "Döviz Birimi";
+            GridFaturalar.Columns[14].HeaderText = "Dvz. Tutarı";
+            GridFaturalar.Columns[15].HeaderText = "Tpl.Döviz Tutar";
+            GridFaturalar.Columns[16].HeaderText = "Vergi Numarası";
+            CalculateTableTotalPrice(tablobg);
+
         }
 
         private void GridFaturalar_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -114,6 +121,7 @@ namespace _57Finance
             cmbFaturaTuru.SelectedItem = null;
             cmbDepartman.SelectedItem = null;
             txtFaturaNo.Text = null;
+            ToList("");
 
         }
         private void copyAlltoClipboard()
@@ -141,46 +149,91 @@ namespace _57Finance
 
         private void btnFiltrele_Click(object sender, EventArgs e)
         {
+            // Query prepare  part
+            string PreparedQuery = "";
 
+            PreparedQuery = $" InvoiceDate >= CONVERT(DATE,'{dtBaslangic.Value}',103) AND ";
+            PreparedQuery = PreparedQuery + $" InvoiceDate <= CONVERT(DATE,'{dtBitisTarihi.Value}',103) ";
+
+            if (!string.IsNullOrEmpty(txtFaturaNo.Text))
+                PreparedQuery = PreparedQuery + $" AND InvoiceNo Like '{txtFaturaNo.Text.Trim()}'";
+            if (cmbDepartman.Text.Trim() != "")
+                PreparedQuery = PreparedQuery + $" AND DepartmentName Like '{cmbDepartman.SelectedText}'";
+            if (!string.IsNullOrEmpty(txtTicariUnvani.Text))
+                PreparedQuery = PreparedQuery + $" AND CommercialTitle Like '{txtTicariUnvani.Text.Trim()}'";
+            if (!string.IsNullOrEmpty(txtVergiNo.Text))
+                PreparedQuery = PreparedQuery + $" AND TaxNo Like '{txtVergiNo.Text.Trim()}'";
+            if (cmbFaturaTuru.Text.Trim() != "")
+                PreparedQuery = PreparedQuery + $" AND FaturaTuru Like '{cmbFaturaTuru.Text.Trim()}'";
+
+            ToList(PreparedQuery);
         }
 
-        private void bunifuCustomLabel4_Click(object sender, EventArgs e)
+
+        private void CalculateTableTotalPrice(DataTable dt)
         {
-
-        }
-
-
-        private void CalculateTotalPrice()
-        {
-            decimal FatAmountTL = 0,FatAmountForex=0;
+            decimal FatAmountTL = 0, FatAmountForex = 0;
             double BeforeTotalTL = 0, BeforeTotalF = 0;
-            DataGridViewRow row = GridFaturalar.Rows[GridFaturalar.Rows.Count-1];
-            if (row.Cells.Count > 10)
-            {
-                if (row.Cells[9].Value != null && row.Cells[10].Value != null)
-                {
-                    try
-                    {
-                        BeforeTotalF = GridFaturalar.Rows.Cast<DataGridViewRow>()
-                            .Sum(t => Convert.ToDouble(t.Cells[14].Value));
-                        BeforeTotalTL = GridFaturalar.Rows.Cast<DataGridViewRow>()
-                            .Sum(t => Convert.ToDouble(t.Cells[10].Value));
-                    }
-                    catch (Exception)
-                    {
-                        return;
-                    }
 
-                }
+            BeforeTotalF = dt.Rows.Cast<DataRow>()
+                            .Sum(t => Convert.ToDouble(t.ItemArray[16].ToString()));   // Oluşturulan InvoiceReportNormal Viewİ içerisinden satır.. ÇEKİLİYOR.. Her yeni satırda değiştirilmesi gerekir.... 
+            BeforeTotalTL = dt.Rows.Cast<DataRow>()
+                .Sum(t => Convert.ToDouble(t.ItemArray[12].ToString()));
 
-            }
-            
             FatAmountTL = Convert.ToDecimal(BeforeTotalTL);
             FatAmountForex = Convert.ToDecimal(BeforeTotalF);
             lblToplamTL.Text = String.Format("{0:C}", FatAmountTL);
-            //(string.Format("{0:#.00}", Convert.ToDecimal(totalpriceTL) / 100));
             lblToplamDvz.Text = String.Format("{0:C}", FatAmountForex);
-        }  // Grid işlemlerinde tekrar toplamayı yapan fonksiyon....
+        }
 
+        private void btnKaydiAc_Click(object sender, EventArgs e)
+        {
+            if (GridFaturalar.Rows.Count <= 1) { MessageBox.Show("Ekranda fatura görüntülenemedi, bu sebeple açılacak kayıt yok...", "O.o Fatura var mı ekranda ?", MessageBoxButtons.OK, MessageBoxIcon.Question); return; }
+            int selectedrowindex = GridFaturalar.SelectedCells[0].RowIndex;
+            DataRow selectedRow = tablobg.Rows[selectedrowindex];
+            Invoceinfo.InvoiceID = Convert.ToInt32(selectedRow["ID"].ToString());
+            Invoceinfo.ClientID = Convert.ToInt32(selectedRow["ClientID"].ToString());
+            Invoceinfo.ClientCode = selectedRow["ClientCode"].ToString();
+            Invoceinfo.ClientCommercialTitle = selectedRow["CommercialTitle"].ToString();
+            Invoceinfo.VATRate = Convert.ToDecimal(selectedRow["VATRate"]);
+            Invoceinfo.InvoiceNo = selectedRow["InvoiceNo"].ToString();
+            Invoceinfo.InvoiceDate = Convert.ToDateTime(selectedRow["InvoiceDate"]);
+            Invoceinfo.InvoiceDetails = selectedRow["InvoiceDetail"].ToString();
+            Invoceinfo.InvoiceType = selectedRow["FaturaTuru"].ToString();
+            Invoceinfo.Amount = Convert.ToDecimal(selectedRow["Amount"]);
+            Invoceinfo.DepartmentName = selectedRow["DepartmentName"].ToString();
+            Invoceinfo.VATBasis = Convert.ToDecimal(selectedRow["VATBasis"]);
+            Invoceinfo.AmountWithVAT = Convert.ToDecimal(selectedRow["AmountWithVAT"]);
+            Invoceinfo.TotalAmount = Convert.ToDecimal(selectedRow["TotalAmount"]);
+            Invoceinfo.Forex = selectedRow["Forex"].ToString();
+            Invoceinfo.ForexAmount = Convert.ToDecimal(selectedRow["ForexAmount"]);
+            Invoceinfo.TotalAmountForex = Convert.ToDecimal(selectedRow["TotalAmountForex"]);
+            Invoceinfo.TaxNo = selectedRow["TaxNo"].ToString();
+            Invoceinfo.TaxOffice = selectedRow["TaxOffice"].ToString();
+            Invoceinfo.VAT = ((Invoceinfo.Amount / 100) * Invoceinfo.VATRate);
+
+
+            /// will create  to open form which is type 
+            /// 1 = Alış faturası 
+            /// 2 = Alıştan iade
+            /// 3 = Satış
+            /// 4 = satıştan iade
+            /// 5 = masraf     
+
+            if (Invoceinfo.InvoiceType == "Alis Faturasi" || Invoceinfo.InvoiceType == "Alistan iade Faturasi")
+            {
+                AlisFaturasi Alisft = new AlisFaturasi(Invoceinfo);
+                Alisft.Show();
+            }
+            else if (Invoceinfo.InvoiceType == "Satis Faturasi" || Invoceinfo.InvoiceType == "Satistan iade Faturasi")
+            {
+                SatisFaturasi Satft = new SatisFaturasi(Invoceinfo);
+                Satft.Show();
+            }
+
+            //MetroFramework.MetroMessageBox.Show(this, "Lütfen sayfadan işlem yapılacak faturayı belirleyiniz..", "Lütfen Kayıt seçiniz", MessageBoxButtons.RetryCancel, MessageBoxIcon.Hand);
+
+
+        }
     }
 }
