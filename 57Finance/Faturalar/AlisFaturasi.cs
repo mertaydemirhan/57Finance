@@ -166,8 +166,9 @@ namespace _57Finance
 
         private void btnHrkSil_Click(object sender, EventArgs e)   // Gridde hareket silindiğinde çalışan kod....
         {
+            int selectedRow = GridHr.SelectedCells[0].RowIndex;
             GridHr.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            GridHr.CurrentRow.(GridHr.SelectedRows[0]);
+            GridHr.Rows[selectedRow].Selected = true;
             if (GridHr.SelectedRows.Count > 0 && !GridHr.SelectedRows[0].IsNewRow)
             {
                 GridHr.Rows.Remove(GridHr.SelectedRows[0]);

@@ -83,6 +83,10 @@ namespace _57Finance
                 lblCommercialTitle.Text = invoice.ClientCommercialTitle;
                 lblTaxNo.Text = invoice.TaxNo;
                 lblTaxOffice.Text = invoice.TaxOffice;
+                cmbDepartman.SelectedIndex = cmbDepartman.FindString(invoice.DepartmentName);
+                cmbFatKDV.SelectedIndex = cmbFatKDV.FindString(invoice.VATRate.ToString());
+                GetInvoiceType();
+                cmbFaturaTur.SelectedIndex = cmbFaturaTur.FindString(invoice.InvoiceType);
                 GridHrCek();
             }
         }
@@ -167,10 +171,14 @@ namespace _57Finance
         }
         private void btnHrkSil_Click(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow row in GridHr.SelectedRows)
+            int selectedRow = GridHr.SelectedCells[0].RowIndex;
+            GridHr.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            GridHr.Rows[selectedRow].Selected = true;
+            if (GridHr.SelectedRows.Count > 0 && !GridHr.SelectedRows[0].IsNewRow)
             {
-                GridHr.Rows.Remove(row);
+                GridHr.Rows.Remove(GridHr.SelectedRows[0]);
             }
+            GridHr.SelectionMode = DataGridViewSelectionMode.RowHeaderSelect;
         }
         private void GridHr_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {

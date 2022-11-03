@@ -220,12 +220,12 @@ namespace _57Finance
             /// 4 = satıştan iade
             /// 5 = masraf     
 
-            if (Invoceinfo.InvoiceType == "Alis Faturasi" || Invoceinfo.InvoiceType == "Alistan iade Faturasi")
+            if (Invoceinfo.InvoiceType == "Alış Faturası" || Invoceinfo.InvoiceType == "Alıştan İade Faturası")
             {
                 AlisFaturasi Alisft = new AlisFaturasi(Invoceinfo);
                 Alisft.Show();
             }
-            else if (Invoceinfo.InvoiceType == "Satis Faturasi" || Invoceinfo.InvoiceType == "Satistan iade Faturasi")
+            else if (Invoceinfo.InvoiceType == "Satış Faturası" || Invoceinfo.InvoiceType == "Satıştan İade Faturası")
             {
                 SatisFaturasi Satft = new SatisFaturasi(Invoceinfo);
                 Satft.Show();
